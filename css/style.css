@@ -213,6 +213,7 @@ p { margin: 0; }
   top: 0;
   z-index: 100;
   padding: 14px 16px 0;
+  margin-bottom: -92px; /* zieht den Hero direkt hinter die Kapsel, kein Beige-Streifen */
   pointer-events: none;
 }
 .site-header .container {
@@ -221,7 +222,8 @@ p { margin: 0; }
   align-items: center;
   justify-content: space-between;
   height: 78px;
-  gap: 24px;
+  gap: 20px;
+  max-width: 1320px;
   background: linear-gradient(135deg, rgba(255,255,255,0.55), rgba(255,255,255,0.28) 60%), rgba(255, 255, 255, 0.62);
   backdrop-filter: blur(28px) saturate(200%);
   -webkit-backdrop-filter: blur(28px) saturate(200%);
@@ -256,7 +258,7 @@ p { margin: 0; }
   color: var(--gold);
 }
 
-.main-nav { display: flex; align-items: center; gap: 32px; }
+.main-nav { display: flex; align-items: center; gap: 20px; }
 .main-nav a, .nav-dropdown-trigger {
   font-size: 15px;
   font-weight: 500;
@@ -271,7 +273,8 @@ p { margin: 0; }
 .main-nav a:hover, .nav-dropdown-trigger:hover { color: var(--navy); }
 .main-nav a.active { color: var(--navy); font-weight: 600; }
 
-.header-actions { display: flex; align-items: center; gap: 16px; }
+.header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.header-actions .btn-navy { padding: 12px 20px; font-size: 14px; }
 .menu-toggle {
   display: none;
   background: none;
@@ -362,7 +365,7 @@ p { margin: 0; }
   background: var(--navy-deep);
   color: var(--white);
   overflow: hidden;
-  padding: 96px 0 110px;
+  padding: 188px 0 110px;
 }
 .hero-inner { position: relative; z-index: 2; max-width: 760px; }
 .hero .eyebrow { color: var(--gold-light); }
@@ -415,7 +418,11 @@ p { margin: 0; }
 }
 
 .hero-sub .container { padding-top: 40px; }
-.hero-page { padding: 64px 0 80px; }
+.hero-page { padding: 156px 0 80px; }
+
+@media (max-width: 1320px) {
+  .header-actions .btn-outline-navy, .header-actions .btn-soon { display: none; }
+}
 .hero-page .eyebrow { color: var(--gold-light); }
 .hero-page h1 { font-size: 44px; color: var(--white); margin: 12px 0 16px; }
 
@@ -1222,13 +1229,14 @@ section { padding: 88px 0; }
 @media (max-width: 720px) {
   .main-nav, .header-actions .btn-navy, .header-actions .btn-tel, .header-actions .btn-outline-navy, .header-actions .btn-soon { display: none; }
   .menu-toggle { display: block; }
-  .site-header { padding: 10px 12px 0; }
+  .site-header { padding: 10px 12px 0; margin-bottom: -78px; }
   .site-header .container { height: 68px; }
   .topbar-phone-label { display: none; }
   .topbar .container span:first-child { display: none; }
   .topbar-right a:first-child { display: none; }
   h1 { font-size: 34px; }
-  .hero { padding: 56px 0 70px; }
+  .hero { padding: 134px 0 70px; }
+  .hero-page { padding: 142px 0 60px; }
   section { padding: 60px 0; }
   .cards-grid { grid-template-columns: 1fr; }
   .feature-grid { grid-template-columns: 1fr; }
