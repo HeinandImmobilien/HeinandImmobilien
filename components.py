@@ -433,6 +433,8 @@ def header(prefix, active=""):
       {navlink("Kontakt", "kontakt.html", "kontakt")}
     </nav>
     <div class="header-actions">
+      <a href="{prefix}schadensmeldung.html" class="btn btn-outline-navy">Schaden melden</a>
+      <span class="btn btn-outline-navy btn-soon" aria-disabled="true" title="Kundenportal folgt in Kürze">Kundenportal<span class="badge-soon">bald</span></span>
       <a href="{prefix}kontakt.html" class="btn btn-navy">Kostenloses Erstgespräch <span aria-hidden="true">&#8594;</span></a>
       <button type="button" class="menu-toggle" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
@@ -451,6 +453,8 @@ def header(prefix, active=""):
   {navlink("Über uns", "ueber-uns.html", "")}
   {navlink("Ratgeber", "blog/index.html", "")}
   {navlink("Kontakt", "kontakt.html", "")}
+  <a href="{prefix}schadensmeldung.html">Schaden melden</a>
+  <span class="mobile-nav-soon">Kundenportal <span class="badge-soon">bald verfügbar</span></span>
   <a href="{prefix}kontakt.html" class="btn btn-navy">Kostenloses Erstgespräch &#8594;</a>
 </div>
 '''

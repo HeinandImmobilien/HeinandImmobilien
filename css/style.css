@@ -150,17 +150,49 @@ p { margin: 0; }
   font-weight: 600;
 }
 
+.header-actions .btn-outline-navy {
+  padding: 10px 18px;
+  font-size: 14px;
+}
+.btn-soon {
+  opacity: 0.6;
+  cursor: default;
+  pointer-events: none;
+}
+.badge-soon {
+  display: inline-block;
+  margin-left: 2px;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: var(--gold);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.mobile-nav-soon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 0;
+  font-size: 18px;
+  border-bottom: 1px solid rgba(15,48,99,0.08);
+  color: rgba(10,33,72,0.5);
+}
+
 /* ==========================================================================
    Topbar + Header
    ========================================================================== */
 
 .topbar {
-  background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.01) 60%), rgba(10, 33, 72, 0.45);
-  backdrop-filter: blur(22px) saturate(200%);
-  -webkit-backdrop-filter: blur(22px) saturate(200%);
+  background: var(--navy-deep);
   color: rgba(255, 255, 255, 0.85);
   font-size: 13px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 101;
 }
 .topbar .container {
   display: flex;
@@ -173,22 +205,30 @@ p { margin: 0; }
 .topbar-right { display: flex; align-items: center; gap: 22px; }
 .topbar-region { display: none; }
 
+/* Schwebende Glas-Kapsel: der äußere Wrapper bleibt unsichtbar und dient
+   nur der Positionierung (sticky + Abstand), damit ringsum die Seite
+   durchscheint; die eigentliche "Blase" ist .site-header .container. */
 .site-header {
-  background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.05) 55%), rgba(247, 245, 240, 0.35);
-  backdrop-filter: blur(30px) saturate(220%);
-  -webkit-backdrop-filter: blur(30px) saturate(220%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 8px 30px rgba(15, 48, 99, 0.08);
   position: sticky;
   top: 0;
   z-index: 100;
+  padding: 14px 16px 0;
+  pointer-events: none;
 }
 .site-header .container {
+  pointer-events: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 88px;
+  height: 78px;
   gap: 24px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.55), rgba(255,255,255,0.28) 60%), rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-full);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 14px 40px rgba(15, 48, 99, 0.18);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .logo {
@@ -1180,8 +1220,10 @@ section { padding: 88px 0; }
 }
 
 @media (max-width: 720px) {
-  .main-nav, .header-actions .btn-navy, .header-actions .btn-tel { display: none; }
+  .main-nav, .header-actions .btn-navy, .header-actions .btn-tel, .header-actions .btn-outline-navy, .header-actions .btn-soon { display: none; }
   .menu-toggle { display: block; }
+  .site-header { padding: 10px 12px 0; }
+  .site-header .container { height: 68px; }
   .topbar-phone-label { display: none; }
   .topbar .container span:first-child { display: none; }
   .topbar-right a:first-child { display: none; }
