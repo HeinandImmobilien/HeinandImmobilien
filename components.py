@@ -455,7 +455,7 @@ def header(prefix, active=""):
   {navlink("Kontakt", "kontakt.html", "")}
   <a href="{prefix}schadensmeldung.html">Schaden melden</a>
   <span class="mobile-nav-soon">Kundenportal <span class="badge-soon">bald verfügbar</span></span>
-  <a href="{prefix}kontakt.html" class="btn btn-navy">Kostenloses Erstgespräch &#8594;</a>
+  <a href="{prefix}kontakt.html" class="btn btn-primary">Kostenloses Erstgespräch &#8594;</a>
 </div>
 '''
 
