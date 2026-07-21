@@ -1,0 +1,9 @@
+{
+  "name": "heinand-de",
+  "private": true,
+  "version": "1.0.0",
+  "description": "HEINAND Immobilien — statische Website mit einer Vercel Serverless Function (api/contact.js) fuer den E-Mail-Versand der Formulare.",
+  "engines": {
+    "node": ">=18"
+  }
+}
