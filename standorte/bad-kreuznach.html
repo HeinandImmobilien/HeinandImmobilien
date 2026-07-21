@@ -206,19 +206,31 @@
         <div class="form-grid">
           <div class="form-field">
   <label>Objektart *</label>
-  <select><option value="">Bitte wählen…</option><option>Einzelne Wohnung(en)</option><option>Mehrfamilienhaus</option><option>WEG / Eigentümergemeinschaft</option><option>Sonstiges</option></select>
+  <select required><option value="" disabled selected>Bitte wählen…</option><option>Einzelne Wohnung(en)</option><option>Mehrfamilienhaus</option><option>WEG / Eigentümergemeinschaft</option><option>Sonstiges</option></select>
 </div>
           <div class="form-field">
   <label>Adresse / Stadtteil in Bad Kreuznach *</label>
-  <input type="text" placeholder="">
+  <input type="text" placeholder="" required>
+</div>
+        </div>
+        <div class="form-grid">
+          <div class="form-field">
+  <label>Vorname *</label>
+  <input type="text" placeholder="" required>
 </div>
           <div class="form-field">
-  <label>Ihr Name *</label>
-  <input type="text" placeholder="">
+  <label>Nachname *</label>
+  <input type="text" placeholder="" required>
+</div>
+        </div>
+        <div class="form-grid">
+          <div class="form-field">
+  <label>Telefonnummer *</label>
+  <input type="tel" placeholder="" required>
 </div>
           <div class="form-field">
   <label>E-Mail *</label>
-  <input type="text" placeholder="">
+  <input type="email" placeholder="" required>
 </div>
         </div>
         <button type="submit" class="btn btn-primary form-submit">Erstgespräch anfragen</button>
@@ -331,7 +343,7 @@
 </footer>
 <div class="cookie-banner">
   <h4>Cookie-Einstellungen</h4>
-  <p>Wir verwenden technisch notwendige Cookies. Mit Ihrer Einwilligung nutzen wir zusätzlich eine anonyme, eigene Besucher-Statistik ohne Drittanbieter-Tracking. Details in der <a href="../datenschutz.html">Datenschutzerklärung</a>.</p>
+  <p>Wir verwenden ausschließlich technisch notwendige Cookies bzw. vergleichbare Speichertechnologien für den Betrieb dieser Website (z. B. zur Speicherung Ihrer Cookie-Entscheidung). Es findet kein Werbe- oder Drittanbieter-Tracking statt. Details in der <a href="../datenschutz.html">Datenschutzerklärung</a>.</p>
   <div class="cookie-actions">
     <button type="button" class="btn btn-primary" data-cookie-action="accepted">Alle akzeptieren</button>
     <button type="button" class="btn btn-outline-navy" data-cookie-action="essential">Nur notwendige</button>

@@ -10,12 +10,10 @@
 //
 // Kein npm-Paket nötig — der Aufruf läuft über die in Node eingebaute fetch-API.
 
-const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'mail.philipphartung@gmail.com';
-// Absenderadresse über die Resend-Testdomain. Funktioniert ohne eigene
-// Domain-Verifizierung, solange NOTIFY_EMAIL die Adresse ist, mit der das
-// Resend-Konto erstellt wurde. Mit eigener verifizierter Domain kann hier
-// z. B. "HEINAND Immobilien <anfrage@heinand.de>" eingetragen werden.
-const FROM_EMAIL = 'HEINAND Website <onboarding@resend.dev>';
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'info@heinand.de';
+// heinand.de ist bei Resend als Domain verifiziert (DKIM/SPF), daher kann
+// hier eine echte @heinand.de-Absenderadresse verwendet werden.
+const FROM_EMAIL = 'HEINAND Immobilien <anfrage@heinand.de>';
 
 function escapeHtml(str) {
   return String(str)

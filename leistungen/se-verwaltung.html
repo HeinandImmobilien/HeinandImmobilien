@@ -180,33 +180,41 @@
         <div class="form-grid">
           <div class="form-field">
   <label>Anzahl Wohnungen *</label>
-  <select><option value="">Bitte wählen…</option><option>1</option><option>2–5</option><option>Mehr als 5</option></select>
+  <select required><option value="" disabled selected>Bitte wählen…</option><option>1</option><option>2–5</option><option>Mehr als 5</option></select>
 </div><div class="form-field">
   <label>Objekt-Standort *</label>
-  <input type="text" placeholder="">
+  <input type="text" placeholder="" required>
 </div><div class="form-field">
   <label>Vermietungsstand *</label>
-  <select><option value="">Bitte wählen…</option><option>Vermietet</option><option>Aktuell leer / Neuvermietung nötig</option><option>Teilweise vermietet</option></select>
+  <select required><option value="" disabled selected>Bitte wählen…</option><option>Vermietet</option><option>Aktuell leer / Neuvermietung nötig</option><option>Teilweise vermietet</option></select>
 </div><div class="form-field">
   <label>Ihr Wohnort *</label>
-  <select><option value="">Bitte wählen…</option><option>In der Region Rhein-Main</option><option>Außerhalb der Region</option><option>Im Ausland</option></select>
+  <select required><option value="" disabled selected>Bitte wählen…</option><option>In der Region Rhein-Main</option><option>Außerhalb der Region</option><option>Im Ausland</option></select>
 </div>
         </div>
         <div class="form-step-label">2. Wie erreichen wir Sie?</div>
         <div class="form-grid">
           <div class="form-field">
-  <label>Ihr Name *</label>
-  <input type="text" placeholder="">
+  <label>Vorname *</label>
+  <input type="text" placeholder="" required>
+</div>
+          <div class="form-field">
+  <label>Nachname *</label>
+  <input type="text" placeholder="" required>
+</div>
+        </div>
+        <div class="form-grid">
+          <div class="form-field">
+  <label>Telefonnummer *</label>
+  <input type="tel" placeholder="" required>
 </div>
           <div class="form-field">
   <label>E-Mail *</label>
-  <input type="text" placeholder="">
+  <input type="email" placeholder="" required>
 </div>
-          <div class="form-field">
-  <label>Telefon (optional)</label>
-  <input type="text" placeholder="">
-</div>
-          <div class="form-field">
+        </div>
+        <div class="form-grid">
+          <div class="form-field full">
   <label>Anmerkung (optional)</label>
   <input type="text" placeholder="">
 </div>
@@ -300,7 +308,7 @@
 </footer>
 <div class="cookie-banner">
   <h4>Cookie-Einstellungen</h4>
-  <p>Wir verwenden technisch notwendige Cookies. Mit Ihrer Einwilligung nutzen wir zusätzlich eine anonyme, eigene Besucher-Statistik ohne Drittanbieter-Tracking. Details in der <a href="../datenschutz.html">Datenschutzerklärung</a>.</p>
+  <p>Wir verwenden ausschließlich technisch notwendige Cookies bzw. vergleichbare Speichertechnologien für den Betrieb dieser Website (z. B. zur Speicherung Ihrer Cookie-Entscheidung). Es findet kein Werbe- oder Drittanbieter-Tracking statt. Details in der <a href="../datenschutz.html">Datenschutzerklärung</a>.</p>
   <div class="cookie-actions">
     <button type="button" class="btn btn-primary" data-cookie-action="accepted">Alle akzeptieren</button>
     <button type="button" class="btn btn-outline-navy" data-cookie-action="essential">Nur notwendige</button>

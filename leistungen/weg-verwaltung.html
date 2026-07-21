@@ -180,33 +180,41 @@
         <div class="form-grid">
           <div class="form-field">
   <label>Anzahl Einheiten *</label>
-  <select><option value="">Bitte wählen…</option><option>Bis 10</option><option>11–20</option><option>21–50</option><option>Über 50</option></select>
+  <select required><option value="" disabled selected>Bitte wählen…</option><option>Bis 10</option><option>11–20</option><option>21–50</option><option>Über 50</option></select>
 </div><div class="form-field">
   <label>Objekt-Standort *</label>
-  <input type="text" placeholder="">
+  <input type="text" placeholder="" required>
 </div><div class="form-field">
   <label>Ihre Rolle *</label>
-  <select><option value="">Bitte wählen…</option><option>Beiratsvorsitz</option><option>Verwaltungsbeirat</option><option>Eigentümer:in</option><option>Bauträger</option></select>
+  <select required><option value="" disabled selected>Bitte wählen…</option><option>Beiratsvorsitz</option><option>Verwaltungsbeirat</option><option>Eigentümer:in</option><option>Bauträger</option></select>
 </div><div class="form-field">
   <label>Aktuelle Situation *</label>
-  <select><option value="">Bitte wählen…</option><option>Verwalterwechsel geplant</option><option>Unzufrieden, erst informieren</option><option>Aktuell ohne Verwaltung</option><option>Neubau / Erstbestellung</option></select>
+  <select required><option value="" disabled selected>Bitte wählen…</option><option>Verwalterwechsel geplant</option><option>Unzufrieden, erst informieren</option><option>Aktuell ohne Verwaltung</option><option>Neubau / Erstbestellung</option></select>
 </div>
         </div>
         <div class="form-step-label">2. Wie erreichen wir Sie?</div>
         <div class="form-grid">
           <div class="form-field">
-  <label>Ihr Name *</label>
-  <input type="text" placeholder="">
+  <label>Vorname *</label>
+  <input type="text" placeholder="" required>
+</div>
+          <div class="form-field">
+  <label>Nachname *</label>
+  <input type="text" placeholder="" required>
+</div>
+        </div>
+        <div class="form-grid">
+          <div class="form-field">
+  <label>Telefonnummer *</label>
+  <input type="tel" placeholder="" required>
 </div>
           <div class="form-field">
   <label>E-Mail *</label>
-  <input type="text" placeholder="">
+  <input type="email" placeholder="" required>
 </div>
-          <div class="form-field">
-  <label>Telefon (optional)</label>
-  <input type="text" placeholder="">
-</div>
-          <div class="form-field">
+        </div>
+        <div class="form-grid">
+          <div class="form-field full">
   <label>Anmerkung (optional)</label>
   <input type="text" placeholder="">
 </div>
@@ -300,7 +308,7 @@
 </footer>
 <div class="cookie-banner">
   <h4>Cookie-Einstellungen</h4>
-  <p>Wir verwenden technisch notwendige Cookies. Mit Ihrer Einwilligung nutzen wir zusätzlich eine anonyme, eigene Besucher-Statistik ohne Drittanbieter-Tracking. Details in der <a href="../datenschutz.html">Datenschutzerklärung</a>.</p>
+  <p>Wir verwenden ausschließlich technisch notwendige Cookies bzw. vergleichbare Speichertechnologien für den Betrieb dieser Website (z. B. zur Speicherung Ihrer Cookie-Entscheidung). Es findet kein Werbe- oder Drittanbieter-Tracking statt. Details in der <a href="../datenschutz.html">Datenschutzerklärung</a>.</p>
   <div class="cookie-actions">
     <button type="button" class="btn btn-primary" data-cookie-action="accepted">Alle akzeptieren</button>
     <button type="button" class="btn btn-outline-navy" data-cookie-action="essential">Nur notwendige</button>
