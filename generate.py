@@ -166,7 +166,7 @@ def build_home():
       {step("05", "Laufende Betreuung", "Ab Tag eins laufen alle Vorgänge digital: Anliegen werden online gemeldet und schnell geklärt — und Sie haben wieder Zeit für das Wesentliche.")}
     </div>
     <p style="text-align:center;margin-top:28px;">
-      <a href="{prefix}leistungen/verwalterwechsel.html" style="color:var(--navy);text-decoration:underline;font-weight:600;">Verwalterwechsel bei einer WEG im Detail: der komplette Ablauf Schritt für Schritt &rarr;</a>
+      <a href="{prefix}leistungen/verwalterwechsel.html" class="btn btn-outline-navy">Verwalterwechsel bei einer WEG im Detail <span aria-hidden="true">&rarr;</span></a>
     </p>
   </div>
 </section>
