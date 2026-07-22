@@ -9,8 +9,8 @@ import os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
-PHONE = "+49 1515 9473656"
-PHONE_TEL = "tel:+4915159473656"
+PHONE = "06131 - 6248240"
+PHONE_TEL = "tel:+4961316248240"
 EMAIL = "info@heinand.de"
 
 # --------------------------------------------------------------------------
