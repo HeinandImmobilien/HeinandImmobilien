@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# -*- coding: Utf-8 -*-
 import os
 from components import (
     ROOT, head, header, footer, cta_banner, hero_video_html, icon, feature_icon, contact_icon,
@@ -33,10 +33,10 @@ TIER1_LOCATIONS = [l for l in LOCATIONS if l.get("tier") == 1]
 TIER2_LOCATIONS = [l for l in LOCATIONS if l.get("tier") != 1]
 
 def locations_section(prefix, heading="Verwaltung, Werterhalt und Verkauf in Mainz und im gesamten 35-km-Umkreis.",
-                       intro="Wir sind dort für Sie da, wo wir uns auskennen: mit Miet-, WEG- und Sondereigentumsverwaltung, Werterhalt sowie Immobilienverkauf und -bewertung in Mainz und einem Radius von rund 35 Kilometern, von Wiesbaden über Rheinhessen bis ins Rhein-Main-Gebiet. Kurze Wege bedeuten schnelle Objektbegehungen, kurzfristige Übergaben und ein Handwerkernetzwerk, das wirklich vor Ort ist.",
+                       intro="Wir sind dort für Sie da, wo wir uns auskennen: Mit Miet-, WEG- und Sondereigentumsverwaltung, Werterhalt sowie Immobilienverkauf und -bewertung in Mainz und einem Radius von rund 35 Kilometern, von Wiesbaden über Rheinhessen bis ins Rhein-Main-Gebiet. Kurze Wege bedeuten schnelle Objektbegehungen, kurzfristige Übergaben und ein Handwerkernetzwerk, das wirklich vor Ort ist.",
                        show_cta=True, standorte_prefix=None, map_id="einsatzgebiet-karte"):
     """Standorte-Sektion mit echter Leaflet-Radius-Karte + vollständiger Ortsliste.
-    standorte_prefix: Pfad-Präfix zu /standorte/ (Default: prefix + 'standorte/')."""
+    standorte_prefix: Pfad-Präfix zu /standorte/ (Default: Prefix + 'standorte/')."""
     sp = standorte_prefix if standorte_prefix is not None else f"{prefix}standorte/"
     tier1_links = "".join(
         f'<a href="{sp}{l["slug"]}.html"><span class="dot"></span>Hausverwaltung {l["name"]}</a>'
@@ -70,11 +70,11 @@ def locations_section(prefix, heading="Verwaltung, Werterhalt und Verkauf in Mai
 def build_home():
     prefix = ""
     home_faq = [
-        ("Was kostet eine Hausverwaltung bei HEINAND?", "Das hängt von Objektgröße, Einheitenzahl und Leistungsumfang ab. Im kostenlosen Erstgespräch lernen wir uns erst kennen und besprechen Ihre Situation. Passt es für beide Seiten, folgt eine Objektanalyse und ein transparentes Festangebot: ohne versteckte Zusatzkosten."),
+        ("Was kostet eine Hausverwaltung bei HEINAND?", "Das hängt von Objektgröße, Einheitenzahl und Leistungsumfang ab. Im kostenlosen Erstgespräch lernen wir uns erst kennen und besprechen Ihre Situation. Passt es für beide Seiten, folgt eine Objektanalyse und ein transparentes Festangebot: Ohne versteckte Zusatzkosten."),
         ("Wie läuft der Wechsel von unserer bisherigen Verwaltung ab?", "Strukturiert: Wir kümmern uns um die Übernahme aller Unterlagen, Konten und laufenden Vorgänge von Ihrer Vorverwaltung. Für Eigentümer und Mieter läuft der Wechsel ohne Bruch: Sie merken nur, dass es besser funktioniert."),
-        ("In welchen Regionen sind Sie tätig?", "Unser Schwerpunkt liegt in Mainz und einem Radius von rund 35 km: darunter Wiesbaden, Ingelheim, Bingen, Alzey, Rüsselsheim und Nieder-Olm. Auch Bad Kreuznach zählt als feste Standort-Region zu unserem Einzugsgebiet. Kurze Wege sind Teil unseres Qualitätsversprechens."),
+        ("In welchen Regionen sind Sie tätig?", "Unser Schwerpunkt liegt in Mainz und einem Radius von rund 35 km: Darunter Wiesbaden, Ingelheim, Bingen, Alzey, Rüsselsheim und Nieder-Olm. Auch Bad Kreuznach zählt als feste Standort-Region zu unserem Einzugsgebiet. Kurze Wege sind Teil unseres Qualitätsversprechens."),
         ("Wie schnell reagieren Sie bei Schäden?", "Jede Schadensmeldung wird priorisiert: Akute Gefahren behandeln wir sofort, dringende Reparaturen zeitnah, reguläre Anliegen strukturiert und nachvollziehbar. Über unser Online-Formular ist Ihr Anliegen in zwei Minuten gemeldet."),
-        ("Verwalten Sie auch einzelne Eigentumswohnungen?", "Ja: mit der Sondereigentumsverwaltung betreuen wir Ihre vermietete Wohnung komplett, inklusive Mieterkontakt und Schnittstelle zur WEG-Verwaltung. Ideal für Kapitalanleger, die nicht vor Ort sind."),
+        ("Verwalten Sie auch einzelne Eigentumswohnungen?", "Ja: Mit der Sondereigentumsverwaltung betreuen wir Ihre vermietete Wohnung komplett, inklusive Mieterkontakt und Schnittstelle zur WEG-Verwaltung. Ideal für Kapitalanleger, die nicht vor Ort sind."),
         ("Was ist der Unterschied zwischen WEG-Verwaltung und Mietverwaltung?", "Die WEG-Verwaltung betreut das gemeinschaftliche Eigentum einer Eigentümergemeinschaft, also Dach, Fassade, Treppenhaus und Heizungsanlage. Die Mietverwaltung kümmert sich dagegen um ein einzelnes vermietetes Objekt: Mieterkorrespondenz, Nebenkostenabrechnung, Zahlungseingänge. Wer eine vermietete Eigentumswohnung besitzt, braucht meist beides, dafür gibt es die Sondereigentumsverwaltung als Schnittstelle."),
         ("Wie lange dauert ein Verwalterwechsel bei einer WEG?", "Seit der WEG-Reform reicht für die Neubestellung eines Verwalters die einfache Mehrheit der abgegebenen Stimmen in der Eigentümerversammlung, ein wichtiger Grund ist nicht mehr nötig. Vom Erstgespräch bis zur laufenden Betreuung planen wir meist sechs bis zehn Wochen ein: Angebot, Beschlussfassung, Übergabe von der Vorverwaltung."),
         ("Was ist in der Mietverwaltung konkret enthalten?", "Dazu gehören die komplette Mieterkorrespondenz, die Abwicklung von Zahlungseingängen, eine fristgerechte Nebenkostenabrechnung, die Koordination von Handwerkern bei Reparaturen sowie regelmäßiges Reporting, damit Sie jederzeit wissen, was mit Ihrem Objekt passiert."),
@@ -91,8 +91,8 @@ def build_home():
   {hero_video_html(prefix)}
   <div class="container hero-inner">
     <span class="eyebrow">Mainz · Wiesbaden · Rhein-Main</span>
-    <h1>Immobilienverwaltung, die digital arbeitet: schnell, transparent, immer aktuell.</h1>
-    <p class="hero-lead">Miet-, WEG- und Sondereigentumsverwaltung sowie Immobilienverkauf in Mainz und dem Rhein-Main-Gebiet. Als digital arbeitende Verwaltung sind wir bei jedem Objekt auf dem aktuellen Stand und klären Anliegen, bevor sie zu Problemen werden: damit Eigentum kein zweiter Job ist.</p>
+    <h1>Immobilienverwaltung, die digital arbeitet: Schnell, transparent, immer aktuell.</h1>
+    <p class="hero-lead">Miet-, WEG- und Sondereigentumsverwaltung sowie Immobilienverkauf in Mainz und dem Rhein-Main-Gebiet. Als digital arbeitende Verwaltung sind wir bei jedem Objekt auf dem aktuellen Stand und klären Anliegen, bevor sie zu Problemen werden: Damit Eigentum kein zweiter Job ist.</p>
     <div class="hero-cta">
       <a href="{prefix}kontakt.html" class="btn btn-primary">Kostenloses Erstgespräch <span aria-hidden="true">&#8594;</span></a>
       <a href="{prefix}leistungen/index.html" class="btn btn-outline">Leistungen entdecken</a>
@@ -109,7 +109,7 @@ def build_home():
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow">Unsere Leistungen</span>
-      <h2>Verwaltung, Werterhalt und Verkauf: alles aus einer Hand.</h2>
+      <h2>Verwaltung, Werterhalt und Verkauf: Alles aus einer Hand.</h2>
     </div>
     <div class="cards-grid">
       {"".join(service_card(prefix, n, h, d, ic) for n, h, d, ic in [
@@ -129,7 +129,7 @@ def build_home():
     <div class="section-head">
       <span class="eyebrow">Warum HEINAND</span>
       <h2>Vertrauen entsteht durch klare Prozesse.</h2>
-      <p style="margin-top:16px;color:#5b6472;">Viele Eigentümer kennen Verwaltung als Blackbox: Niemand erreichbar, nichts dokumentiert, alles dauert. Wir arbeiten anders: mit regionalem Verständnis, digitaler Struktur und Kommunikation, auf die Sie sich verlassen können.</p>
+      <p style="margin-top:16px;color:#5b6472;">Viele Eigentümer kennen Verwaltung als Blackbox: Niemand erreichbar, nichts dokumentiert, alles dauert. Wir arbeiten anders: Mit regionalem Verständnis, digitaler Struktur und Kommunikation, auf die Sie sich verlassen können.</p>
       <a href="{prefix}ueber-uns.html" class="btn btn-outline-navy" style="margin-top:20px;">Lernen Sie uns kennen</a>
     </div>
     <div class="feature-grid">
@@ -145,7 +145,7 @@ def build_home():
   <div class="container two-col">
     <div>
       <span class="eyebrow">Digital &amp; erreichbar</span>
-      <h2 style="margin-top:10px;">Schaden melden in zwei Minuten: mit klarer Priorisierung.</h2>
+      <h2 style="margin-top:10px;">Schaden melden in zwei Minuten: Mit klarer Priorisierung.</h2>
       <p style="margin-top:16px;color:#5b6472;">Mieter und Eigentümer melden Anliegen über unser strukturiertes Online-Formular. Jede Meldung wird eingestuft (regulär, dringend oder akut) und entsprechend schnell bearbeitet. Nichts geht verloren, alles ist dokumentiert.</p>
       <ul class="process-list">
         <li>{icon("bolt")}<span><b>Akute Gefahren:</b> sofortige Reaktion</span></li>
@@ -169,8 +169,8 @@ def build_home():
       <h2>In fünf Schritten zu einer Verwaltung, die funktioniert.</h2>
     </div>
     <div class="steps-grid steps-grid-5">
-      {step("01", "Kennenlernen", "Telefonisch oder per Video sprechen wir über Ihre Situation, Ihre Ziele und Ihr Anliegen: unverbindlich und ohne Verkaufsdruck.")}
-      {step("02", "Objektbegehung & Angebot", "Passt es für beide Seiten, schauen wir uns Ihr Objekt an und Sie erhalten ein transparentes, klar kalkuliertes Angebot: ohne versteckte Kosten.")}
+      {step("01", "Kennenlernen", "Telefonisch oder per Video sprechen wir über Ihre Situation, Ihre Ziele und Ihr Anliegen: Unverbindlich und ohne Verkaufsdruck.")}
+      {step("02", "Objektbegehung & Angebot", "Passt es für beide Seiten, schauen wir uns Ihr Objekt an und Sie erhalten ein transparentes, klar kalkuliertes Angebot: Ohne versteckte Kosten.")}
       {step("03", "Beschlussfassung", "Bei WEGs begleiten wir die Beschlussfassung zur Verwalterbestellung; bei Miet- und Sondereigentum reicht Ihre Zusage zur Beauftragung.")}
       {step("04", "Kommunikation mit dem Vorverwalter", "Wir übernehmen die Abstimmung mit Ihrer bisherigen Verwaltung und die vollständige Dokumentenübergabe: Sie müssen sich um nichts kümmern.")}
       {step("05", "Laufende Betreuung", "Ab Tag eins laufen alle Vorgänge digital: Anliegen werden online gemeldet und schnell geklärt, und Sie haben wieder Zeit für das Wesentliche.")}
@@ -241,7 +241,7 @@ def build_leistungen_index():
 <section class="hero hero-page">
   <div class="container hero-inner">
     <span class="eyebrow">Leistungen</span>
-    <h1>Alles, was Ihre Immobilie braucht: aus einer Hand.</h1>
+    <h1>Alles, was Ihre Immobilie braucht: Aus einer Hand.</h1>
     <p class="hero-lead">Von der laufenden Verwaltung über den Werterhalt bis zum Verkauf: Wir betreuen Eigentümer, Kapitalanleger und Eigentümergemeinschaften in Mainz und dem Rhein-Main-Gebiet.</p>
   </div>
 </section>
@@ -408,19 +408,19 @@ def service_detail_page(slug, name, eyebrow_extra, h1, lead, features, advantage
 def build_services():
     service_detail_page(
         "mietverwaltung", "Mietverwaltung", "für Mietobjekte",
-        "Ihre Mietobjekte in guten Händen: ohne dass Sie sich um alles kümmern müssen.",
-        "Mieterkorrespondenz, Zahlungseingänge, Nebenkostenabrechnung, Handwerkerkoordination: Ein vermietetes Objekt bedeutet laufende Arbeit. Wir übernehmen die komplette kaufmännische und technische Betreuung Ihrer Mietimmobilie: digital, strukturiert und dokumentiert, damit jedes Anliegen schnell geklärt ist.",
+        "Ihre Mietobjekte in guten Händen: Ohne dass Sie sich um alles kümmern müssen.",
+        "Mieterkorrespondenz, Zahlungseingänge, Nebenkostenabrechnung, Handwerkerkoordination: Ein vermietetes Objekt bedeutet laufende Arbeit. Wir übernehmen die komplette kaufmännische und technische Betreuung Ihrer Mietimmobilie: Digital, strukturiert und dokumentiert, damit jedes Anliegen schnell geklärt ist.",
         [
-            ("Mieterkorrespondenz", "Wir sind erste Anlaufstelle für Ihre Mieter: verbindlich, schnell und dokumentiert.", "mail"),
+            ("Mieterkorrespondenz", "Wir sind erste Anlaufstelle für Ihre Mieter: Verbindlich, schnell und dokumentiert.", "mail"),
             ("Mietinkasso & Mahnwesen", "Überwachung der Zahlungseingänge, konsequentes Mahnwesen, Anpassung der Mieten im rechtlichen Rahmen.", "cash"),
-            ("Nebenkostenabrechnung", "Fristgerechte, nachvollziehbare Betriebskostenabrechnung: die häufigste Fehlerquelle in Eigenregie.", "invoice"),
+            ("Nebenkostenabrechnung", "Fristgerechte, nachvollziehbare Betriebskostenabrechnung: Die häufigste Fehlerquelle in Eigenregie.", "invoice"),
             ("Reparaturkoordination", "Schäden werden priorisiert (regulär, dringend, akut) und über unser regionales Handwerkernetzwerk gelöst.", "wrench"),
             ("Neuvermietung", "Von der Vermarktung über Besichtigungen und Bonitätsprüfung bis zur Übergabe.", "search"),
-            ("Reporting", "Sie sehen jederzeit, was mit Ihrer Immobilie passiert: transparent und strukturiert.", "chart"),
+            ("Reporting", "Sie sehen jederzeit, was mit Ihrer Immobilie passiert: Transparent und strukturiert.", "chart"),
         ],
         ["Anliegen werden digital erfasst, priorisiert und schnell geklärt", "Regionales Handwerkernetzwerk mit fairen Konditionen", "Fristgerechte Abrechnungen ohne Formfehler", "Volle Transparenz durch digitale Vorgangsverwaltung"],
-        "Lassen Sie uns über Ihr Mietobjekt sprechen: kostenlos und unverbindlich.",
-        "Ein paar Angaben zu Ihrem Objekt genügen: wir machen Ihnen ein transparentes Festangebot für die komplette Betreuung.",
+        "Lassen Sie uns über Ihr Mietobjekt sprechen: Kostenlos und unverbindlich.",
+        "Ein paar Angaben zu Ihrem Objekt genügen: Wir machen Ihnen ein transparentes Festangebot für die komplette Betreuung.",
         select_field("Objektart", ["Einzelne Wohnung(en)", "Mehrfamilienhaus", "Mehrere Objekte / Portfolio", "Gewerbeeinheit(en)"]) +
         select_field("Anzahl Mieteinheiten", ["1-2", "3-10", "11-30", "Über 30"]) +
         text_field("Objekt-Standort", "", True) +
@@ -437,17 +437,17 @@ def build_services():
 
     service_detail_page(
         "weg-verwaltung", "WEG-Verwaltung", "für Ihre WEG",
-        "WEG-Verwaltung, die Beschlüsse umsetzt: nicht nur verwaltet.",
-        "Viele Eigentümergemeinschaften kennen das: Versammlungen ohne Ergebnis, Beschlüsse, die liegen bleiben, Abrechnungen, die niemand nachvollziehen kann. Wir führen Ihre WEG mit klaren Prozessen, sauberer Buchhaltung und verbindlicher Kommunikation: damit Verwaltung wieder Vertrauenssache ist.",
+        "WEG-Verwaltung, die Beschlüsse umsetzt: Nicht nur verwaltet.",
+        "Viele Eigentümergemeinschaften kennen das: Versammlungen ohne Ergebnis, Beschlüsse, die liegen bleiben, Abrechnungen, die niemand nachvollziehen kann. Wir führen Ihre WEG mit klaren Prozessen, sauberer Buchhaltung und verbindlicher Kommunikation: Damit Verwaltung wieder Vertrauenssache ist.",
         [
-            ("Eigentümerversammlungen", "Ordnungsgemäße Einberufung, Durchführung und Protokollierung: auch hybrid.", "users"),
+            ("Eigentümerversammlungen", "Ordnungsgemäße Einberufung, Durchführung und Protokollierung: Auch hybrid.", "users"),
             ("Wirtschaftsplan & Jahresabrechnung", "Nachvollziehbare Hausgeldabrechnung und vorausschauende Wirtschaftsplanung.", "invoice"),
             ("Beschlussumsetzung", "Beschlüsse werden dokumentiert, terminiert und konsequent umgesetzt.", "check"),
             ("Instandhaltungsmanagement", "Regelmäßige Objektbegehungen, Wartungsverträge, Erhaltungsrücklage im Blick.", "wrench"),
             ("Rechtssicherheit", "Verwaltung nach aktuellem WEG-Recht, sauber dokumentiert.", "shield"),
-            ("Kommunikation", "Verbindliche, schnelle Kommunikation mit Beirat und Eigentümern: digital dokumentiert, jederzeit nachvollziehbar.", "mail"),
+            ("Kommunikation", "Verbindliche, schnelle Kommunikation mit Beirat und Eigentümern: Digital dokumentiert, jederzeit nachvollziehbar.", "mail"),
         ],
-        ["Verbindliche Umsetzung statt Verwaltung auf Sicht", "Transparente Abrechnungen, die Eigentümer verstehen", "Strukturierte Übernahme von der Vorverwaltung", "Regionale Präsenz: kurze Wege zu Ihren Objekten"],
+        ["Verbindliche Umsetzung statt Verwaltung auf Sicht", "Transparente Abrechnungen, die Eigentümer verstehen", "Strukturierte Übernahme von der Vorverwaltung", "Regionale Präsenz: Kurze Wege zu Ihren Objekten"],
         "Unzufrieden mit Ihrer aktuellen Verwaltung? Wir übernehmen strukturiert.",
         "Nennen Sie uns die Eckdaten Ihrer Gemeinschaft: Sie erhalten ein transparentes Angebot mit Leistungskatalog, ohne Kleingedrucktes.",
         select_field("Anzahl Einheiten", ["Bis 10", "11-20", "21-50", "Über 50"]) +
@@ -458,7 +458,7 @@ def build_services():
         form_title="Angebot für Ihre WEG anfragen",
         pain_points=[
             ("check", "„Die Beschlüsse von der letzten Versammlung? Liegen noch.“", "Ohne konsequente Umsetzung bleibt jede Versammlung wirkungslos."),
-            ("phone", "„Der Verwalter ist gerade nicht erreichbar.“", "Für Beirat und Eigentümer heißt das: warten, ohne Antwort."),
+            ("phone", "„Der Verwalter ist gerade nicht erreichbar.“", "Für Beirat und Eigentümer heißt das: Warten, ohne Antwort."),
             ("invoice", "„Die Jahresabrechnung verstehe ich nicht.“", "Unklare Hausgeldabrechnungen sorgen jedes Jahr für Ärger."),
             ("mail", "„Anfragen an den Beirat verschwinden im Nichts.“", "Ohne dokumentierte Prozesse geht viel einfach unter."),
         ],
@@ -467,18 +467,18 @@ def build_services():
 
     service_detail_page(
         "se-verwaltung", "Sondereigentumsverwaltung", "für Anleger",
-        "Ihre Eigentumswohnung rentiert: wir kümmern uns um den Rest.",
-        "Die WEG-Verwaltung kümmert sich ums Gemeinschaftseigentum: aber wer betreut Ihre vermietete Wohnung? Als Sondereigentumsverwaltung übernehmen wir alles, was Ihre Wohnung betrifft: vom Mieterkontakt über die Abrechnung bis zur Abstimmung mit der Hausverwaltung. Ideal für Kapitalanleger, die nicht vor Ort sind.",
+        "Ihre Eigentumswohnung rentiert: Wir kümmern uns um den Rest.",
+        "Die WEG-Verwaltung kümmert sich ums Gemeinschaftseigentum: Aber wer betreut Ihre vermietete Wohnung? Als Sondereigentumsverwaltung übernehmen wir alles, was Ihre Wohnung betrifft: Vom Mieterkontakt über die Abrechnung bis zur Abstimmung mit der Hausverwaltung. Ideal für Kapitalanleger, die nicht vor Ort sind.",
         [
-            ("Mieterbetreuung", "Kommunikation, Anliegen und Übergaben: wir sind vor Ort, Sie müssen es nicht sein.", "users"),
+            ("Mieterbetreuung", "Kommunikation, Anliegen und Übergaben: Wir sind vor Ort, Sie müssen es nicht sein.", "users"),
             ("Miet- und Nebenkostenabrechnung", "Korrekte Abrechnung inklusive Umlage der Hausgeldpositionen.", "invoice"),
             ("Schnittstelle zur WEG", "Wir vertreten Ihre Interessen gegenüber der Gemeinschafts-Verwaltung.", "handshake"),
             ("Instandhaltung im Sondereigentum", "Koordination von Reparaturen in der Wohnung über unser Netzwerk.", "wrench"),
-            ("Neuvermietung", "Marktgerechte Wiedervermietung bei Mieterwechsel: inklusive Bonitätsprüfung.", "search"),
+            ("Neuvermietung", "Marktgerechte Wiedervermietung bei Mieterwechsel: Inklusive Bonitätsprüfung.", "search"),
             ("Eigentümerversammlung", "Auf Wunsch nehmen wir mit Vollmacht an Versammlungen teil.", "doc"),
         ],
-        ["Perfekt für Anleger, die nicht in Mainz wohnen", "Alles digital geregelt: von der Meldung bis zur Abrechnung", "Ihre Interessen werden in der WEG aktiv vertreten", "Digitale Dokumentation aller Vorgänge"],
-        "Kapitalanlage ohne Aufwand: sprechen Sie mit uns.",
+        ["Perfekt für Anleger, die nicht in Mainz wohnen", "Alles digital geregelt: Von der Meldung bis zur Abrechnung", "Ihre Interessen werden in der WEG aktiv vertreten", "Digitale Dokumentation aller Vorgänge"],
+        "Kapitalanlage ohne Aufwand: Sprechen Sie mit uns.",
         "Ideal für Kapitalanleger: Sagen Sie uns kurz, um welche Wohnung(en) es geht, wir übernehmen den Rest.",
         select_field("Anzahl Wohnungen", ["1", "2-5", "Mehr als 5"]) +
         text_field("Objekt-Standort", "", True) +
@@ -496,19 +496,19 @@ def build_services():
 
     service_detail_page(
         "immobilienverkauf", "Immobilienverkauf", "Makler mit Know-how",
-        "Verkaufen Sie nicht irgendwie: verkaufen Sie richtig.",
-        "Ein Immobilienverkauf ist für die meisten Eigentümer eine Entscheidung, die sie nur wenige Male im Leben treffen. Wir begleiten Sie vom ersten Gespräch über die realistische Preisfindung bis zum Notartermin: mit der Marktkenntnis von 7 Jahren Verwaltung im Rhein-Main-Gebiet.",
+        "Verkaufen Sie nicht irgendwie: Verkaufen Sie richtig.",
+        "Ein Immobilienverkauf ist für die meisten Eigentümer eine Entscheidung, die sie nur wenige Male im Leben treffen. Wir begleiten Sie vom ersten Gespräch über die realistische Preisfindung bis zum Notartermin: Mit der Marktkenntnis von 7 Jahren Verwaltung im Rhein-Main-Gebiet.",
         [
-            ("Werteinschätzung", "Realistische Preisfindung auf Basis regionaler Marktdaten: keine Lockangebote.", "gauge"),
+            ("Werteinschätzung", "Realistische Preisfindung auf Basis regionaler Marktdaten: Keine Lockangebote.", "gauge"),
             ("Exposé & Vermarktung", "Professionelle Aufbereitung, Fotos und Platzierung auf den relevanten Kanälen.", "doc"),
             ("Besichtigungsmanagement", "Vorqualifizierte Interessenten, koordinierte Termine, keine Besichtigungstouristen.", "search"),
             ("Bonitätsprüfung", "Wir prüfen Finanzierungsbestätigungen, bevor es ernst wird.", "shield"),
-            ("Verhandlung", "Wir verhandeln in Ihrem Interesse: sachlich und mit klarem Ziel.", "handshake"),
-            ("Begleitung bis zum Notar", "Kaufvertragsabstimmung, Notartermin, Übergabeprotokoll: alles aus einer Hand.", "check"),
+            ("Verhandlung", "Wir verhandeln in Ihrem Interesse: Sachlich und mit klarem Ziel.", "handshake"),
+            ("Begleitung bis zum Notar", "Kaufvertragsabstimmung, Notartermin, Übergabeprotokoll: Alles aus einer Hand.", "check"),
         ],
         ["Verwalter-Perspektive: Wir kennen Objekte von innen", "Regionales Netzwerk aus Käufern und Kapitalanlegern", "Diskreter Verkauf ohne öffentliche Vermarktung möglich", "Klare Kommunikation über jeden Schritt"],
-        "Was ist Ihre Immobilie wert? Fragen Sie uns: kostenlos.",
-        "Ein paar Eckdaten genügen: wir melden uns innerhalb eines Werktags mit einer ersten Einschätzung und besprechen das weitere Vorgehen.",
+        "Was ist Ihre Immobilie wert? Fragen Sie uns: Kostenlos.",
+        "Ein paar Eckdaten genügen: Wir melden uns innerhalb eines Werktags mit einer ersten Einschätzung und besprechen das weitere Vorgehen.",
         select_field("Objektart", ["Eigentumswohnung", "Einfamilienhaus", "Mehrfamilienhaus", "Grundstück", "Gewerbe"]) +
         text_field("Ort / Stadtteil", "", True) +
         text_field("Wohnfläche (ca. m²)", "", False) +
@@ -521,16 +521,16 @@ def build_services():
 
     service_detail_page(
         "immobilienbewertung", "Immobilienbewertung", "Werteinschätzung",
-        "Zahlen statt Bauchgefühl: was Ihre Immobilie wirklich wert ist.",
-        "Ob Verkauf, Neuvermietung, Erbschaft oder einfach ein aktueller Überblick: Eine fundierte Bewertung ist die Grundlage jeder guten Entscheidung. Wir bewerten Ihre Immobilie auf Basis regionaler Marktdaten, Objektzustand und Lagequalität: ehrlich, auch wenn die Zahl mal nicht schmeichelt.",
+        "Zahlen statt Bauchgefühl: Was Ihre Immobilie wirklich wert ist.",
+        "Ob Verkauf, Neuvermietung, Erbschaft oder einfach ein aktueller Überblick: Eine fundierte Bewertung ist die Grundlage jeder guten Entscheidung. Wir bewerten Ihre Immobilie auf Basis regionaler Marktdaten, Objektzustand und Lagequalität: Ehrlich, auch wenn die Zahl mal nicht schmeichelt.",
         [
-            ("Marktwertermittlung", "Vergleichswert-, Ertragswert- oder Sachwertverfahren: je nach Objekttyp.", "gauge"),
+            ("Marktwertermittlung", "Vergleichswert-, Ertragswert- oder Sachwertverfahren: Je nach Objekttyp.", "gauge"),
             ("Mietwertanalyse", "Welche Miete ist marktgerecht und rechtlich durchsetzbar?", "chart"),
-            ("Lage- und Objektanalyse", "Mikrolage, Zustand, Entwicklungspotenzial: dokumentiert und nachvollziehbar.", "pin"),
+            ("Lage- und Objektanalyse", "Mikrolage, Zustand, Entwicklungspotenzial: Dokumentiert und nachvollziehbar.", "pin"),
             ("Verkaufs- oder Halten-Empfehlung", "Wir sagen Ihnen auch, wenn Halten die bessere Option ist.", "target"),
         ],
         ["Echte regionale Marktdaten statt Online-Rechner", "Ehrliche Einschätzung ohne Verkaufsdruck", "Grundlage für Verkauf, Finanzierung oder Nachlass", "Kostenlos im Rahmen eines Erstgesprächs"],
-        "Kostenlose Werteinschätzung anfragen: in 48 Stunden beim Erstgespräch.",
+        "Kostenlose Werteinschätzung anfragen: In 48 Stunden beim Erstgespräch.",
         "Sagen Sie uns, worum es geht: Sie erhalten eine fundierte Einschätzung auf Basis echter regionaler Marktdaten, keine Online-Rechner-Zahl.",
         select_field("Objektart", ["Eigentumswohnung", "Einfamilienhaus", "Mehrfamilienhaus", "Grundstück", "Gewerbe"]) +
         text_field("Ort / Stadtteil", "", True) +
@@ -543,19 +543,19 @@ def build_services():
 
     service_detail_page(
         "werterhalt-instandhaltung", "Werterhalt & Instandhaltung", "Objektpflege",
-        "Kleine Schäden bleiben klein: wenn jemand hinschaut.",
+        "Kleine Schäden bleiben klein: Wenn jemand hinschaut.",
         "Der Wert einer Immobilie entsteht nicht beim Kauf, sondern im Betrieb. Aufgeschobene Wartung und verschleppte Reparaturen kosten am Ende ein Vielfaches. Wir sorgen mit regelmäßigen Begehungen, klarer Priorisierung und einem eingespielten Handwerkernetzwerk dafür, dass Ihr Objekt in Schuss bleibt.",
         [
             ("Objektbegehungen", "Regelmäßige Kontrolle von Gebäude, Technik und Außenanlagen.", "search"),
-            ("Priorisierte Schadensabwicklung", "Regulär, dringend oder akut: jede Meldung wird eingestuft und entsprechend schnell gelöst.", "bolt"),
+            ("Priorisierte Schadensabwicklung", "Regulär, dringend oder akut: Jede Meldung wird eingestuft und entsprechend schnell gelöst.", "bolt"),
             ("Wartungsmanagement", "Heizung, Aufzug, Brandschutz: Wartungsverträge und Prüffristen im Blick.", "clock"),
             ("Handwerkerkoordination", "Regionale Betriebe, geprüfte Qualität, faire Preise.", "wrench"),
             ("Instandhaltungsplanung", "Vorausschauende Maßnahmenplanung statt teurer Überraschungen.", "chart"),
-            ("Digitale Dokumentation", "Jeder Vorgang nachvollziehbar: vom Eingang bis zur Abnahme.", "doc"),
+            ("Digitale Dokumentation", "Jeder Vorgang nachvollziehbar: Vom Eingang bis zur Abnahme.", "doc"),
         ],
         ["Akute Gefahren werden sofort behandelt", "Werterhalt durch Prävention statt Reparaturstau", "Regionale Handwerker mit kurzen Wegen", "Volle Kostentransparenz je Maßnahme"],
-        "Schluss mit Reparaturstau: wir strukturieren die Instandhaltung.",
-        "Beschreiben Sie kurz Ihr Objekt: wir schauen es uns an und zeigen Ihnen, wo Handlungsbedarf besteht und was warten kann.",
+        "Schluss mit Reparaturstau: Wir strukturieren die Instandhaltung.",
+        "Beschreiben Sie kurz Ihr Objekt: Wir schauen es uns an und zeigen Ihnen, wo Handlungsbedarf besteht und was warten kann.",
         select_field("Objektart", ["Eigentumswohnung", "Einfamilienhaus", "Mehrfamilienhaus", "Gewerbe"]) +
         text_field("Objekt-Standort", "", True) +
         select_field("Worum geht es?", ["Reparaturstau aufarbeiten", "Laufende Wartung organisieren", "Objektbegehung gewünscht", "Konkreter Schaden"]),
@@ -590,7 +590,7 @@ def build_verwalterwechsel():
     steps_html = "".join([
         wechsel_step("1", [B_EIGENTUEMER, B_HEINAND],
             "Kontaktaufnahme & Erstgespräch",
-            "Sie oder Ihr Verwaltungsbeirat nehmen Kontakt zu uns auf: telefonisch oder per Formular. Im unverbindlichen Erstgespräch lernen wir uns kennen und klären Ihre aktuelle Situation, die Größe der Gemeinschaft und den Grund für den geplanten Wechsel.",
+            "Sie oder Ihr Verwaltungsbeirat nehmen Kontakt zu uns auf: Telefonisch oder per Formular. Im unverbindlichen Erstgespräch lernen wir uns kennen und klären Ihre aktuelle Situation, die Größe der Gemeinschaft und den Grund für den geplanten Wechsel.",
             "ca. 30-45 Min."),
         wechsel_step("2", [B_HEINAND],
             "Objektbegehung & Bestandsaufnahme",
@@ -598,7 +598,7 @@ def build_verwalterwechsel():
             "ca. 1 Woche"),
         wechsel_step("3", [B_HEINAND],
             "Erstellung eines unverbindlichen Angebots",
-            "Auf Basis der Begehung erstellen wir ein transparentes Angebot mit Leistungskatalog und Vergütung: ohne versteckte Kosten. Sie oder der Beirat erhalten es zur Prüfung und können es mit weiteren Angeboten vergleichen.",
+            "Auf Basis der Begehung erstellen wir ein transparentes Angebot mit Leistungskatalog und Vergütung: Ohne versteckte Kosten. Sie oder der Beirat erhalten es zur Prüfung und können es mit weiteren Angeboten vergleichen.",
             "ca. 3-5 Werktage"),
         wechsel_step("4", [B_EIGENTUEMER, B_HEINAND],
             "Antrag zur Aufnahme des Tagesordnungspunkts",
@@ -610,11 +610,11 @@ def build_verwalterwechsel():
             "gesetzl. Frist"),
         wechsel_step("6", [B_EIGENTUEMER],
             "Beschlussfassung in der Eigentümerversammlung",
-            "Die Gemeinschaft stimmt über die Abberufung der bisherigen und die Neubestellung der neuen Verwaltung ab. Seit der WEG-Reform reicht dafür die einfache Mehrheit der abgegebenen Stimmen: eine Begründung ist nicht mehr erforderlich. Eine Musterformulierung für den Beschluss finden Sie weiter unten.",
+            "Die Gemeinschaft stimmt über die Abberufung der bisherigen und die Neubestellung der neuen Verwaltung ab. Seit der WEG-Reform reicht dafür die einfache Mehrheit der abgegebenen Stimmen: Eine Begründung ist nicht mehr erforderlich. Eine Musterformulierung für den Beschluss finden Sie weiter unten.",
             "1 Versammlung, ca. 1-2 Std."),
         wechsel_step("7", [B_HEINAND],
             "Kommunikation mit der Vorverwaltung",
-            "Nach dem Beschluss übernehmen wir die gesamte Abstimmung mit der bisherigen Verwaltung: von der Bestätigung des Beschlusses bis zur Klärung des Übergabetermins. Sie müssen selbst nicht mehr mit der Vorverwaltung sprechen.",
+            "Nach dem Beschluss übernehmen wir die gesamte Abstimmung mit der bisherigen Verwaltung: Von der Bestätigung des Beschlusses bis zur Klärung des Übergabetermins. Sie müssen selbst nicht mehr mit der Vorverwaltung sprechen.",
             "ca. 1-2 Wochen"),
         wechsel_step("8", [B_VORVERWALTUNG, B_HEINAND],
             "Dokumenten- und Kontenübergabe",
@@ -635,7 +635,7 @@ def build_verwalterwechsel():
   <div class="container hero-inner">
     <span class="eyebrow">WEG-Verwaltung &middot; Verwalterwechsel</span>
     <h1>Der Verwalterwechsel: Schritt für Schritt erklärt.</h1>
-    <p class="hero-lead">Ein Wechsel der WEG-Verwaltung klingt aufwendig, ist es für Sie als Eigentümer aber kaum: Der überwiegende Teil der Arbeit liegt bei uns und bei der bisherigen Verwaltung. Hier sehen Sie den kompletten Ablauf: von der ersten Kontaktaufnahme bis zur laufenden Betreuung.</p>
+    <p class="hero-lead">Ein Wechsel der WEG-Verwaltung klingt aufwendig, ist es für Sie als Eigentümer aber kaum: Der überwiegende Teil der Arbeit liegt bei uns und bei der bisherigen Verwaltung. Hier sehen Sie den kompletten Ablauf: Von der ersten Kontaktaufnahme bis zur laufenden Betreuung.</p>
   </div>
 </section>
 
@@ -674,7 +674,7 @@ def build_verwalterwechsel():
           <li>Antrag auf Aufnahme des Tagesordnungspunkts stellen</li>
           <li>Teilnahme an der Eigentümerversammlung</li>
           <li>Abstimmung über den Beschluss</li>
-          <li>Das war's: den Rest übernehmen wir</li>
+          <li>Das war's: Den Rest übernehmen wir</li>
         </ul>
       </div>
     </div>
@@ -764,8 +764,8 @@ def build_region():
 <section class="hero hero-page">
   <div class="container hero-inner">
     <span class="eyebrow">Unsere Region</span>
-    <h1>Mainz, Wiesbaden und Rheinhessen: wir verwalten, wo wir zuhause sind.</h1>
-    <p class="hero-lead">Unser Einzugsgebiet umfasst Mainz und einen Radius von rund 35 Kilometern: plus Bad Kreuznach als feste Standort-Region. Diese bewusste Begrenzung ist ein Qualitätsversprechen: kurze Wege, schnelle Vor-Ort-Termine und echte Ortskenntnis.</p>
+    <h1>Mainz, Wiesbaden und Rheinhessen: Wir verwalten, wo wir zuhause sind.</h1>
+    <p class="hero-lead">Unser Einzugsgebiet umfasst Mainz und einen Radius von rund 35 Kilometern: Plus Bad Kreuznach als feste Standort-Region. Diese bewusste Begrenzung ist ein Qualitätsversprechen: Kurze Wege, schnelle Vor-Ort-Termine und echte Ortskenntnis.</p>
   </div>
 </section>
 
@@ -777,9 +777,9 @@ def build_region():
 
 <section class="section-white">
   <div class="container region-grid">
-    <div class="card">{icon("pin")}<h3>Mainz</h3><p>Unser Zuhause und Schwerpunkt: von der Altstadt über die Neustadt bis Gonsenheim, Bretzenheim, Laubenheim und Weisenau.</p></div>
+    <div class="card">{icon("pin")}<h3>Mainz</h3><p>Unser Zuhause und Schwerpunkt: Von der Altstadt über die Neustadt bis Gonsenheim, Bretzenheim, Laubenheim und Weisenau.</p></div>
     <div class="card">{icon("pin")}<h3>Wiesbaden</h3><p>Direkt über den Rhein: Wir betreuen Objekte in der hessischen Landeshauptstadt mit derselben Präsenz wie in Mainz.</p></div>
-    <div class="card">{icon("pin")}<h3>Rheinhessen</h3><p>Ingelheim, Bodenheim, Nieder-Olm und das Umland: gewachsene Wohnlagen mit stabiler Nachfrage.</p></div>
+    <div class="card">{icon("pin")}<h3>Rheinhessen</h3><p>Ingelheim, Bodenheim, Nieder-Olm und das Umland: Gewachsene Wohnlagen mit stabiler Nachfrage.</p></div>
   </div>
 </section>
 
@@ -804,9 +804,9 @@ def build_region():
       <h2>Warum ein regionaler Verwalter den Unterschied macht.</h2>
     </div>
     <div class="feature-grid" style="grid-template-columns:repeat(3,1fr);">
-      {feature("bolt", "Schnell vor Ort", "Bei akuten Schäden oder Übergaben sind wir in Minuten am Objekt: nicht am Telefon in einer anderen Stadt.")}
+      {feature("bolt", "Schnell vor Ort", "Bei akuten Schäden oder Übergaben sind wir in Minuten am Objekt: Nicht am Telefon in einer anderen Stadt.")}
       {feature("handshake", "Regionales Netzwerk", "Handwerker, Dienstleister und Behördenkontakte, die wir seit Jahren kennen und deren Qualität wir einschätzen können.")}
-      {feature("chart", "Marktkenntnis", "Wir wissen, welche Miete in Gonsenheim realistisch ist und was ein Käufer in Weisenau zahlt: aus eigener Verwaltungspraxis.")}
+      {feature("chart", "Marktkenntnis", "Wir wissen, welche Miete in Gonsenheim realistisch ist und was ein Käufer in Weisenau zahlt: Aus eigener Verwaltungspraxis.")}
     </div>
     <div style="text-align:center;margin-top:36px;">
       <a href="{prefix}leistungen/index.html" class="btn btn-outline-navy">Alle Leistungen ansehen</a>
@@ -849,7 +849,7 @@ def build_standort(loc):
     standort_faq = [
         (f"Verwaltet HEINAND Immobilien auch in {name}?", f"Ja: {name} liegt ca. {dist} km von unserem Sitz in Mainz entfernt und gehört zu unserem festen Einzugsgebiet. Wir betreuen dort Mietobjekte, Eigentumswohnungen und Eigentümergemeinschaften mit derselben digitalen Struktur wie in Mainz."),
         ("Wie schnell sind Sie bei einem Schaden vor Ort?", f"Akute Schäden behandeln wir sofort, dringende Anliegen in der Regel innerhalb von 24 Stunden. Durch unser regionales Handwerkernetzwerk sind wir auch in {name} schnell handlungsfähig."),
-        (f"Was kostet eine Hausverwaltung in {name}?", "Das hängt von Objektgröße und Leistungsumfang ab. Im kostenlosen Erstgespräch lernen wir uns erst kennen und besprechen Ihre Situation, danach machen wir ein transparentes Festangebot: ohne versteckte Zusatzkosten."),
+        (f"Was kostet eine Hausverwaltung in {name}?", "Das hängt von Objektgröße und Leistungsumfang ab. Im kostenlosen Erstgespräch lernen wir uns erst kennen und besprechen Ihre Situation, danach machen wir ein transparentes Festangebot: Ohne versteckte Zusatzkosten."),
         (f"Übernehmen Sie auch die WEG-Verwaltung in {name}?", f"Ja, wir führen Eigentümerversammlungen für Gemeinschaften in {name} durch, ordnungsgemäß einberufen, protokolliert und mit rechtssicherer Beschlussfassung, auf Wunsch auch hybrid mit Online-Teilnahme."),
         (f"Betreuen Sie auch einzelne vermietete Eigentumswohnungen in {name}?", f"Ja, über die Sondereigentumsverwaltung übernehmen wir für Eigentümer in {name} den kompletten Mieterkontakt sowie die Schnittstelle zur jeweiligen WEG-Verwaltung, ideal für Kapitalanleger, die nicht selbst vor Ort sind."),
         (f"Wie schnell kann ich in {name} einen Verwalter wechseln?", f"Für Eigentümergemeinschaften in {name} genügt seit der WEG-Reform ein Mehrheitsbeschluss der Eigentümerversammlung. Die eigentliche Übergabe, Unterlagen, Konten und laufende Vorgänge, organisieren wir. Von der ersten Anfrage bis zur laufenden Betreuung dauert das in der Regel sechs bis zehn Wochen."),
@@ -877,8 +877,8 @@ def build_standort(loc):
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow">Leistungen in {name}</span>
-      <h2>Verwaltung, Werterhalt und Verkauf: auch in {name}.</h2>
-      <p style="margin-top:16px;color:#5b6472;">Alle HEINAND-Leistungen stehen Eigentümern in {name} in vollem Umfang zur Verfügung: von der laufenden Mietverwaltung bis zum Immobilienverkauf.</p>
+      <h2>Verwaltung, Werterhalt und Verkauf: Auch in {name}.</h2>
+      <p style="margin-top:16px;color:#5b6472;">Alle HEINAND-Leistungen stehen Eigentümern in {name} in vollem Umfang zur Verfügung: Von der laufenden Mietverwaltung bis zum Immobilienverkauf.</p>
     </div>
     <div class="cards-grid">{services_html}</div>
   </div>
@@ -890,7 +890,7 @@ def build_standort(loc):
       <span class="eyebrow">Warum HEINAND in {name}</span>
       <h2 style="margin-top:10px;">Regionale Nähe trifft digitale Struktur.</h2>
       <ul class="process-list" style="margin-top:24px;">
-        <li>{icon("pin")}<span><b>Kurze Wege:</b> ca. {dist} km von unserem Sitz in Mainz: schnelle Vor-Ort-Termine und Objektbegehungen in {name}.</span></li>
+        <li>{icon("pin")}<span><b>Kurze Wege:</b> ca. {dist} km von unserem Sitz in Mainz: Schnelle Vor-Ort-Termine und Objektbegehungen in {name}.</span></li>
         <li>{icon("bolt")}<span><b>Schnelle Reaktion:</b> Schadensmeldungen aus {name} werden priorisiert und zeitnah über unser Handwerkernetzwerk gelöst.</span></li>
         <li>{icon("chart")}<span><b>Digitale Vorgangsverwaltung:</b> Sie sehen jederzeit, was mit Ihrer Immobilie in {name} passiert.</span></li>
         <li>{icon("handshake")}<span><b>Persönlicher Kontakt:</b> Ein fester Ansprechpartner, kein anonymes Callcenter.</span></li>
@@ -899,7 +899,7 @@ def build_standort(loc):
     <div class="form-card">
       <span class="eyebrow">Kostenlos &amp; unverbindlich</span>
       <h3 style="margin-top:10px;margin-bottom:6px;">Erstgespräch für Ihre Immobilie in {name}</h3>
-      <p style="color:#5b6472;font-size:14px;margin-bottom:6px;">Kurze Objektbeschreibung genügt: wir melden uns innerhalb eines Werktags mit einer ersten Einschätzung.</p>
+      <p style="color:#5b6472;font-size:14px;margin-bottom:6px;">Kurze Objektbeschreibung genügt: Wir melden uns innerhalb eines Werktags mit einer ersten Einschätzung.</p>
       <form data-contact-form data-form-name="Erstgespräch {name}">
         <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
         <div class="form-grid">
@@ -967,7 +967,7 @@ def build_ueber_uns():
 <section class="hero hero-page">
   <div class="container hero-inner">
     <span class="eyebrow">Über HEINAND Immobilien</span>
-    <h1>Eigentum sollte kein zweiter Job sein: dafür arbeiten wir.</h1>
+    <h1>Eigentum sollte kein zweiter Job sein: Dafür arbeiten wir.</h1>
     <p class="hero-lead">Seit 7 Jahren verwalten wir Immobilien in Mainz und dem Rhein-Main-Gebiet. Was uns antreibt: Verwaltung, bei der Eigentümer wissen, was passiert, und sich um nichts kümmern müssen.</p>
   </div>
 </section>
@@ -991,7 +991,7 @@ def build_ueber_uns():
     </div>
     <div class="prose-block">
       <p>Eine Immobilie ist weit mehr als nur ein Gebäude. Sie ist ein Zuhause, eine Altersvorsorge, eine Investition und häufig das Ergebnis jahrelanger Arbeit. Genau deshalb verdient sie eine Verwaltung, die nicht nur Zahlen, Verträge und Fristen im Blick behält, sondern auch die Menschen dahinter versteht.</p>
-      <p>Bei HEINAND Immobilien verbinden wir persönliche Betreuung mit modernen, digitalen Strukturen. Unser Anspruch ist es, Immobilienverwaltung transparent, zuverlässig und zeitgemäß zu gestalten: ohne anonyme Abläufe, unnötige Bürokratie oder das Gefühl, als Eigentümer nicht gehört zu werden.</p>
+      <p>Bei HEINAND Immobilien verbinden wir persönliche Betreuung mit modernen, digitalen Strukturen. Unser Anspruch ist es, Immobilienverwaltung transparent, zuverlässig und zeitgemäß zu gestalten: Ohne anonyme Abläufe, unnötige Bürokratie oder das Gefühl, als Eigentümer nicht gehört zu werden.</p>
       <p>Wir wissen aus eigener Erfahrung, welche Verantwortung mit Immobilieneigentum verbunden ist. Als Eigentümer von Immobilien kennen wir die Fragen, Sorgen und Entscheidungen, die im Alltag entstehen: Sind die Kosten nachvollziehbar? Wird der Wert der Immobilie langfristig erhalten? Werden Probleme rechtzeitig erkannt? Ist im entscheidenden Moment ein verlässlicher Ansprechpartner erreichbar? Diese Perspektive prägt unsere tägliche Arbeit.</p>
       <p>Wir betrachten jede Immobilie so, als wäre sie unsere eigene. Das bedeutet für uns, verantwortungsvoll mit Geldern umzugehen, Entscheidungen wirtschaftlich abzuwägen und gleichzeitig den langfristigen Zustand sowie die Entwicklung der Immobilie im Blick zu behalten.</p>
 
@@ -1022,21 +1022,21 @@ def build_ueber_uns():
     </div>
     <div class="feature-grid" style="margin-top:48px;">
       {feature("bolt", "Digital", "Wir arbeiten vollständig digital: Anliegen kommen online rein, Vorgänge laufen im System. So sind wir bei jedem Objekt auf dem aktuellen Stand, und klären schnell statt zu suchen.")}
-      {feature("check", "Strukturiert", "Jeder Vorgang folgt einem klaren Prozess: aufgenommen, priorisiert, erledigt, dokumentiert. Nichts bleibt liegen, nichts geht verloren.")}
+      {feature("check", "Strukturiert", "Jeder Vorgang folgt einem klaren Prozess: Aufgenommen, priorisiert, erledigt, dokumentiert. Nichts bleibt liegen, nichts geht verloren.")}
       {feature("chart", "Transparent", "Digitale Vorgangsverwaltung und regelmäßiges Reporting: Sie wissen jederzeit, was mit Ihrer Immobilie passiert und was es kostet.")}
-      {feature("pin", "Regional", "Wir verwalten nur, wo wir schnell vor Ort sind: in Mainz und Umgebung. Das ist keine Einschränkung, sondern unser Qualitätsversprechen.")}
+      {feature("pin", "Regional", "Wir verwalten nur, wo wir schnell vor Ort sind: In Mainz und Umgebung. Das ist keine Einschränkung, sondern unser Qualitätsversprechen.")}
     </div>
   </div>
 </section>
 
 <section class="section-white">
   <div class="container" style="text-align:center;">
-    <h2 style="max-width:600px;margin:0 auto 24px;">Lernen Sie uns kennen: im kostenlosen Erstgespräch, telefonisch oder per Video.</h2>
+    <h2 style="max-width:600px;margin:0 auto 24px;">Lernen Sie uns kennen: Im kostenlosen Erstgespräch, telefonisch oder per Video.</h2>
     <a href="{prefix}kontakt.html" class="btn btn-primary">Erstgespräch vereinbaren</a>
   </div>
 </section>
 
-{cta_banner(prefix, "Sie möchten wissen, wie wir arbeiten?", "Im kostenlosen Erstgespräch zeigen wir Ihnen konkret, wie die Betreuung Ihres Objekts bei uns aussehen würde: mit Prozessen, digitaler Vorgangsverwaltung und transparenter Kostenstruktur.")}
+{cta_banner(prefix, "Sie möchten wissen, wie wir arbeiten?", "Im kostenlosen Erstgespräch zeigen wir Ihnen konkret, wie die Betreuung Ihres Objekts bei uns aussehen würde: Mit Prozessen, digitaler Vorgangsverwaltung und transparenter Kostenstruktur.")}
 '''
     write("ueber-uns.html", page(
         "Über uns: Hausverwaltung Mainz & Rhein-Main | HEINAND",
@@ -1057,8 +1057,8 @@ def build_kontakt():
 <section class="hero hero-page">
   <div class="container hero-inner">
     <span class="eyebrow">Kontakt</span>
-    <h1>Lassen Sie uns über Ihre Immobilie sprechen: kostenlos und unverbindlich.</h1>
-    <p class="hero-lead">Schreiben Sie uns eine Nachricht oder buchen Sie direkt einen Termin für Ihr kostenloses Erstgespräch: telefonisch oder per Video.</p>
+    <h1>Lassen Sie uns über Ihre Immobilie sprechen: Kostenlos und unverbindlich.</h1>
+    <p class="hero-lead">Schreiben Sie uns eine Nachricht oder buchen Sie direkt einen Termin für Ihr kostenloses Erstgespräch: Telefonisch oder per Video.</p>
   </div>
 </section>
 
@@ -1109,7 +1109,7 @@ def build_kontakt():
       <ol class="process-list" style="margin-top:16px;list-style:none;padding:0;">
         <li><span class="step-num" style="font-size:20px;margin-right:8px;">1.</span><span><b>Kennenlernen:</b> Telefonisch oder per Video sprechen wir über Ihre Ziele, Ihr Anliegen und Ihre aktuelle Situation.</span></li>
         <li><span class="step-num" style="font-size:20px;margin-right:8px;">2.</span><span><b>Gemeinsame Einschätzung:</b> Passt es für beide Seiten, besprechen wir die nächsten Schritte, zum Beispiel eine Objektbegehung.</span></li>
-        <li><span class="step-num" style="font-size:20px;margin-right:8px;">3.</span><span><b>Transparentes Angebot:</b> Sie erhalten im Anschluss einen konkreten Vorschlag: ohne Verpflichtung.</span></li>
+        <li><span class="step-num" style="font-size:20px;margin-right:8px;">3.</span><span><b>Transparentes Angebot:</b> Sie erhalten im Anschluss einen konkreten Vorschlag: Ohne Verpflichtung.</span></li>
       </ol>
     </div>
   </div>
@@ -1153,7 +1153,7 @@ def build_kontakt():
 
   Cal.ns["heinand-termin"]("ui", {{
     theme: "light",
-    hideEventTypeDetails: false,
+    hideEventTypeDetails: False,
     layout: "month_view",
     styles: {{ branding: {{ brandColor: "#0f3063" }} }},
   }});
@@ -1161,7 +1161,7 @@ def build_kontakt():
 '''
     write("kontakt.html", page(
         "Kontakt: Erstgespräch vereinbaren | HEINAND",
-        "Kontaktieren Sie HEINAND Immobilien in Mainz: kostenloses Erstgespräch zu Verwaltung oder Verkauf. Wir melden uns innerhalb eines Werktags.",
+        "Kontaktieren Sie HEINAND Immobilien in Mainz: Kostenloses Erstgespräch zu Verwaltung oder Verkauf. Wir melden uns innerhalb eines Werktags.",
         prefix, "kontakt", body, relpath="kontakt.html"
     ))
 
@@ -1178,7 +1178,7 @@ def build_schadensmeldung():
 <section class="hero hero-page">
   <div class="container hero-inner">
     <span class="eyebrow">Schadensmeldung</span>
-    <h1>Schaden melden: in zwei Minuten erledigt.</h1>
+    <h1>Schaden melden: In zwei Minuten erledigt.</h1>
     <p class="hero-lead">Damit wir schnell und richtig reagieren können: Wählen Sie die passende Schadensart, wir stufen die Dringlichkeit automatisch ein, den Rest übernehmen wir.</p>
   </div>
 </section>
@@ -1360,12 +1360,12 @@ def build_datenschutz():
     <p>Rechtsgrundlage ist unser berechtigtes Interesse an einem sicheren und funktionsfähigen Betrieb der Website (Art. 6 Abs. 1 lit. f DSGVO). Da Vercel Inc. mit Sitz in den USA verarbeitet, erfolgt die Übermittlung auf Grundlage des EU-US Data Privacy Framework (DPF) bzw. hilfsweise auf Grundlage von EU-Standardvertragsklauseln.</p>
 
     <h2>Kontaktaufnahme über unsere Formulare</h2>
-    <p>Auf mehreren Seiten (u. a. bei den Leistungen, den Standortseiten und im Kontaktformular) können Sie uns über ein Formular erreichen. Dabei verarbeiten wir die von Ihnen eingegebenen Angaben: in der Regel Vorname, Nachname, Telefonnummer, E-Mail-Adresse sowie objektbezogene Angaben (z. B. Objektart, Adresse, Anliegen) und Ihre Nachricht. Die mit „*" gekennzeichneten Felder sind Pflichtangaben; ohne sie können wir Ihre Anfrage nicht bearbeiten.</p>
+    <p>Auf mehreren Seiten (u. a. bei den Leistungen, den Standortseiten und im Kontaktformular) können Sie uns über ein Formular erreichen. Dabei verarbeiten wir die von Ihnen eingegebenen Angaben: In der Regel Vorname, Nachname, Telefonnummer, E-Mail-Adresse sowie objektbezogene Angaben (z. B. Objektart, Adresse, Anliegen) und Ihre Nachricht. Die mit „*" gekennzeichneten Felder sind Pflichtangaben; ohne sie können wir Ihre Anfrage nicht bearbeiten.</p>
     <p>Ihre Angaben werden über eine Server-Funktion technisch verarbeitet und uns per E-Mail über den Dienstleister Resend, Inc., 2261 Market Street #5039, San Francisco, CA 94114, USA, zugestellt. Ihre E-Mail-Adresse wird dabei als Antwortadresse (Reply-To) hinterlegt, damit wir Ihnen direkt antworten können. Eine dauerhafte Speicherung in einer separaten Datenbank erfolgt durch uns nicht: Ihre Anfrage liegt als E-Mail in unserem Postfach vor und unterliegt dessen üblicher Aufbewahrung.</p>
     <p>Rechtsgrundlage ist die Erfüllung vorvertraglicher Maßnahmen auf Ihre Anfrage hin (Art. 6 Abs. 1 lit. b DSGVO) sowie unser berechtigtes Interesse an einer effizienten Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. f DSGVO). Da Resend, Inc. mit Sitz in den USA verarbeitet, erfolgt die Übermittlung auf Grundlage des EU-US Data Privacy Framework (DPF) bzw. hilfsweise auf Grundlage von EU-Standardvertragsklauseln.</p>
 
     <h2>Schadensmeldung mit Fotoupload</h2>
-    <p>Im Formular zur Schadensmeldung erheben wir zusätzlich zu den oben genannten Kontaktangaben die Objektadresse, die Wohneinheit, die Art des gemeldeten Schadens sowie eine Beschreibung. Optional können Sie bis zu fünf Fotos hochladen; diese werden bereits in Ihrem Browser verkleinert und ausschließlich als Anhang der Benachrichtigungs-E-Mail übermittelt: eine gesonderte Foto-Datenbank betreiben wir nicht. Verarbeitung und Übermittlung erfolgen wie im Abschnitt „Kontaktaufnahme über unsere Formulare" beschrieben, ebenso über Resend, Inc.</p>
+    <p>Im Formular zur Schadensmeldung erheben wir zusätzlich zu den oben genannten Kontaktangaben die Objektadresse, die Wohneinheit, die Art des gemeldeten Schadens sowie eine Beschreibung. Optional können Sie bis zu fünf Fotos hochladen; diese werden bereits in Ihrem Browser verkleinert und ausschließlich als Anhang der Benachrichtigungs-E-Mail übermittelt: Eine gesonderte Foto-Datenbank betreiben wir nicht. Verarbeitung und Übermittlung erfolgen wie im Abschnitt „Kontaktaufnahme über unsere Formulare" beschrieben, ebenso über Resend, Inc.</p>
     <p>Rechtsgrundlage ist die Erfüllung vorvertraglicher bzw. vertraglicher Maßnahmen im Rahmen der Hausverwaltung (Art. 6 Abs. 1 lit. b DSGVO) sowie unser berechtigtes Interesse an einer schnellen, korrekt priorisierten Schadensbearbeitung (Art. 6 Abs. 1 lit. f DSGVO).</p>
 
     <h2>Terminbuchung über Cal.com</h2>
@@ -1374,7 +1374,7 @@ def build_datenschutz():
 
     <h2>Kartendarstellung und Ortssuche</h2>
     <p>Auf mehreren Seiten (u. a. Startseite, Region, Standortseiten) zeigen wir eine interaktive Karte unseres Einzugsgebiets. Diese basiert auf der Bibliothek Leaflet, die über das Content Delivery Network von Cloudflare, Inc. (cdnjs.cloudflare.com) geladen wird, sowie auf Kartenkacheln des Anbieters CARTO (basemaps.cartocdn.com). Beim Laden der Karte wird Ihre IP-Adresse technisch bedingt an diese Anbieter übertragen, damit die Kartenkacheln bzw. Skriptdateien an Ihren Browser ausgeliefert werden können.</p>
-    <p>Die Ortssuche („Sind wir auch in Ihrem Ort tätig?") funktioniert für Orte außerhalb unserer festen Ortsliste anders: Ihre Eingabe wird nicht direkt an einen Drittanbieter gesendet, sondern zunächst an unsere eigene Server-Funktion übermittelt. Diese fragt die Entfernung serverseitig bei der Geokodierungs-API von OpenStreetMap (Nominatim, betrieben von der OpenStreetMap Foundation) ab. Ihre IP-Adresse wird dabei nicht an OpenStreetMap übertragen: sichtbar ist dort nur die Server-Adresse unseres Hosting-Anbieters.</p>
+    <p>Die Ortssuche („Sind wir auch in Ihrem Ort tätig?") funktioniert für Orte außerhalb unserer festen Ortsliste anders: Ihre Eingabe wird nicht direkt an einen Drittanbieter gesendet, sondern zunächst an unsere eigene Server-Funktion übermittelt. Diese fragt die Entfernung serverseitig bei der Geokodierungs-API von OpenStreetMap (Nominatim, betrieben von der OpenStreetMap Foundation) ab. Ihre IP-Adresse wird dabei nicht an OpenStreetMap übertragen: Sichtbar ist dort nur die Server-Adresse unseres Hosting-Anbieters.</p>
     <p>Rechtsgrundlage für die Kartendarstellung und die Ortssuche ist unser berechtigtes Interesse an einer verständlichen, nutzerfreundlichen Darstellung unseres Einzugsgebiets (Art. 6 Abs. 1 lit. f DSGVO).</p>
 
     <h2>Google Fonts</h2>
@@ -1403,7 +1403,7 @@ def build_datenschutz():
     <p>Wir speichern personenbezogene Daten nur so lange, wie es für die jeweiligen Zwecke erforderlich ist oder gesetzliche Aufbewahrungsfristen (z. B. aus dem Handels- oder Steuerrecht) dies verlangen. Anfragen über unsere Formulare verbleiben als E-Mail in unserem Postfach, bis sie für die Bearbeitung nicht mehr benötigt werden. Server-Logfiles unseres Hosting-Anbieters werden im dort üblichen, technisch bedingten Umfang vorgehalten.</p>
 
     <h2>Automatisierte Entscheidungsfindung</h2>
-    <p>Eine automatisierte Entscheidungsfindung einschließlich Profiling im Sinne von Art. 22 DSGVO findet nicht statt. Die automatische Einordnung der Dringlichkeit im Schadensmeldungsformular ist eine einfache, transparente Zuordnung anhand der von Ihnen gewählten Schadensart und dient ausschließlich Ihrer Information: sie führt zu keiner Sie betreffenden rechtlichen oder ähnlich erheblichen Entscheidung.</p>
+    <p>Eine automatisierte Entscheidungsfindung einschließlich Profiling im Sinne von Art. 22 DSGVO findet nicht statt. Die automatische Einordnung der Dringlichkeit im Schadensmeldungsformular ist eine einfache, transparente Zuordnung anhand der von Ihnen gewählten Schadensart und dient ausschließlich Ihrer Information: Sie führt zu keiner Sie betreffenden rechtlichen oder ähnlich erheblichen Entscheidung.</p>
 
     <h2>Änderungen dieser Datenschutzerklärung</h2>
     <p>Wir passen diese Datenschutzerklärung an, sobald Änderungen an der Website oder den eingesetzten Diensten dies erforderlich machen. Es gilt jeweils die zum Zeitpunkt Ihres Besuchs aktuelle Fassung.</p>
@@ -1536,7 +1536,7 @@ ARTICLES = [
          title="WEG-Verwaltung wechseln: So gelingt der Verwalterwechsel Schritt für Schritt",
          seo_title="WEG-Verwaltung wechseln: So geht's",
          teaser="Unzufrieden mit der Hausverwaltung? So wechselt Ihre WEG den Verwalter: Fristen, Beschluss, Übergabe, inkl. Checkliste für Mainz & Rhein-Main.",
-         related_service=("WEG-Verwaltung", "leistungen/weg-verwaltung.html", "Verwaltung für Wohnungseigentümergemeinschaften: rechtssicher und transparent."),
+         related_service=("WEG-Verwaltung", "leistungen/weg-verwaltung.html", "Verwaltung für Wohnungseigentümergemeinschaften: Rechtssicher und transparent."),
          html='''
 <p>Nicht erreichbar, Abrechnungen zu spät, Beschlüsse bleiben liegen: Wenn die Verwaltung nicht funktioniert, leidet die ganze Eigentümergemeinschaft. Die gute Nachricht: Ein Verwalterwechsel ist einfacher, als viele denken, wenn er strukturiert angegangen wird.</p>
 
@@ -1551,7 +1551,7 @@ ARTICLES = [
 </ul>
 
 <h2>Die rechtliche Grundlage: Bestellung und Abberufung</h2>
-<p>Seit der WEG-Reform kann der Verwalter jederzeit abberufen werden: ein wichtiger Grund ist nicht mehr erforderlich. Der Verwaltervertrag endet dann spätestens sechs Monate nach der Abberufung. Für den Wechsel braucht es einen Mehrheitsbeschluss der Eigentümerversammlung.</p>
+<p>Seit der WEG-Reform kann der Verwalter jederzeit abberufen werden: Ein wichtiger Grund ist nicht mehr erforderlich. Der Verwaltervertrag endet dann spätestens sechs Monate nach der Abberufung. Für den Wechsel braucht es einen Mehrheitsbeschluss der Eigentümerversammlung.</p>
 <p>Praktisch heißt das: Die Gemeinschaft sammelt Angebote neuer Verwaltungen, setzt den Punkt auf die Tagesordnung der nächsten Versammlung (oder beruft eine außerordentliche ein) und beschließt Abberufung und Neubestellung idealerweise im selben Termin.</p>
 
 <h2>Der Ablauf in fünf Schritten</h2>
@@ -1566,16 +1566,16 @@ ARTICLES = [
 
 <h2>Worauf Sie bei der neuen Verwaltung achten sollten</h2>
 <p>Der häufigste Fehler beim Wechsel: Es wird nur auf den Preis geschaut. Eine Verwaltung, die pro Einheit zwei Euro günstiger ist, aber Abrechnungen verspätet liefert und Beschlüsse nicht umsetzt, kostet die Gemeinschaft am Ende deutlich mehr.</p>
-<p>Entscheidend sind stattdessen: eine digitale Vorgangsverwaltung, nachvollziehbare Prozesse für Schadensmeldungen und Beschlussumsetzung, schnelle Rückmeldungen und regionale Präsenz für kurzfristige Objekttermine.</p>
+<p>Entscheidend sind stattdessen: Eine digitale Vorgangsverwaltung, nachvollziehbare Prozesse für Schadensmeldungen und Beschlussumsetzung, schnelle Rückmeldungen und regionale Präsenz für kurzfristige Objekttermine.</p>
 
 <h2>Fazit</h2>
-<p>Ein Verwalterwechsel ist kein Hexenwerk: Mehrheitsbeschluss, saubere Übergabe, klare Kommunikation. Wichtig ist, dass die neue Verwaltung die Übernahme strukturiert führt, dann merken Eigentümer vom Wechsel vor allem eines: dass es endlich funktioniert.</p>
+<p>Ein Verwalterwechsel ist kein Hexenwerk: Mehrheitsbeschluss, saubere Übergabe, klare Kommunikation. Wichtig ist, dass die neue Verwaltung die Übernahme strukturiert führt, dann merken Eigentümer vom Wechsel vor allem eines: Dass es endlich funktioniert.</p>
 '''),
     dict(slug="nebenkostenabrechnung-fehler", tag="Vermietung", date="28. Mai 2026", read="7 Min.",
          title="Nebenkostenabrechnung: Die 7 häufigsten Fehler, und wie Vermieter sie vermeiden",
          seo_title="Nebenkostenabrechnung: 7 häufige Fehler",
          teaser="Formfehler, verpasste Fristen, falsche Umlageschlüssel: Die 7 häufigsten Fehler in der Nebenkostenabrechnung und wie private Vermieter sie sicher vermeiden.",
-         related_service=("Mietverwaltung", "leistungen/mietverwaltung.html", "Komplette Betreuung Ihrer Mietobjekte: von der Korrespondenz bis zur Abrechnung."),
+         related_service=("Mietverwaltung", "leistungen/mietverwaltung.html", "Komplette Betreuung Ihrer Mietobjekte: Von der Korrespondenz bis zur Abrechnung."),
          html='''
 <p>Die Betriebskostenabrechnung ist die häufigste Streitquelle zwischen Vermietern und Mietern, und die häufigste Fehlerquelle für private Vermieter. Wer hier Formfehler macht, verliert im Zweifel bares Geld: Nachforderungen verfallen, Kürzungen drohen.</p>
 
@@ -1592,7 +1592,7 @@ ARTICLES = [
 </ul>
 
 <h2>Fehler 3: Falscher oder wechselnder Umlageschlüssel</h2>
-<p>Ohne vertragliche Regelung gilt die Wohnfläche als Umlageschlüssel. Wer stattdessen nach Personenzahl oder Einheiten verteilt (oder den Schlüssel von Jahr zu Jahr wechselt) produziert eine angreifbare Abrechnung. Ausnahme: verbrauchsabhängige Kosten wie Heizung und Warmwasser, die nach Heizkostenverordnung überwiegend nach Verbrauch abgerechnet werden müssen.</p>
+<p>Ohne vertragliche Regelung gilt die Wohnfläche als Umlageschlüssel. Wer stattdessen nach Personenzahl oder Einheiten verteilt (oder den Schlüssel von Jahr zu Jahr wechselt) produziert eine angreifbare Abrechnung. Ausnahme: Verbrauchsabhängige Kosten wie Heizung und Warmwasser, die nach Heizkostenverordnung überwiegend nach Verbrauch abgerechnet werden müssen.</p>
 
 <h2>Fehler 4-7: Form, Belege, Vorauszahlungen, WEG-Abrechnung</h2>
 <p>Vier weitere Stolperfallen, die in der Praxis regelmäßig zu Kürzungen führen:</p>
@@ -1604,7 +1604,7 @@ ARTICLES = [
 </ul>
 
 <h2>Fazit</h2>
-<p>Eine korrekte Nebenkostenabrechnung ist Handwerk: richtige Frist, richtige Kosten, richtiger Schlüssel, richtige Form. Wer mehrere Einheiten verwaltet, unterschätzt den Aufwand schnell, und zahlt Fehler direkt aus eigener Tasche. Eine professionelle Mietverwaltung rechnet fristgerecht, rechtssicher und nachvollziehbar ab.</p>
+<p>Eine korrekte Nebenkostenabrechnung ist Handwerk: Richtige Frist, richtige Kosten, richtiger Schlüssel, richtige Form. Wer mehrere Einheiten verwaltet, unterschätzt den Aufwand schnell, und zahlt Fehler direkt aus eigener Tasche. Eine professionelle Mietverwaltung rechnet fristgerecht, rechtssicher und nachvollziehbar ab.</p>
 '''),
     dict(slug="immobilie-verkaufen-mainz", tag="Verkauf", date="10. Mai 2026", read="6 Min.",
          title="Immobilie verkaufen in Mainz: Marktlage, Ablauf und die größten Preisfehler",
@@ -1612,11 +1612,11 @@ ARTICLES = [
          teaser="Immobilienverkauf in Mainz & Rhein-Main: Wie Sie den richtigen Angebotspreis finden, welche Unterlagen Sie brauchen und welche Fehler Verkäufer Geld kosten.",
          related_service=("Immobilienverkauf", "leistungen/immobilienverkauf.html", "Vom Exposé bis zum Notartermin: Verkauf mit regionaler Marktkenntnis."),
          html='''
-<p>Mainz gehört zu den stabilsten Wohnimmobilienmärkten in Rheinland-Pfalz: Universitätsstadt, Landeshauptstadt, Pendlerlage ins Rhein-Main-Gebiet. Wer hier verkauft, verkauft in einen Nachfragemarkt, und verschenkt trotzdem oft Geld. Meist aus zwei Gründen: falscher Preis oder schlechte Vorbereitung.</p>
+<p>Mainz gehört zu den stabilsten Wohnimmobilienmärkten in Rheinland-Pfalz: Universitätsstadt, Landeshauptstadt, Pendlerlage ins Rhein-Main-Gebiet. Wer hier verkauft, verkauft in einen Nachfragemarkt, und verschenkt trotzdem oft Geld. Meist aus zwei Gründen: Falscher Preis oder schlechte Vorbereitung.</p>
 
-<h2>Der größte Fehler: der falsche Angebotspreis</h2>
+<h2>Der größte Fehler: Der falsche Angebotspreis</h2>
 <p>Zu hoch angesetzte Immobilien "verbrennen" am Markt: Sie liegen monatelang in den Portalen, Interessenten werden misstrauisch, und am Ende wird unter Wert verkauft. Zu niedrig angesetzte Objekte verschenken direkt Geld.</p>
-<p>Die Lösung ist eine fundierte Werteinschätzung auf Basis echter Vergleichsdaten aus der Region: nicht der Online-Rechner und nicht der Nachbar, der "gehört hat, was nebenan bezahlt wurde".</p>
+<p>Die Lösung ist eine fundierte Werteinschätzung auf Basis echter Vergleichsdaten aus der Region: Nicht der Online-Rechner und nicht der Nachbar, der "gehört hat, was nebenan bezahlt wurde".</p>
 
 <h2>Diese Unterlagen brauchen Sie</h2>
 <p>Käufer und deren Banken erwarten heute vollständige Unterlagen. Dazu gehören:</p>
@@ -1628,35 +1628,35 @@ ARTICLES = [
 <li>Bei vermieteten Objekten: Mietverträge und aktuelle Mietaufstellung</li>
 </ul>
 
-<h2>Der Ablauf: von der Bewertung bis zum Notartermin</h2>
+<h2>Der Ablauf: Von der Bewertung bis zum Notartermin</h2>
 <p>Ein strukturierter Verkauf läuft in klaren Etappen: Werteinschätzung und Preisstrategie, Aufbereitung von Exposé und Unterlagen, gezielte Vermarktung, vorqualifizierte Besichtigungen, Bonitätsprüfung der Kaufinteressenten, Verhandlung, Kaufvertragsabstimmung und Notartermin.</p>
-<p>Gerade die Bonitätsprüfung wird von Privatverkäufern oft übersprungen, und genau dort platzen Verkäufe: nach Monaten, kurz vor dem Notartermin, weil die Finanzierung nicht steht.</p>
+<p>Gerade die Bonitätsprüfung wird von Privatverkäufern oft übersprungen, und genau dort platzen Verkäufe: Nach Monaten, kurz vor dem Notartermin, weil die Finanzierung nicht steht.</p>
 
 <h2>Vermietet verkaufen: Chance statt Problem</h2>
 <p>Eine vermietete Wohnung schreckt Selbstnutzer ab, ist für Kapitalanleger aber genau richtig. Entscheidend ist, die richtige Käufergruppe anzusprechen: Mit sauber dokumentierten Mietverhältnissen, nachvollziehbarer Rendite und geordneter Verwaltung wird ein vermietetes Objekt zum Anlageprodukt, und erzielt oft bessere Preise als gedacht.</p>
 
 <h2>Fazit</h2>
-<p>In Mainz zu verkaufen ist keine Kunst: zum besten Preis zu verkaufen schon. Realistische Bewertung, vollständige Unterlagen, geprüfte Käufer: Wer diese drei Punkte ernst nimmt, verkauft schneller und besser. Ein regionaler Partner mit Verwalter-Know-how kennt dabei beide Seiten: das Objekt und den Markt.</p>
+<p>In Mainz zu verkaufen ist keine Kunst: Zum besten Preis zu verkaufen schon. Realistische Bewertung, vollständige Unterlagen, geprüfte Käufer: Wer diese drei Punkte ernst nimmt, verkauft schneller und besser. Ein regionaler Partner mit Verwalter-Know-how kennt dabei beide Seiten: Das Objekt und den Markt.</p>
 '''),
     dict(slug="hausverwaltung-kosten", tag="Eigentümerwissen", date="20. April 2026", read="5 Min.",
          title="Was kostet eine Hausverwaltung? Preise, Modelle und woran Sie Qualität erkennen",
          seo_title="Was kostet eine Hausverwaltung?",
          teaser="Was kostet eine Hausverwaltung pro Wohneinheit? Übliche Preisspannen für Miet-, WEG- und SE-Verwaltung, und warum billig oft teuer wird.",
-         related_service=("Mietverwaltung", "leistungen/mietverwaltung.html", "Komplette Betreuung Ihrer Mietobjekte: von der Korrespondenz bis zur Abrechnung."),
+         related_service=("Mietverwaltung", "leistungen/mietverwaltung.html", "Komplette Betreuung Ihrer Mietobjekte: Von der Korrespondenz bis zur Abrechnung."),
          html='''
-<p>Die Frage nach den Kosten ist meist die erste, und die am häufigsten falsch gestellte. Denn entscheidend ist nicht, was eine Verwaltung pro Monat kostet, sondern was sie Ihnen erspart: an Zeit, an Fehlern und an Wertverlust.</p>
+<p>Die Frage nach den Kosten ist meist die erste, und die am häufigsten falsch gestellte. Denn entscheidend ist nicht, was eine Verwaltung pro Monat kostet, sondern was sie Ihnen erspart: An Zeit, an Fehlern und an Wertverlust.</p>
 
 <h2>Übliche Preismodelle im Überblick</h2>
 <p>Hausverwaltungen rechnen in der Regel pro Einheit und Monat ab. Die Spannen unterscheiden sich je nach Leistungsart:</p>
 <ul>
-<li>Mietverwaltung: meist prozentual von der Nettokaltmiete oder als Festbetrag pro Einheit</li>
+<li>Mietverwaltung: Meist prozentual von der Nettokaltmiete oder als Festbetrag pro Einheit</li>
 <li>WEG-Verwaltung: Festbetrag pro Einheit und Monat, abhängig von Objektgröße und Zustand</li>
 <li>Sondereigentumsverwaltung: Festbetrag pro Wohnung, oft kombinierbar mit der WEG-Verwaltung</li>
 <li>Zusatzleistungen: Neuvermietung, Versammlungen außer der Reihe oder Bauüberwachung werden separat vereinbart</li>
 </ul>
 
 <h2>Warum "billig" oft teuer wird</h2>
-<p>Eine Verwaltung, die kaum kostendeckend kalkuliert, muss an der Betreuung sparen: keine Objektbegehungen, langsame Reaktion, Standardabrechnungen ohne Prüfung. Die Folgekosten tragen Eigentümer: als Reparaturstau, fehlerhafte Abrechnungen oder Leerstand.</p>
+<p>Eine Verwaltung, die kaum kostendeckend kalkuliert, muss an der Betreuung sparen: Keine Objektbegehungen, langsame Reaktion, Standardabrechnungen ohne Prüfung. Die Folgekosten tragen Eigentümer: Als Reparaturstau, fehlerhafte Abrechnungen oder Leerstand.</p>
 <p>Die richtige Frage ist deshalb nicht "Was kostet die Verwaltung?", sondern "Was bekomme ich dafür?" Ein transparenter Leistungskatalog ist wichtiger als der letzte Euro Preisunterschied.</p>
 
 <h2>Woran Sie eine gute Verwaltung erkennen</h2>
@@ -1670,7 +1670,7 @@ ARTICLES = [
 </ul>
 
 <h2>Fazit</h2>
-<p>Verwaltungskosten sind gut investiert, wenn die Leistung stimmt: fristgerechte Abrechnungen, gepflegte Objekte, schnelle Rückmeldungen. Vergleichen Sie Leistungskataloge statt nur Preise, und lassen Sie sich ein konkretes Angebot für Ihr Objekt machen.</p>
+<p>Verwaltungskosten sind gut investiert, wenn die Leistung stimmt: Fristgerechte Abrechnungen, gepflegte Objekte, schnelle Rückmeldungen. Vergleichen Sie Leistungskataloge statt nur Preise, und lassen Sie sich ein konkretes Angebot für Ihr Objekt machen.</p>
 '''),
     dict(slug="sondereigentumsverwaltung-kapitalanleger", tag="Eigentümerwissen", date="30. März 2026", read="5 Min.",
          title="Sondereigentumsverwaltung: Warum Kapitalanleger beides brauchen, WEG und SE",
@@ -1678,7 +1678,7 @@ ARTICLES = [
          teaser="WEG-Verwaltung kümmert sich ums Haus, nicht um Ihre Wohnung: Was Sondereigentumsverwaltung leistet, was sie kostet und wann sie sich für Kapitalanleger rechnet.",
          related_service=("Sondereigentumsverwaltung", "leistungen/se-verwaltung.html", "Betreuung Ihrer Eigentumswohnung innerhalb der WEG: speziell für Kapitalanleger."),
          html='''
-<p>Viele Wohnungskäufer glauben: "Das Haus hat doch eine Hausverwaltung, die kümmert sich." Ein teurer Irrtum: denn die WEG-Verwaltung ist nur für das Gemeinschaftseigentum zuständig. Um Mieter, Mietvertrag und Abrechnung Ihrer Wohnung kümmert sich: niemand. Außer Ihnen.</p>
+<p>Viele Wohnungskäufer glauben: "Das Haus hat doch eine Hausverwaltung, die kümmert sich." Ein teurer Irrtum: Denn die WEG-Verwaltung ist nur für das Gemeinschaftseigentum zuständig. Um Mieter, Mietvertrag und Abrechnung Ihrer Wohnung kümmert sich: Niemand. Außer Ihnen.</p>
 
 <h2>WEG-Verwaltung vs. Sondereigentumsverwaltung</h2>
 <p>Die Abgrenzung ist einfach, wenn man sie einmal verstanden hat: Die WEG-Verwaltung betreut alles, was allen gehört, Dach, Fassade, Treppenhaus, Heizungsanlage. Die Sondereigentumsverwaltung (SE-Verwaltung) betreut alles, was nur Ihnen gehört: Ihre Wohnung und Ihr Mietverhältnis.</p>
@@ -1695,7 +1695,7 @@ ARTICLES = [
 <p>Ein guter SE-Verwalter ist auch Ihre Schnittstelle zur Eigentümergemeinschaft: Er prüft Hausgeldabrechnungen, bereitet Versammlungen vor und nimmt auf Wunsch mit Vollmacht teil. Gerade für auswärtige Anleger heißt das: Ihre Interessen werden vertreten, auch wenn Sie nicht vor Ort sind.</p>
 
 <h2>Fazit</h2>
-<p>Wer eine vermietete Eigentumswohnung besitzt, braucht zwei Verwaltungsebenen: die WEG fürs Haus, die SE-Verwaltung für die eigene Wohnung. Aus einer Hand koordiniert, wird aus der Kapitalanlage das, was sie sein soll: ein Investment, kein Nebenjob.</p>
+<p>Wer eine vermietete Eigentumswohnung besitzt, braucht zwei Verwaltungsebenen: Die WEG fürs Haus, die SE-Verwaltung für die eigene Wohnung. Aus einer Hand koordiniert, wird aus der Kapitalanlage das, was sie sein soll: Ein Investment, kein Nebenjob.</p>
 '''),
 ]
 
@@ -1715,8 +1715,8 @@ def build_blog_index():
 <section class="hero hero-page">
   <div class="container hero-inner">
     <span class="eyebrow">Ratgeber</span>
-    <h1>Wissen für Eigentümer: klar erklärt.</h1>
-    <p class="hero-lead">Hausverwaltung, WEG-Recht, Vermietung und Verkauf: praxisnahes Wissen aus 7 Jahren Verwaltungsalltag in Mainz und Rhein-Main.</p>
+    <h1>Wissen für Eigentümer: Klar erklärt.</h1>
+    <p class="hero-lead">Hausverwaltung, WEG-Recht, Vermietung und Verkauf: Praxisnahes Wissen aus 7 Jahren Verwaltungsalltag in Mainz und Rhein-Main.</p>
   </div>
 </section>
 <section class="section-cream">
@@ -1724,11 +1724,11 @@ def build_blog_index():
     <div class="blog-grid">{cards}</div>
   </div>
 </section>
-{cta_banner(prefix, "Lieber direkt fragen statt lange lesen?", "Im kostenlosen Erstgespräch beantworten wir Ihre Fragen konkret für Ihr Objekt: ohne Fachchinesisch und ohne Verpflichtung.")}
+{cta_banner(prefix, "Lieber direkt fragen statt lange lesen?", "Im kostenlosen Erstgespräch beantworten wir Ihre Fragen konkret für Ihr Objekt: Ohne Fachchinesisch und ohne Verpflichtung.")}
 '''
     write("blog/index.html", page(
         "Ratgeber für Eigentümer & Vermieter | HEINAND Immobilien",
-        "Der HEINAND-Ratgeber: fundiertes Wissen zu Hausverwaltung, WEG-Recht, Vermietung und Immobilienverkauf in Mainz & Rhein-Main, verständlich erklärt.",
+        "Der HEINAND-Ratgeber: Fundiertes Wissen zu Hausverwaltung, WEG-Recht, Vermietung und Immobilienverkauf in Mainz & Rhein-Main, verständlich erklärt.",
         prefix, "blog", body, relpath="blog/index.html"
     ))
 
@@ -1786,7 +1786,7 @@ print("home done")
 def build_sitemap_and_robots():
     import glob as _glob
     from datetime import date
-    # standorte/worms.html: gehört nicht mehr zum Einzugsgebiet und wird nicht mehr
+    # standorte/worms.html: Gehört nicht mehr zum Einzugsgebiet und wird nicht mehr
     # verlinkt; falls die Datei im Build-Verzeichnis als Altlast liegen bleibt, aus
     # Sitemap/Index ausschließen.
     noindex_files = {"impressum.html", "datenschutz.html", "standorte/worms.html"}
