@@ -339,6 +339,7 @@ function normalizeOrt(s) {
 function initLocationSearch() {
   document.querySelectorAll('.location-search').forEach(widget => {
     const input = widget.querySelector('.location-search-input');
+    const searchBtn = widget.querySelector('.location-search-btn');
     const suggestBox = widget.querySelector('.location-search-suggestions');
     const resultBox = widget.querySelector('.location-search-result');
     const dataScript = widget.querySelector('.location-search-data');
@@ -400,12 +401,10 @@ function initLocationSearch() {
       renderSuggestions(matches, q);
     });
 
-    input.addEventListener('keydown', async (e) => {
-      if (e.key !== 'Enter') return;
-      e.preventDefault();
+    const runSearch = async () => {
       const rawValue = input.value.trim();
       const q = normalizeOrt(rawValue);
-      if (!q) return;
+      if (!q) { input.focus(); return; }
       closeSuggestions();
 
       const exact = data.find(loc => normalizeOrt(loc.name) === q);
@@ -413,7 +412,7 @@ function initLocationSearch() {
       if (partial) { showResult(partial); return; }
 
       // Kein Treffer in unserer festen Orte-Liste: Entfernung live über die
-      // Geokodierungs-API abfragen, statt "nicht gefunden" zu melden — so
+      // Geokodierungs-API abfragen, statt "nicht gefunden" zu melden. So
       // bekommt jeder Ort in Deutschland eine echte km-Angabe.
       showLoading();
       try {
@@ -425,7 +424,15 @@ function initLocationSearch() {
       } catch (err) {
         showResult(null);
       }
+    };
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      runSearch();
     });
+
+    if (searchBtn) searchBtn.addEventListener('click', runSearch);
 
     document.addEventListener('click', (e) => {
       if (!widget.contains(e.target)) closeSuggestions();
