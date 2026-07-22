@@ -972,6 +972,26 @@ def build_ueber_uns():
   </div>
 </section>
 
+<section class="section-white">
+  <div class="container founder-grid">
+    <div class="founder-photo">
+      <img src="{prefix}assets/team/philipp-hartung.jpg" alt="Philipp Hartung, Geschäftsführer von HEINAND Immobilien" width="843" height="1264" loading="lazy">
+      <div class="founder-photo-caption">
+        <strong>Philipp Hartung</strong>
+        <span>Geschäftsführer</span>
+      </div>
+    </div>
+    <div class="founder-text">
+      <span class="eyebrow">Warum ich HEINAND gegründet habe</span>
+      <h2>Ein Ansprechpartner, der erreichbar ist und hält, was er verspricht.</h2>
+      <p>Ich bin Philipp Hartung, 27, gebürtiger Mainzer und seit sieben Jahren in der Immobilienverwaltung. Ich halte die Erlaubnis nach § 34c als Verwalter und als Makler und bilde mich laufend weiter, um fachlich auf dem aktuellen Stand zu bleiben.</p>
+      <p>Den Anstoß zur Gründung gab meine eigene Erfahrung. Ich besitze selbst Immobilien und habe erlebt, wie schwer Hausverwaltungen oft zu erreichen sind. Viele arbeiten noch mit alteingesessenen Systemen, die heute vor allem eins kosten: Zeit und Aufwand, den längst eine Automatisierung übernehmen kann. Genau da setze ich an. Erreichbarkeit und schnelle Bearbeitung sind für mich kein Extra, sondern der Service, den Eigentümer für ihr Honorar erwarten dürfen. Ich möchte der verlässlich erreichbare Dienstleister sein, der hält, was er verspricht.</p>
+      <p>Hausverwaltung neu denken heißt für mich, Prozesse an die heutige Zeit anzupassen. Der Markt verändert sich ständig, und eine Verwaltung muss sich mitverändern. Digital, wo es den meisten Eigentümern längst vertraut ist, und weiterhin klassisch per Post für alle, die das lieber mögen. So biete ich einen Service aus einer Hand: Verwaltung, Werterhalt und im Bedarfsfall den Verkauf, mit einem festen Ansprechpartner.</p>
+      <p>Der Name HEINAND ist kein Zufall. Er entstand aus den Vornamen meiner beiden Großväter, Heinz und Ferdinand, die zugleich mein zweiter und dritter Vorname sind. Beide standen für Verlässlichkeit und Handschlagmentalität, ein Mann, ein Wort. Was sie angefangen haben, haben sie zu Ende gebracht. Diese Haltung trägt mein Unternehmen im Namen und in allem, was ich tue.</p>
+    </div>
+  </div>
+</section>
+
 <section class="section-cream">
   <div class="container">
     <div class="stats-grid" style="margin:0;">
