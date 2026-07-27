@@ -294,11 +294,14 @@ def location_map_html(container_id="einsatzgebiet-karte"):
 DOMAIN = "https://www.heinand.de"
 
 def canonical_path(relpath):
-    """Erzeugt aus einem Datei-Relativpfad die öffentliche URL-Pfadangabe (für canonical/sitemap)."""
+    """Erzeugt aus einem Datei-Relativpfad die öffentliche URL-Pfadangabe (für canonical/sitemap).
+    Liefert saubere URLs ohne .html-Endung, passend zu vercel.json (cleanUrls, trailingSlash: false)."""
     if relpath == "index.html":
         return "/"
     if relpath.endswith("/index.html"):
-        return "/" + relpath[: -len("index.html")]
+        return "/" + relpath[: -len("index.html")].rstrip("/")
+    if relpath.endswith(".html"):
+        return "/" + relpath[: -len(".html")]
     return "/" + relpath
 
 def head(title, description, prefix, relpath="index.html", noindex=False, extra_css=""):
