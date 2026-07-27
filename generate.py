@@ -81,7 +81,7 @@ def build_home():
         ("Bis wann muss die Nebenkostenabrechnung beim Mieter sein?", "Die Abrechnung muss dem Mieter spätestens zwölf Monate nach Ende des Abrechnungszeitraums zugehen, sonst können Nachforderungen in der Regel nicht mehr geltend gemacht werden. Als Mietverwaltung achten wir konsequent auf diese Frist und auf einen rechtssicheren Umlageschlüssel."),
         ("Führen Sie auch die Eigentümerversammlung durch?", "Ja, wir übernehmen die ordnungsgemäße Einberufung, Durchführung und Protokollierung der Eigentümerversammlung, auf Wunsch auch als hybride Versammlung mit Online-Teilnahme. Beschlüsse werden rechtssicher dokumentiert und in der Beschlusssammlung geführt."),
         ("Wie läuft ein Immobilienverkauf mit HEINAND ab?", "Wir begleiten Sie von der realistischen Werteinschätzung über die Erstellung des Exposés und die Käuferauswahl bis zum Notartermin. Weil wir viele der Objekte in der Region bereits verwalten, kennen wir die tatsächlichen Marktpreise, nicht nur Online-Schätzungen."),
-        ("Ist die Immobilienbewertung wirklich kostenlos?", "Ja. Sagen Sie uns die Eckdaten Ihrer Immobilie, wir melden uns innerhalb eines Werktags mit einer ersten, fundierten Einschätzung auf Basis regionaler Marktdaten und Objektzustand, ganz ohne Verpflichtung."),
+        ("Ist die Immobilienbewertung wirklich kostenlos?", "Ja. Sagen Sie uns die Eckdaten Ihrer Immobilie, wir melden uns schnell mit einer ersten, fundierten Einschätzung auf Basis regionaler Marktdaten und Objektzustand, ganz ohne Verpflichtung."),
         ("Muss ich als Eigentümer vor Ort in Mainz sein?", "Nein. Gerade für Kapitalanleger, die nicht in der Region wohnen, ist unsere digitale Vorgangsverwaltung gedacht: Anliegen, Belege und Reporting laufen online, Vor-Ort-Termine übernehmen wir für Sie."),
         ("Wie kann ich ein kostenloses Erstgespräch vereinbaren?", "Am schnellsten über unser Kontaktformular oder direkt über unseren Buchungskalender, dort sehen Sie sofort freie Termine, telefonisch oder per Video. Alternativ erreichen Sie uns telefonisch oder per E-Mail. Einen persönlichen Termin vor Ort sprechen wir bei Bedarf individuell ab."),
         ("Was passiert mit meinen Daten, wenn ich ein Formular ausfülle?", "Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und uns per E-Mail zugestellt. Eine gesonderte Datenbank betreiben wir nicht. Details dazu finden Sie in unserer Datenschutzerklärung."),
@@ -508,7 +508,7 @@ def build_services():
         ],
         ["Verwalter-Perspektive: Wir kennen Objekte von innen", "Regionales Netzwerk aus Käufern und Kapitalanlegern", "Diskreter Verkauf ohne öffentliche Vermarktung möglich", "Klare Kommunikation über jeden Schritt"],
         "Was ist Ihre Immobilie wert? Fragen Sie uns: kostenlos.",
-        "Ein paar Eckdaten genügen: wir melden uns innerhalb eines Werktags mit einer ersten Einschätzung und besprechen das weitere Vorgehen.",
+        "Ein paar Eckdaten genügen: wir melden uns schnell mit einer ersten Einschätzung und besprechen das weitere Vorgehen.",
         select_field("Objektart", ["Eigentumswohnung", "Einfamilienhaus", "Mehrfamilienhaus", "Grundstück", "Gewerbe"]) +
         text_field("Ort / Stadtteil", "", True) +
         text_field("Wohnfläche (ca. m²)", "", False) +
@@ -848,7 +848,7 @@ def build_standort(loc):
     )
     standort_faq = [
         (f"Verwaltet HEINAND Immobilien auch in {name}?", f"Ja: {name} liegt ca. {dist} km von unserem Sitz in Mainz entfernt und gehört zu unserem festen Einzugsgebiet. Wir betreuen dort Mietobjekte, Eigentumswohnungen und Eigentümergemeinschaften mit derselben digitalen Struktur wie in Mainz."),
-        ("Wie schnell sind Sie bei einem Schaden vor Ort?", f"Akute Schäden behandeln wir sofort, dringende Anliegen in der Regel innerhalb von 24 Stunden. Durch unser regionales Handwerkernetzwerk sind wir auch in {name} schnell handlungsfähig."),
+        ("Wie schnell sind Sie bei einem Schaden vor Ort?", f"Akute Schäden behandeln wir sofort, bei dringenden Anliegen sind wir sehr zeitnah zur Stelle. Durch unser regionales Handwerkernetzwerk sind wir auch in {name} schnell handlungsfähig."),
         (f"Was kostet eine Hausverwaltung in {name}?", "Das hängt von Objektgröße und Leistungsumfang ab. Im kostenlosen Erstgespräch lernen wir uns erst kennen und besprechen Ihre Situation, danach machen wir ein transparentes Festangebot: ohne versteckte Zusatzkosten."),
         (f"Übernehmen Sie auch die WEG-Verwaltung in {name}?", f"Ja, wir führen Eigentümerversammlungen für Gemeinschaften in {name} durch, ordnungsgemäß einberufen, protokolliert und mit rechtssicherer Beschlussfassung, auf Wunsch auch hybrid mit Online-Teilnahme."),
         (f"Betreuen Sie auch einzelne vermietete Eigentumswohnungen in {name}?", f"Ja, über die Sondereigentumsverwaltung übernehmen wir für Eigentümer in {name} den kompletten Mieterkontakt sowie die Schnittstelle zur jeweiligen WEG-Verwaltung, ideal für Kapitalanleger, die nicht selbst vor Ort sind."),
@@ -899,7 +899,7 @@ def build_standort(loc):
     <div class="form-card">
       <span class="eyebrow">Kostenlos &amp; unverbindlich</span>
       <h3 style="margin-top:10px;margin-bottom:6px;">Erstgespräch für Ihre Immobilie in {name}</h3>
-      <p style="color:#5b6472;font-size:14px;margin-bottom:6px;">Kurze Objektbeschreibung genügt: wir melden uns innerhalb eines Werktags mit einer ersten Einschätzung.</p>
+      <p style="color:#5b6472;font-size:14px;margin-bottom:6px;">Kurze Objektbeschreibung genügt: wir melden uns schnell mit einer ersten Einschätzung.</p>
       <form data-contact-form data-form-name="Erstgespräch {name}">
         <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
         <div class="form-grid">
@@ -1122,7 +1122,7 @@ def build_kontakt():
       <span class="eyebrow">Direkt erreichen</span>
       <div class="contact-info-list" style="margin-top:20px;">
         <div class="contact-info-item">{contact_icon("phone")}<div><strong>{PHONE}</strong><span>Mo-Fr, 9-17 Uhr</span></div></div>
-        <div class="contact-info-item">{contact_icon("mail")}<div><strong>{EMAIL}</strong><span>Antwort innerhalb eines Werktags</span></div></div>
+        <div class="contact-info-item">{contact_icon("mail")}<div><strong>{EMAIL}</strong><span>Schnelle Antwort</span></div></div>
         <div class="contact-info-item">{contact_icon("pin")}<div><strong>Menimaneweg 4, 55130 Mainz</strong></div></div>
       </div>
       <span class="eyebrow">So läuft das Erstgespräch</span>
@@ -1181,7 +1181,7 @@ def build_kontakt():
 '''
     write("kontakt.html", page(
         "Kontakt: Erstgespräch vereinbaren | HEINAND",
-        "Kontaktieren Sie HEINAND Immobilien in Mainz: kostenloses Erstgespräch zu Verwaltung oder Verkauf. Wir melden uns innerhalb eines Werktags.",
+        "Kontaktieren Sie HEINAND Immobilien in Mainz: kostenloses Erstgespräch zu Verwaltung oder Verkauf. Wir melden uns schnell zurück.",
         prefix, "kontakt", body, relpath="kontakt.html"
     ))
 
