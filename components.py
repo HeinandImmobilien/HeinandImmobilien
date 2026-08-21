@@ -307,10 +307,40 @@ def canonical_path(relpath):
         return "/" + relpath[: -len(".html")]
     return "/" + relpath
 
-def head(title, description, prefix, relpath="index.html", noindex=False, extra_css=""):
+BREADCRUMB_FOLDER_LABELS = {
+    "leistungen": "Leistungen",
+    "standorte": "Region",
+    "blog": "Ratgeber",
+}
+
+def breadcrumb_jsonld(relpath, title):
+    """Erzeugt BreadcrumbList-Strukturdaten für Unterseiten (nicht für die Startseite),
+    damit Google in den Suchergebnissen den Seitenpfad statt der rohen URL zeigt."""
+    if relpath == "index.html":
+        return ""
+    import json
+    label = title.split(" | ")[0].strip()
+    if ":" in label:
+        label = label.split(":")[0].strip()
+    parts = relpath.split("/")
+    items = [{"@type": "ListItem", "position": 1, "name": "Start", "item": DOMAIN + "/"}]
+    pos = 2
+    if len(parts) == 2:
+        folder = parts[0]
+        folder_label = BREADCRUMB_FOLDER_LABELS.get(folder, folder.capitalize())
+        folder_url = DOMAIN + ("/region" if folder == "standorte" else f"/{folder}")
+        items.append({"@type": "ListItem", "position": pos, "name": folder_label, "item": folder_url})
+        pos += 1
+    if relpath not in ("leistungen/index.html", "blog/index.html"):
+        items.append({"@type": "ListItem", "position": pos, "name": label, "item": DOMAIN + canonical_path(relpath)})
+    data = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items}
+    return f'<script type="application/ld+json">\n{json.dumps(data, ensure_ascii=False, indent=2)}\n</script>'
+
+def head(title, description, prefix, relpath="index.html", noindex=False, extra_css="", og_image=None, og_type="website", published_time=None):
     url = DOMAIN + canonical_path(relpath)
     robots = "noindex, nofollow" if noindex else "index, follow"
-    og_image = f"{DOMAIN}/assets/logo-blue-gold.png"
+    image = og_image or f"{DOMAIN}/assets/logo-blue-gold.png"
+    article_meta = f'<meta property="article:published_time" content="{published_time}">' if published_time else ""
     return f'''<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -320,13 +350,15 @@ def head(title, description, prefix, relpath="index.html", noindex=False, extra_
 <meta name="description" content="{description}">
 <meta name="robots" content="{robots}">
 <link rel="canonical" href="{url}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="HEINAND Immobilien">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{og_image}">
+<meta property="og:image" content="{image}">
+<meta property="og:image:alt" content="{title}">
 <meta property="og:locale" content="de_DE">
+{article_meta}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{description}">
@@ -336,6 +368,7 @@ def head(title, description, prefix, relpath="index.html", noindex=False, extra_
 <link rel="icon" type="image/png" href="{prefix}assets/mark-blue.png">
 <link rel="stylesheet" href="{prefix}css/style.css">
 {local_business_jsonld(prefix)}
+{breadcrumb_jsonld(relpath, title)}
 {extra_css}
 </head>
 '''
@@ -389,6 +422,63 @@ def faq_jsonld(qa_pairs):
             for q, a in qa_pairs
         ],
     }
+    return f'<script type="application/ld+json">\n{json.dumps(data, ensure_ascii=False, indent=2)}\n</script>'
+
+def service_jsonld(name, description, url):
+    """Service-Strukturdaten für eine einzelne Leistung, verknüpft mit HEINAND als provider."""
+    import json
+    data = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": name,
+        "name": f"{name} durch HEINAND Immobilien",
+        "description": description,
+        "areaServed": {"@type": "City", "name": "Mainz"},
+        "provider": {"@type": "RealEstateAgent", "name": "HEINAND Immobilien", "url": DOMAIN + "/"},
+        "url": url,
+    }
+    return f'<script type="application/ld+json">\n{json.dumps(data, ensure_ascii=False, indent=2)}\n</script>'
+
+def article_jsonld(title, description, date_iso, url, image, author_name="Philipp Hartung"):
+    """BlogPosting-Strukturdaten für Ratgeber-Artikel."""
+    import json
+    data = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": title,
+        "description": description,
+        "datePublished": date_iso,
+        "dateModified": date_iso,
+        "author": {"@type": "Person", "name": author_name},
+        "publisher": {
+            "@type": "Organization",
+            "name": "HEINAND Immobilien",
+            "logo": {"@type": "ImageObject", "url": f"{DOMAIN}/assets/logo-blue-gold.png"},
+        },
+        "mainEntityOfPage": {"@type": "WebPage", "@id": url},
+        "image": image,
+        "inLanguage": "de-DE",
+    }
+    return f'<script type="application/ld+json">\n{json.dumps(data, ensure_ascii=False, indent=2)}\n</script>'
+
+def person_jsonld(name, job_title, description, image, credential=None):
+    """Person-Strukturdaten (E-E-A-T-Signal) für die Über-uns-Seite."""
+    import json
+    data = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": name,
+        "jobTitle": job_title,
+        "description": description,
+        "image": image,
+        "worksFor": {"@type": "RealEstateAgent", "name": "HEINAND Immobilien", "url": DOMAIN + "/"},
+        "url": f"{DOMAIN}/ueber-uns",
+    }
+    if credential:
+        data["hasCredential"] = {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": credential,
+        }
     return f'<script type="application/ld+json">\n{json.dumps(data, ensure_ascii=False, indent=2)}\n</script>'
 
 def header(prefix, active=""):

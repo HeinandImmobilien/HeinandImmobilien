@@ -5,7 +5,7 @@ from components import (
     ROOT, head, header, footer, cta_banner, hero_video_html, icon, feature_icon, contact_icon, path_icon,
     mark_svg, mark_img, PHONE, PHONE_TEL, EMAIL, SERVICES_VERWALTUNG, SERVICES_VERKAUF,
     LOCATIONS, location_map_html, LEAFLET_CDN, DOMAIN, canonical_path, faq_jsonld, location_search_widget,
-    painpoints_section,
+    painpoints_section, service_jsonld, article_jsonld, person_jsonld,
 )
 
 def write(relpath, content):
@@ -15,8 +15,8 @@ def write(relpath, content):
         f.write(content)
     print("wrote", relpath)
 
-def page(title, description, prefix, active, body, relpath="index.html", noindex=False, extra_css=""):
-    return head(title, description, prefix, relpath, noindex, extra_css) + "<body>\n" + header(prefix, active) + body + footer(prefix)
+def page(title, description, prefix, active, body, relpath="index.html", noindex=False, extra_css="", og_image=None, og_type="website", published_time=None):
+    return head(title, description, prefix, relpath, noindex, extra_css, og_image, og_type, published_time) + "<body>\n" + header(prefix, active) + body + footer(prefix)
 
 ALL_SERVICES = SERVICES_VERWALTUNG + SERVICES_VERKAUF  # (name, href, desc)
 
@@ -74,6 +74,8 @@ def build_home():
         ("Muss ich als Eigentümer vor Ort in Mainz sein?", "Nein. Gerade für Eigentümer, die nicht in der Region wohnen, arbeiten wir digital: Anliegen, Unterlagen und Reporting laufen online oder telefonisch, Termine vor Ort übernehmen wir für Sie, egal ob es um die laufende Verwaltung oder einen Verkauf geht."),
         ("Wie kann ich ein kostenloses Erstgespräch vereinbaren?", "Am schnellsten über unser Kontaktformular oder direkt über unseren Buchungskalender, dort sehen Sie sofort freie Termine, telefonisch oder per Video. Alternativ erreichen Sie uns telefonisch oder per E-Mail. Einen persönlichen Termin vor Ort sprechen wir bei Bedarf individuell ab."),
         ("Was passiert mit meinen Daten, wenn ich ein Formular ausfülle?", "Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und uns per E-Mail zugestellt. Eine gesonderte Datenbank betreiben wir nicht. Details dazu finden Sie in unserer Datenschutzerklärung."),
+        ("Was unterscheidet HEINAND von anderen Anbietern?", "Vor allem die digitale Vorgangsverwaltung und die kurzen Wege: Anliegen werden erfasst, priorisiert und schnell geklärt, statt in Papierstapeln zu verschwinden. Dazu kommt die regionale Marktkenntnis aus 7 Jahren Immobilienerfahrung in Mainz und dem Rhein-Main-Gebiet."),
+        ("Bieten Sie auch eine Kombination aus Verwaltung und Verkauf an?", "Ja. Manche Eigentümer lassen ihre Immobilie zunächst laufend verwalten und entscheiden sich später für einen Verkauf, oder umgekehrt. Beide Themen laufen bei uns aus einer Hand, mit einem festen Ansprechpartner."),
     ]
     body = f'''
 <section class="hero hero--video">
@@ -468,7 +470,7 @@ def text_field(label, placeholder="", required=True, full=False):
   <input type="{input_type}" placeholder="{placeholder}"{req_attr}>
 </div>'''
 
-def service_detail_page(slug, name, eyebrow_extra, h1, lead, features, advantages, form_heading, form_intro, form_fields_html, submit_label, form_title="Angebot anfragen", pain_points=None, detail_link=None):
+def service_detail_page(slug, name, eyebrow_extra, h1, lead, features, advantages, form_heading, form_intro, form_fields_html, submit_label, form_title="Angebot anfragen", pain_points=None, detail_link=None, faq=None):
     prefix = "../"
     own_href = f"leistungen/{slug}.html"
     is_verwaltung = own_href in [s[1] for s in SERVICES_VERWALTUNG]
@@ -494,6 +496,19 @@ def service_detail_page(slug, name, eyebrow_extra, h1, lead, features, advantage
             "Das liegt selten am einzelnen Objekt. Es liegt an einer Verwaltung, die reagiert, statt zu führen.",
             "Genau da setzen wir an.",
         )
+    faq_html = ""
+    if faq:
+        faq_html = f'''<section class="section-white">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Häufige Fragen</span>
+      <h2>Fragen zur {name}.</h2>
+    </div>
+    <div class="faq">
+      {"".join(faq_item(q, a) for q, a in faq)}
+    </div>
+  </div>
+</section>'''
 
     body = f'''
 <section class="hero hero-page">
@@ -560,6 +575,8 @@ def service_detail_page(slug, name, eyebrow_extra, h1, lead, features, advantage
   </div>
 </section>
 
+{faq_html}
+
 <section class="section-cream">
   <div class="container">
     <div class="section-head">
@@ -572,10 +589,12 @@ def service_detail_page(slug, name, eyebrow_extra, h1, lead, features, advantage
 
 {cta_banner(prefix, **cta_kwargs)}
 '''
+    own_url = DOMAIN + canonical_path(own_href)
+    extra = service_jsonld(name, lead[:250], own_url) + (faq_jsonld(faq) if faq else "")
     write(f"leistungen/{slug}.html", page(
         f"{name} Mainz: {eyebrow_extra} | HEINAND",
         lead[:155],
-        prefix, "leistungen", body, relpath=f"leistungen/{slug}.html"
+        prefix, "leistungen", body, relpath=f"leistungen/{slug}.html", extra_css=extra
     ))
 
 def build_services():
@@ -605,6 +624,13 @@ def build_services():
             ("invoice", "„Die Nebenkostenabrechnung dauert Monate.“", "Oder sie stimmt am Ende einfach nicht: Streit ist vorprogrammiert."),
             ("cash", "„Ich weiß nie, ob die Miete pünktlich kommt.“", "Ohne System verliert man schnell den Überblick über Zahlungseingänge."),
             ("wrench", "„Ein Rohrbruch - und keiner weiß, wer kommt.“", "Ohne Handwerkernetzwerk wird jeder Schaden zur Odyssee."),
+        ],
+        faq=[
+            ("Übernehmen Sie auch die Neuvermietung bei einem Mieterwechsel?", "Ja, das gehört zur Mietverwaltung dazu: von der Vermarktung über Besichtigungen und Bonitätsprüfung bis zur Übergabe an die neuen Mieter."),
+            ("Wie oft bekomme ich als Eigentümer eine Abrechnung?", "Sie erhalten die jährliche Nebenkostenabrechnung fristgerecht und haben über die digitale Vorgangsverwaltung jederzeit Einblick, was mit Ihrem Objekt passiert."),
+            ("Was passiert, wenn ein Mieter die Miete nicht zahlt?", "Wir überwachen die Zahlungseingänge und leiten bei Zahlungsverzug konsequent das Mahnwesen ein, rechtssicher und nachvollziehbar dokumentiert."),
+            ("Verwalten Sie auch nur eine einzelne vermietete Wohnung?", "Ja, die Mietverwaltung eignet sich für einzelne Wohnungen genauso wie für ein ganzes Mehrfamilienhaus oder ein Portfolio aus mehreren Objekten."),
+            ("Übernehmen Sie auch Gewerbeeinheiten in der Mietverwaltung?", "Ja, neben Wohnraum betreuen wir auch vermietete Gewerbeeinheiten kaufmännisch und technisch."),
         ]
     )
 
@@ -635,7 +661,14 @@ def build_services():
             ("invoice", "„Die Jahresabrechnung verstehe ich nicht.“", "Unklare Hausgeldabrechnungen sorgen jedes Jahr für Ärger."),
             ("mail", "„Anfragen an den Beirat verschwinden im Nichts.“", "Ohne dokumentierte Prozesse geht viel einfach unter."),
         ],
-        detail_link=("verwalterwechsel.html", "So läuft ein Verwalterwechsel ab: Schritt für Schritt")
+        detail_link=("verwalterwechsel.html", "So läuft ein Verwalterwechsel ab: Schritt für Schritt"),
+        faq=[
+            ("Wie oft findet die Eigentümerversammlung statt?", "Mindestens einmal jährlich, ordnungsgemäß einberufen, durchgeführt und protokolliert. Auf Wunsch auch hybrid mit Online-Teilnahme."),
+            ("Was ist der Unterschied zwischen Wirtschaftsplan und Jahresabrechnung?", "Der Wirtschaftsplan ist die Vorschau auf die erwarteten Kosten des kommenden Jahres, die Jahresabrechnung der nachvollziehbare Rückblick auf die tatsächlichen Ausgaben und Einnahmen."),
+            ("Kann eine WEG die Verwaltung jederzeit abberufen?", "Seit der WEG-Reform ja: Die Eigentümerversammlung kann den Verwalter mit einfacher Mehrheit jederzeit abberufen, ein wichtiger Grund ist nicht mehr nötig."),
+            ("Betreuen Sie auch kleine WEGs mit wenigen Einheiten?", "Ja, wir betreuen Gemeinschaften unterschiedlicher Größe: von kleinen WEGs mit wenigen Einheiten bis zu größeren Objekten."),
+            ("Wer haftet, wenn bei der Verwaltung ein Fehler passiert?", "Wir sind im Rahmen unserer Erlaubnis nach § 34c GewO berufshaftpflichtversichert. Details dazu finden Sie in unserem Impressum."),
+        ]
     )
 
     service_detail_page(
@@ -664,6 +697,12 @@ def build_services():
             ("apartment-unit", "„Die WEG-Verwaltung kümmert sich nicht um mein Sondereigentum.“", "Für Ihre eigene Wohnung ist meist niemand konkret zuständig."),
             ("users", "„Mieterwechsel? Ich erfahre es zu spät.“", "Ohne feste Ansprechperson vor Ort verpasst man wichtige Momente."),
             ("doc", "„Keiner vertritt meine Interessen in der Eigentümerversammlung.“", "Als Kapitalanleger sitzen Sie sonst nicht mit am Tisch."),
+        ],
+        faq=[
+            ("Was ist der Unterschied zwischen Sondereigentumsverwaltung und Mietverwaltung?", "Die Sondereigentumsverwaltung ist die Schnittstelle innerhalb einer WEG: Sie kombiniert die Mieterbetreuung Ihrer einzelnen Wohnung mit der Abstimmung gegenüber der WEG-Verwaltung des gesamten Hauses."),
+            ("Brauche ich eine Sondereigentumsverwaltung, wenn die WEG bereits verwaltet wird?", "Ja, wenn sich sonst niemand konkret um Ihre einzelne vermietete Wohnung kümmert. Die WEG-Verwaltung ist für das Gemeinschaftseigentum zuständig, nicht für Ihr Mietverhältnis."),
+            ("Vertreten Sie mich auch bei der Eigentümerversammlung?", "Ja, auf Wunsch nehmen wir mit Vollmacht an der Eigentümerversammlung teil und vertreten dort Ihre Interessen."),
+            ("Für wen lohnt sich die Sondereigentumsverwaltung besonders?", "Vor allem für Kapitalanleger, die nicht in der Region wohnen und niemanden vor Ort haben, der sich um Mieterkontakt und Abrechnung ihrer Wohnung kümmert."),
         ]
     )
 
@@ -689,7 +728,13 @@ def build_services():
         select_field("Aktueller Zustand", ["Frei / selbst genutzt", "Vermietet", "Teilweise vermietet"]) +
         select_field("Zeithorizont", ["So bald wie möglich", "In 3-6 Monaten", "Ich orientiere mich erst"]),
         "Verkaufsberatung anfragen",
-        form_title="Kostenlose Verkaufsberatung anfragen"
+        form_title="Kostenlose Verkaufsberatung anfragen",
+        faq=[
+            ("Wie ermitteln Sie den realistischen Verkaufspreis?", "Auf Basis regionaler Marktdaten, Objektzustand und Lagequalität, meist über das Vergleichswertverfahren. Keine Lockangebote, sondern eine Zahl, die am Markt auch wirklich erzielbar ist."),
+            ("Wie viele Besichtigungen sind für einen Verkauf üblich?", "Das hängt stark von Objekt und Lage ab. Durch vorqualifizierte Interessenten reduzieren wir Besichtigungstourismus und konzentrieren uns auf ernsthafte Käufer."),
+            ("Prüfen Sie die Bonität von Kaufinteressenten?", "Ja, wir prüfen Finanzierungsbestätigungen, bevor Verhandlungen ernsthaft werden, damit Sie keine Zeit mit unrealistischen Angeboten verlieren."),
+            ("Begleiten Sie auch den Notartermin?", "Ja, von der Kaufvertragsabstimmung über den Notartermin bis zum Übergabeprotokoll begleiten wir Sie bis zum letzten Schritt."),
+        ]
     )
 
     service_detail_page(
@@ -703,7 +748,7 @@ def build_services():
             ("Verkaufs- oder Halten-Empfehlung", "Wir sagen Ihnen auch, wenn Halten die bessere Option ist.", "target"),
         ],
         ["Echte regionale Marktdaten statt Online-Rechner", "Ehrliche Einschätzung ohne Verkaufsdruck", "Grundlage für Verkauf, Finanzierung oder Nachlass", "Kostenlos im Rahmen eines Erstgesprächs"],
-        "Kostenlose Werteinschätzung anfragen: in 48 Stunden beim Erstgespräch.",
+        "Kostenlose Werteinschätzung anfragen: schnell und unverbindlich im Erstgespräch.",
         "Sagen Sie uns, worum es geht: Sie erhalten eine fundierte Einschätzung auf Basis echter regionaler Marktdaten, keine Online-Rechner-Zahl.",
         select_field("Objektart", ["Eigentumswohnung", "Einfamilienhaus", "Mehrfamilienhaus", "Grundstück", "Gewerbe"]) +
         text_field("Ort / Stadtteil", "", True) +
@@ -711,7 +756,13 @@ def build_services():
         text_field("Baujahr (ca.)", "", False) +
         select_field("Anlass der Bewertung", ["Verkauf geplant", "Erbschaft / Nachlass", "Kaufpreis prüfen", "Vermögensübersicht", "Sonstiges"]),
         "Werteinschätzung anfragen",
-        form_title="Kostenlose Werteinschätzung anfragen"
+        form_title="Kostenlose Werteinschätzung anfragen",
+        faq=[
+            ("Welche Bewertungsverfahren nutzen Sie?", "Je nach Objekttyp das Vergleichswert-, Ertragswert- oder Sachwertverfahren, so wie es für Ihre Immobilie fachlich passt."),
+            ("Für welche Anlässe eignet sich eine Immobilienbewertung?", "Für einen geplanten Verkauf, eine Erbschaft, die Prüfung eines Kaufpreises oder einfach für eine aktuelle Vermögensübersicht."),
+            ("Ist die Bewertung auch ohne Verkaufsabsicht möglich?", "Ja, Sie erhalten eine fundierte Werteinschätzung auch ganz ohne Verpflichtung oder konkrete Verkaufspläne."),
+            ("Wie schnell erhalte ich das Ergebnis der Bewertung?", "Wir besprechen die erste Einschätzung zeitnah im kostenlosen Erstgespräch, abhängig davon, wie schnell uns die nötigen Eckdaten zu Ihrer Immobilie vorliegen."),
+        ]
     )
 
     service_detail_page(
@@ -739,6 +790,12 @@ def build_services():
             ("clock", "„Wartungstermine? Nie im Blick.“", "Verpasste Prüffristen bei Heizung oder Aufzug werden schnell zum Risiko."),
             ("wrench", "„Der Handwerker kommt, wenn er Zeit hat.“", "Ohne festes Netzwerk warten Sie, statt dass gehandelt wird."),
             ("doc", "„Niemand dokumentiert, was wann gemacht wurde.“", "Ohne Nachweise fehlt am Ende jede Übersicht über den Zustand."),
+        ],
+        faq=[
+            ("Wie oft führen Sie Objektbegehungen durch?", "Regelmäßig und in einem Intervall, das zu Alter und Zustand Ihres Objekts passt. Auffälligkeiten werden dabei direkt priorisiert und weiterverfolgt."),
+            ("Übernehmen Sie auch die Wartung von Heizung und Aufzug?", "Ja, wir behalten Wartungsverträge und gesetzliche Prüffristen für technische Anlagen wie Heizung, Aufzug oder Brandschutz im Blick."),
+            ("Wie wählen Sie die Handwerker aus?", "Über unser regionales Netzwerk aus geprüften Betrieben mit fairen Konditionen und kurzen Wegen zu Ihrem Objekt."),
+            ("Was passiert bei einem akuten Notfall wie einem Wasserschaden?", "Akute Gefahren werden sofort priorisiert und behandelt. Über unser Online-Formular ist der Schaden in zwei Minuten gemeldet und direkt eingestuft."),
         ]
     )
 
@@ -1233,10 +1290,16 @@ def build_ueber_uns():
 
 {cta_banner(prefix, "Sie möchten wissen, wie wir arbeiten?", "Im kostenlosen Erstgespräch zeigen wir Ihnen konkret, wie die Betreuung Ihres Objekts bei uns aussehen würde: mit Prozessen, digitaler Vorgangsverwaltung und transparenter Kostenstruktur.")}
 '''
+    person_schema = person_jsonld(
+        "Philipp Hartung", "Geschäftsführer",
+        "Geschäftsführer von HEINAND Immobilien in Mainz, Erlaubnisinhaber nach § 34c GewO als Immobilienmakler und Wohnimmobilienverwalter.",
+        f"{DOMAIN}/assets/team/philipp-hartung.jpg",
+        credential="Erlaubnis nach § 34c GewO (Immobilienmakler und Wohnimmobilienverwalter)",
+    )
     write("ueber-uns.html", page(
         "Über uns: Hausverwaltung Mainz & Rhein-Main | HEINAND",
         "7 Jahre Erfahrung in der Immobilienverwaltung in Mainz, Wiesbaden und im 35-km-Umkreis. Digitale Prozesse, schnelle Klärung, volle Transparenz.",
-        prefix, "ueber-uns", body, relpath="ueber-uns.html"
+        prefix, "ueber-uns", body, relpath="ueber-uns.html", extra_css=person_schema
     ))
 
 build_ueber_uns()
@@ -1933,6 +1996,17 @@ def build_blog_index():
         prefix, "blog", body, relpath="blog/index.html"
     ))
 
+GERMAN_MONTHS = {
+    "januar": "01", "februar": "02", "märz": "03", "april": "04", "mai": "05", "juni": "06",
+    "juli": "07", "august": "08", "september": "09", "oktober": "10", "november": "11", "dezember": "12",
+}
+
+def parse_german_date(s):
+    """Wandelt ein Datum wie '15. Juni 2026' in ISO-Format 2026-06-15 um, für datePublished."""
+    parts = s.replace(".", "").split()
+    day, month_name, year = parts[0], parts[1].lower(), parts[2]
+    return f"{year}-{GERMAN_MONTHS.get(month_name, '01')}-{int(day):02d}"
+
 def build_article(a):
     prefix = "../"
     others = [x for x in ARTICLES if x["slug"] != a["slug"]][:2]
@@ -1966,10 +2040,15 @@ def build_article(a):
 </section>
 {cta_banner(prefix)}
 '''
+    article_url = DOMAIN + canonical_path(f"blog/{a['slug']}.html")
+    article_image = f"{DOMAIN}/assets/blog/{a['slug']}.png"
+    date_iso = parse_german_date(a["date"])
     write(f"blog/{a['slug']}.html", page(
         f"{a.get('seo_title', a['title'])} | HEINAND Immobilien",
         a['teaser'],
-        prefix, "blog", body, relpath=f"blog/{a['slug']}.html"
+        prefix, "blog", body, relpath=f"blog/{a['slug']}.html",
+        extra_css=article_jsonld(a["title"], a["teaser"], date_iso, article_url, article_image),
+        og_image=article_image, og_type="article", published_time=date_iso
     ))
 
 build_blog_index()
