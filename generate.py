@@ -330,6 +330,14 @@ def build_verkauf_hub():
   </div>
 </section>
 
+<section class="section-white">
+  <div class="container" style="max-width:820px;">
+    <div class="disclaimer-box">
+      <strong>Kooperationshinweis:</strong> Für die Vermarktung eines Teils unserer Verkaufsangebote arbeiten wir mit der Weltmann GmbH zusammen. Die Zusammenarbeit beruht auf einem Handelsvertretervertrag. Weitere Informationen zur Weltmann GmbH finden Sie unter <a href="https://www.weltmann.de" target="_blank" rel="noopener">www.weltmann.de</a>.
+    </div>
+  </div>
+</section>
+
 <section class="section-cream">
   <div class="container">
     <div class="section-head center">
@@ -445,6 +453,14 @@ def build_aktuelle_angebote():
     <span class="eyebrow">Verkauf &amp; Bewertung &middot; Mainz &amp; Rhein-Main</span>
     <h1>Aktuelle Angebote.</h1>
     <p class="hero-lead">Diese Immobilien bieten wir aktuell zum Verkauf an. Für Details und Besichtigungstermine gelangen Sie über den jeweiligen Link direkt zum Inserat.</p>
+  </div>
+</section>
+
+<section class="section-white">
+  <div class="container" style="max-width:820px;">
+    <div class="disclaimer-box">
+      <strong>Kooperationshinweis:</strong> Ein Teil der hier gezeigten Angebote wird in Zusammenarbeit mit der Weltmann GmbH vermarktet. Die Zusammenarbeit beruht auf einem Handelsvertretervertrag. Weitere Informationen zur Weltmann GmbH finden Sie unter <a href="https://www.weltmann.de" target="_blank" rel="noopener">www.weltmann.de</a>.
+    </div>
   </div>
 </section>
 
