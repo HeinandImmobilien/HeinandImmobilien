@@ -1330,11 +1330,22 @@ def build_kontakt():
   <div class="container two-col">
     <div id="termin" class="form-card contact-tabs">
       <div class="tab-switch" role="tablist">
-        <button type="button" class="tab-btn active" data-tab="message" role="tab" aria-selected="true">Nachricht senden</button>
-        <button type="button" class="tab-btn" data-tab="booking" role="tab" aria-selected="false">Termin buchen</button>
+        <button type="button" class="tab-btn active" data-tab="booking" role="tab" aria-selected="true">
+          {contact_icon("clock")}
+          <span class="tab-btn-label"><strong>Termin buchen</strong><span>Freien Slot direkt wählen</span></span>
+        </button>
+        <button type="button" class="tab-btn" data-tab="message" role="tab" aria-selected="false">
+          {contact_icon("mail")}
+          <span class="tab-btn-label"><strong>Nachricht senden</strong><span>Wir melden uns bei Ihnen</span></span>
+        </button>
       </div>
 
-      <div class="tab-panel active" data-tab-panel="message">
+      <div class="tab-panel active" data-tab-panel="booking">
+        <p style="color:#5b6472;font-size:14px;margin-bottom:16px;">Buchen Sie direkt einen passenden Termin für Ihr kostenloses Erstgespräch. Im Kalender wählen Sie zwischen einem Telefontermin oder einem Videocall und sehen sofort, welche Zeiten frei sind. Die Buchung wird umgehend bestätigt. Einen persönlichen Termin vor Ort sprechen wir bei Bedarf individuell ab.</p>
+        <div id="cal-heinand-inline" class="cal-embed"></div>
+      </div>
+
+      <div class="tab-panel" data-tab-panel="message">
         <form data-contact-form data-form-name="Kontaktformular">
           <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
           <div class="form-grid">
@@ -1355,11 +1366,6 @@ def build_kontakt():
           <button type="submit" class="btn btn-primary form-submit">Nachricht senden</button>
           <p class="form-note">Mit dem Absenden erklären Sie sich mit der Verarbeitung Ihrer Daten zur Bearbeitung der Anfrage einverstanden. Details in der <a href="{prefix}datenschutz.html">Datenschutzerklärung</a>.</p>
         </form>
-      </div>
-
-      <div class="tab-panel" data-tab-panel="booking">
-        <p style="color:#5b6472;font-size:14px;margin-bottom:16px;">Buchen Sie direkt einen passenden Termin für Ihr kostenloses Erstgespräch. Im Kalender wählen Sie zwischen einem Telefontermin oder einem Videocall und sehen sofort, welche Zeiten frei sind. Die Buchung wird umgehend bestätigt. Einen persönlichen Termin vor Ort sprechen wir bei Bedarf individuell ab.</p>
-        <div id="cal-heinand-inline" class="cal-embed"></div>
       </div>
     </div>
     <div>
