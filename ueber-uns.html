@@ -49,12 +49,20 @@
   "areaServed": [
     {"@type":"City","name":"Wiesbaden"},{"@type":"City","name":"Ingelheim am Rhein"},{"@type":"City","name":"Bingen am Rhein"},{"@type":"City","name":"Alzey"},{"@type":"City","name":"Bad Kreuznach"},{"@type":"City","name":"Rüsselsheim am Main"},{"@type":"City","name":"Nieder-Olm"},{"@type":"City","name":"Frankfurt am Main"},{"@type":"City","name":"Darmstadt"},{"@type":"City","name":"Offenbach am Main"},{"@type":"City","name":"Groß-Gerau"},{"@type":"City","name":"Rüdesheim am Rhein"},{"@type":"City","name":"Eltville am Rhein"},{"@type":"City","name":"Oestrich-Winkel"},{"@type":"City","name":"Geisenheim"},{"@type":"City","name":"Idstein"},{"@type":"City","name":"Taunusstein"},{"@type":"City","name":"Hofheim am Taunus"},{"@type":"City","name":"Bad Homburg vor der Höhe"},{"@type":"City","name":"Oppenheim"},{"@type":"City","name":"Nierstein"},{"@type":"City","name":"Nackenheim"},{"@type":"City","name":"Bodenheim"},{"@type":"City","name":"Gau-Algesheim"},{"@type":"City","name":"Budenheim"},{"@type":"City","name":"Heidesheim am Rhein"},{"@type":"City","name":"Ginsheim-Gustavsburg"}
   ],
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-    "opens": "09:00",
-    "closes": "17:00"
-  }
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"],
+      "opens": "09:00",
+      "closes": "16:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Friday"],
+      "opens": "09:00",
+      "closes": "12:00"
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
@@ -135,7 +143,7 @@
             <h4>Verkauf &amp; Bewertung</h4>
             <p class="sub">Wenn sich Ihre Pläne ändern</p>
             <ul><li><a href="leistungen/immobilienverkauf.html"><strong>Immobilienverkauf</strong><span>Vom Exposé bis zum Notartermin: Verkauf mit regionaler Marktkenntnis.</span></a></li>
-<li><a href="leistungen/immobilienbewertung.html"><strong>Immobilienbewertung</strong><span>Fundierte Werteinschätzung für Verkauf, Vermietung oder Vermögensübersicht.</span></a></li></ul>
+<li><a href="leistungen/immobilienbewertung.html"><strong>Immobilienbewertung</strong><span>Fundierte Werteinschätzung für Verkauf, Vermietung oder Vermögensübersicht.</span></a></li><li><a href="leistungen/aktuelle-angebote.html"><strong>Aktuelle Angebote</strong><span>Diese Immobilien bieten wir gerade zum Verkauf an.</span></a></li></ul>
             <a href="verkauf.html" class="mega-menu-cta">Alles zum Verkauf im Überblick <span aria-hidden="true">&#8594;</span></a>
           </div>
         </div>
@@ -173,6 +181,7 @@
   <a href="verkauf.html">Übersicht Verkauf</a>
   <a href="leistungen/immobilienverkauf.html">Immobilienverkauf</a>
 <a href="leistungen/immobilienbewertung.html">Immobilienbewertung</a>
+<a href="leistungen/aktuelle-angebote.html">Aktuelle Angebote</a>
   <a href="region.html" class="">Region</a>
   <a href="ueber-uns.html" class="">Über uns</a>
   <a href="blog/index.html" class="">Ratgeber</a>
@@ -267,17 +276,62 @@
   </div>
 </section>
 
-<section class="section-white">
-  <div class="container" style="text-align:center;">
-    <h2 style="max-width:600px;margin:0 auto 24px;">Lernen Sie uns kennen: im kostenlosen Erstgespräch, telefonisch oder per Video.</h2>
-    <a href="kontakt.html" class="btn btn-primary">Erstgespräch vereinbaren</a>
+<section class="section-cream">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Warum wir mehr kosten als der Durchschnitt</span>
+      <h2>Unsere Vergütung liegt über dem Marktdurchschnitt: aus gutem Grund.</h2>
+    </div>
+    <div class="prose-block">
+      <p>Die Verwaltergebühr für WEG-Verwaltung bewegt sich 2026 typischerweise zwischen 22 und 45 € netto je Einheit und Monat, kleine Objekte und Ballungsräume liegen deutlich darüber. Wer am unteren Rand dieser Spanne anbietet, muss die Kalkulation über die Menge retten: mehr Einheiten je Mitarbeiter, weniger Zeit je Vorgang. Die Folge ist kein Charakterfehler der Branche, sondern schlichte Arithmetik: Die Erreichbarkeit leidet, Abrechnungen verspäten sich, und aus kleinen Schäden werden große, weil niemand rechtzeitig hinschaut. Der Preis, den eine Gemeinschaft am Anfang spart, taucht später an anderer Stelle wieder auf, nur größer.</p>
+
+      <h3>Unser Ansatz: erst automatisieren, dann Menschen dort einsetzen, wo sie zählen</h3>
+      <p>Rechnungseingang und Belegerfassung, Zahlungsverkehr und Bankabgleich, Dokumentenablage, Beschlusssammlung, Versammlungsorganisation und Fristenüberwachung sind bei uns durchgängig digitalisiert und weitgehend automatisiert. Diese Arbeiten erzeugen keinen Wert für Sie, sie müssen nur korrekt und pünktlich passieren, und genau dafür ist Software besser geeignet als ein Mensch. Der Effekt ist nicht, dass wir weniger arbeiten, sondern dass unsere Arbeitszeit dort ankommt, wo sie zählt: bei Ihrem Objekt, bei Ihren Handwerkern, bei Ihrem Anruf.</p>
+      <p>Dazu betreuen wir bewusst weniger Einheiten je Mitarbeiter, als es der Markt zulässt, und wachsen nur so schnell, wie wir Kapazität aufbauen. Ein Mandat, das wir nicht in zugesagter Qualität betreuen könnten, nehmen wir nicht an. Unsere Buchhaltung ist zudem zu jedem Zeitpunkt auf dem aktuellen Stand: Wir können jederzeit belastbar Auskunft über die Liquidität Ihrer Gemeinschaft geben, und die Jahresabrechnung ist kein Kraftakt, sondern ein Abschluss. Und weil Handwerkerleistungen kosten, was sie kosten, kalkulieren wir Hausgeld und Erhaltungsrücklage realistisch statt beschlussfreundlich und bezahlen marktgerecht, damit unsere Handwerker auch wirklich kommen.</p>
+
+      <h3>Was wir daraus verbindlich zusagen</h3>
+      <div class="standard-table-wrap">
+        <table class="standard-table">
+          <thead>
+            <tr><th>Leistung</th><th>Unser Standard</th><th>Marktüblich</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Jahresabrechnung</td><td>Spätestens 6 Monate nach Ende des Wirtschaftsjahres</td><td>Häufig 9 bis 18 Monate. Das WEG-Gesetz nennt keine ausdrückliche Frist, nur eine „angemessene".</td></tr>
+            <tr><td>Eigentümerversammlung</td><td>Einberufung zeitnah nach Fertigstellung der Jahresabrechnung</td><td>Gesetzlich nur „mindestens einmal im Jahr" (§ 24 Abs. 1 WEG)</td></tr>
+            <tr><td>Buchhaltung</td><td>Tagesaktuell gebucht: wir sind jederzeit auskunftsfähig</td><td>Stapelverarbeitung, belastbare Zahlen oft erst zum Jahresabschluss</td></tr>
+            <tr><td>Telefonische Erreichbarkeit</td><td>Mo-Do 9-16 Uhr, Fr 9-12 Uhr, persönlich mit festem Ansprechpartner</td><td>Enge Sprechzeiten, Anrufbeantworter, Rückruf ungewiss</td></tr>
+            <tr><td>Schriftliche Anfragen</td><td>Schnelle, persönliche Rückmeldung statt automatisierter Warteschleife</td><td>Unverbindlich</td></tr>
+            <tr><td>Schadensmeldung</td><td>Online-Meldung in 2 Minuten, Aufnahme am selben Werktag, Priorisierung in akut, dringend oder regulär</td><td>Bearbeitung nach freier Kapazität</td></tr>
+            <tr><td>Objektbegehung</td><td>Einmal jährlich dokumentiert mit Maßnahmen- und Budgetplan, zusätzlich anlassbezogen</td><td>Meist nur anlassbezogen, also erst nach dem Schaden</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Die Rechnung, die selten aufgemacht wird</h3>
+      <p>Die Verwaltergebühr ist der am leichtesten vergleichbare und zugleich kleinste Kostenblock einer Eigentümergemeinschaft. Verglichen wird sie trotzdem am härtesten. Ein Beispiel, was auf der anderen Seite steht:</p>
+      <div class="value-stats">
+        <div class="value-stat"><div class="num">+144 €</div><div class="label">Mehrpreis je Einheit und Jahr gegenüber einem Billiganbieter (Annahme: 12 € netto je Einheit/Monat)</div></div>
+        <div class="value-stat"><div class="num">+2.880 €</div><div class="label">Bei einer Gemeinschaft mit 20 Einheiten pro Jahr</div></div>
+        <div class="value-stat highlight"><div class="num">15.000 €+</div><div class="label">Kosten eines einzigen zu spät erkannten Wasserschadens im Dachbereich</div></div>
+        <div class="value-stat highlight"><div class="num">oft fünfstellig</div><div class="label">Sonderumlage wegen zu niedrig kalkulierter Rücklage</div></div>
+      </div>
+      <p style="margin-top:24px;">Die Verwaltergebühr ist der kleinste Posten, und der mit dem größten Hebel. Unsere Vergütung liegt, abhängig von Objektgröße, Lage, Einheitenzahl und Aufwand, zwischen 27 und 55 € netto je Einheit und Monat. Wir kalkulieren jedes Objekt einzeln, weil pauschale Preise entweder den kleinen Gemeinschaften schaden oder uns. Was Sie nicht bekommen, ist ein Kampfpreis, der später über Sondervergütungen wieder eingesammelt wird.</p>
+
+      <h3>Für Kapitalanleger und Vermieter</h3>
+      <p>In der Sondereigentumsverwaltung wirkt dasselbe Prinzip direkt auf Ihre Rendite. Tagesaktuelle Mietbuchhaltung heißt: Ein Zahlungsrückstand fällt in Tagen auf, nicht in Monaten, und das Mahnwesen läuft, bevor daraus ein Räumungsverfahren wird. Betriebskostenabrechnungen erstellen wir innerhalb der zwölfmonatigen Ausschlussfrist des § 556 Abs. 3 BGB, wer sie reißt, kann Nachforderungen endgültig nicht mehr geltend machen.</p>
+
+      <p class="prose-lead-out"><strong>Qualität in der Verwaltung ist kein Versprechen, sondern eine Kalkulationsfrage.</strong> Wer eine Verwaltung nach dem niedrigsten Preis auswählt, kauft eine Kalkulation, die Erreichbarkeit, Pünktlichkeit und Vorausschau nicht enthalten kann. Wir haben uns bewusst anders aufgestellt: automatisierte Administration, begrenzte Auslastung, tagesaktuelle Zahlen, marktgerechte Preise.</p>
+      <p style="text-align:center;margin-top:8px;">
+        <a href="assets/downloads/whitepaper-hausverwaltung.pdf" class="btn btn-outline-navy" target="_blank" rel="noopener">Positionspapier als PDF herunterladen <span aria-hidden="true">&#8595;</span></a>
+      </p>
+    </div>
   </div>
 </section>
 
 <section class="cta-banner">
   <div class="container">
     <div class="mark"><img src="assets/mark-gold.png" alt="" width="64" height="64" class="mark-img" loading="lazy"></div>
-    <h2>Sie möchten wissen, wie wir arbeiten?</h2>
+    <h2>Lernen Sie uns kennen: im kostenlosen Erstgespräch.</h2>
     <p style="color:rgba(255,255,255,0.78);max-width:560px;margin:0 auto 30px;">Im kostenlosen Erstgespräch zeigen wir Ihnen konkret, wie die Betreuung Ihres Objekts bei uns aussehen würde: mit Prozessen, digitaler Vorgangsverwaltung und transparenter Kostenstruktur.</p>
     <div class="cta-row">
       <a href="kontakt.html" class="btn btn-primary">Kostenloses Erstgespräch anfragen <span aria-hidden="true">&#8594;</span></a>
@@ -306,7 +360,8 @@
         <h5>Verkauf</h5>
         <ul><li><a href="verkauf.html">Übersicht Verkauf</a></li>
 <li><a href="leistungen/immobilienverkauf.html">Immobilienverkauf</a></li>
-<li><a href="leistungen/immobilienbewertung.html">Immobilienbewertung</a></li></ul>
+<li><a href="leistungen/immobilienbewertung.html">Immobilienbewertung</a></li>
+<li><a href="leistungen/aktuelle-angebote.html">Aktuelle Angebote</a></li></ul>
       </div>
       <div class="footer-col">
         <h5>Unternehmen</h5>

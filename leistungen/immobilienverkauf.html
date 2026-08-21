@@ -49,12 +49,20 @@
   "areaServed": [
     {"@type":"City","name":"Wiesbaden"},{"@type":"City","name":"Ingelheim am Rhein"},{"@type":"City","name":"Bingen am Rhein"},{"@type":"City","name":"Alzey"},{"@type":"City","name":"Bad Kreuznach"},{"@type":"City","name":"Rüsselsheim am Main"},{"@type":"City","name":"Nieder-Olm"},{"@type":"City","name":"Frankfurt am Main"},{"@type":"City","name":"Darmstadt"},{"@type":"City","name":"Offenbach am Main"},{"@type":"City","name":"Groß-Gerau"},{"@type":"City","name":"Rüdesheim am Rhein"},{"@type":"City","name":"Eltville am Rhein"},{"@type":"City","name":"Oestrich-Winkel"},{"@type":"City","name":"Geisenheim"},{"@type":"City","name":"Idstein"},{"@type":"City","name":"Taunusstein"},{"@type":"City","name":"Hofheim am Taunus"},{"@type":"City","name":"Bad Homburg vor der Höhe"},{"@type":"City","name":"Oppenheim"},{"@type":"City","name":"Nierstein"},{"@type":"City","name":"Nackenheim"},{"@type":"City","name":"Bodenheim"},{"@type":"City","name":"Gau-Algesheim"},{"@type":"City","name":"Budenheim"},{"@type":"City","name":"Heidesheim am Rhein"},{"@type":"City","name":"Ginsheim-Gustavsburg"}
   ],
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-    "opens": "09:00",
-    "closes": "17:00"
-  }
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"],
+      "opens": "09:00",
+      "closes": "16:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Friday"],
+      "opens": "09:00",
+      "closes": "12:00"
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
@@ -179,7 +187,7 @@
             <h4>Verkauf &amp; Bewertung</h4>
             <p class="sub">Wenn sich Ihre Pläne ändern</p>
             <ul><li><a href="../leistungen/immobilienverkauf.html"><strong>Immobilienverkauf</strong><span>Vom Exposé bis zum Notartermin: Verkauf mit regionaler Marktkenntnis.</span></a></li>
-<li><a href="../leistungen/immobilienbewertung.html"><strong>Immobilienbewertung</strong><span>Fundierte Werteinschätzung für Verkauf, Vermietung oder Vermögensübersicht.</span></a></li></ul>
+<li><a href="../leistungen/immobilienbewertung.html"><strong>Immobilienbewertung</strong><span>Fundierte Werteinschätzung für Verkauf, Vermietung oder Vermögensübersicht.</span></a></li><li><a href="../leistungen/aktuelle-angebote.html"><strong>Aktuelle Angebote</strong><span>Diese Immobilien bieten wir gerade zum Verkauf an.</span></a></li></ul>
             <a href="../verkauf.html" class="mega-menu-cta">Alles zum Verkauf im Überblick <span aria-hidden="true">&#8594;</span></a>
           </div>
         </div>
@@ -217,6 +225,7 @@
   <a href="../verkauf.html">Übersicht Verkauf</a>
   <a href="../leistungen/immobilienverkauf.html">Immobilienverkauf</a>
 <a href="../leistungen/immobilienbewertung.html">Immobilienbewertung</a>
+<a href="../leistungen/aktuelle-angebote.html">Aktuelle Angebote</a>
   <a href="../region.html" class="">Region</a>
   <a href="../ueber-uns.html" class="">Über uns</a>
   <a href="../blog/index.html" class="">Ratgeber</a>
@@ -259,7 +268,7 @@
       <ul class="process-list" style="margin-top:24px;">
         <li><div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L10 17l-5-5"/></svg></div><span>Verwalter-Perspektive: Wir kennen Objekte von innen</span></li><li><div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L10 17l-5-5"/></svg></div><span>Regionales Netzwerk aus Käufern und Kapitalanlegern</span></li><li><div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L10 17l-5-5"/></svg></div><span>Diskreter Verkauf ohne öffentliche Vermarktung möglich</span></li><li><div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L10 17l-5-5"/></svg></div><span>Klare Kommunikation über jeden Schritt</span></li>
       </ul>
-      
+      <a href="aktuelle-angebote.html" class="btn btn-outline-navy" style="margin-top:18px;">Aktuelle Angebote ansehen</a>
     </div>
     <div id="anfrage" class="form-card">
       <span class="eyebrow">In 2 Minuten angefragt</span>
@@ -394,7 +403,8 @@
         <h5>Verkauf</h5>
         <ul><li><a href="../verkauf.html">Übersicht Verkauf</a></li>
 <li><a href="../leistungen/immobilienverkauf.html">Immobilienverkauf</a></li>
-<li><a href="../leistungen/immobilienbewertung.html">Immobilienbewertung</a></li></ul>
+<li><a href="../leistungen/immobilienbewertung.html">Immobilienbewertung</a></li>
+<li><a href="../leistungen/aktuelle-angebote.html">Aktuelle Angebote</a></li></ul>
       </div>
       <div class="footer-col">
         <h5>Unternehmen</h5>

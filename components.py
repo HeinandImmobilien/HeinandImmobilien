@@ -67,6 +67,7 @@ FOOTER_VERKAUF = [
     ("Übersicht Verkauf", "verkauf.html"),
     ("Immobilienverkauf", "leistungen/immobilienverkauf.html"),
     ("Immobilienbewertung", "leistungen/immobilienbewertung.html"),
+    ("Aktuelle Angebote", "leistungen/aktuelle-angebote.html"),
 ]
 FOOTER_UNTERNEHMEN = [
     ("Über uns", "ueber-uns.html"),
@@ -74,6 +75,27 @@ FOOTER_UNTERNEHMEN = [
     ("Ratgeber", "blog/index.html"),
     ("Schaden melden", "schadensmeldung.html"),
     ("Kontakt", "kontakt.html"),
+]
+
+# --------------------------------------------------------------------------
+# Aktuelle Angebote (Verkaufsinserate): Um ein neues Angebot zu ergänzen,
+# einfach einen weiteren dict-Eintrag unten anfügen. Pflichtfelder sind
+# title, location, portal und url (der Link zum Inserat, z. B. auf
+# ImmoScout24, Immowelt oder eBay Kleinanzeigen). Alle anderen Felder sind
+# optional und können weggelassen bzw. auf None gesetzt werden:
+#   type          Objektart, z. B. "Eigentumswohnung"
+#   facts         kurze Eckdaten, z. B. "3 Zimmer · 78 m² · Baujahr 1998"
+#   price         Kaufpreis als Text, z. B. "349.000 €" (None = wird nicht angezeigt)
+#   status        "aktiv" (Standard), "reserviert" oder "verkauft"
+#   expose_pdf    Pfad zu einer PDF im assets-Ordner, z. B. "assets/expose/beispiel.pdf"
+#   image         Pfad zu einem Titelbild, z. B. "assets/listings/beispiel.jpg"
+# Beispiel:
+# dict(title="3-Zimmer-Wohnung in Mainz-Neustadt", location="Mainz-Neustadt",
+#      type="Eigentumswohnung", facts="3 Zimmer · 78 m² · Baujahr 1998",
+#      price="349.000 €", status="aktiv", portal="ImmoScout24",
+#      url="https://www.immobilienscout24.de/expose/...",
+#      expose_pdf="assets/expose/mainz-neustadt-3zi.pdf", image=None),
+LISTINGS = [
 ]
 
 # --------------------------------------------------------------------------
@@ -399,12 +421,20 @@ def local_business_jsonld(prefix):
   "areaServed": [
     {",".join(f'{{"@type":"City","name":"{l["name"]}"}}' for l in LOCATIONS)}
   ],
-  "openingHoursSpecification": {{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-    "opens": "09:00",
-    "closes": "17:00"
-  }}
+  "openingHoursSpecification": [
+    {{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"],
+      "opens": "09:00",
+      "closes": "16:00"
+    }},
+    {{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Friday"],
+      "opens": "09:00",
+      "closes": "12:00"
+    }}
+  ]
 }}
 </script>'''
 
@@ -493,14 +523,14 @@ def header(prefix, active=""):
     mega_items_verkauf = "\n".join(
         f'''<li><a href="{prefix}{href}"><strong>{name}</strong><span>{desc}</span></a></li>'''
         for name, href, desc in SERVICES_VERKAUF
-    )
+    ) + f'''<li><a href="{prefix}leistungen/aktuelle-angebote.html"><strong>Aktuelle Angebote</strong><span>Diese Immobilien bieten wir gerade zum Verkauf an.</span></a></li>'''
 
     mobile_links_verwaltung = "\n".join(
         f'<a href="{prefix}{href}">{name}</a>' for name, href, _ in SERVICES_VERWALTUNG
     )
     mobile_links_verkauf = "\n".join(
         f'<a href="{prefix}{href}">{name}</a>' for name, href, _ in SERVICES_VERKAUF
-    )
+    ) + f'\n<a href="{prefix}leistungen/aktuelle-angebote.html">Aktuelle Angebote</a>'
 
     return f'''<div class="topbar">
   <div class="container">
@@ -711,6 +741,8 @@ ICONS = {
     "tag": '<path d="M11 3h6a2 2 0 0 1 2 2v6l-9 9-8-8z"/><circle cx="15.5" cy="7.5" r="1.3" fill="currentColor" stroke="none"/>',
     "doc-trend": '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M9.2 15.3l2.2-2.6 1.8 1.7 2.6-3.4"/>',
     "user": '<circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/>',
+    "external-link": '<path d="M14 4h6v6"/><path d="M20 4L10 14"/><path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"/>',
+    "download": '<path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 19h14"/>',
 }
 
 def icon(name):

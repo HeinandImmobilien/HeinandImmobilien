@@ -548,6 +548,76 @@ section { padding: 88px 0; }
 .path-card-list li { font-size: 14px; color: var(--navy-soft); display: flex; align-items: flex-start; gap: 8px; }
 .path-card .btn { align-self: flex-start; }
 
+/* Aktuelle Angebote (Verkaufsinserate) */
+.listings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.listing-card {
+  background: var(--white);
+  border: 1px solid rgba(15,48,99,0.08);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+.listing-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-2px); }
+.listing-card-media {
+  position: relative;
+  height: 180px;
+  background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+}
+.listing-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.listing-media-fallback {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.35);
+}
+.listing-media-fallback svg { width: 44px; height: 44px; }
+.listing-badge {
+  position: absolute; top: 14px; right: 14px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: var(--gold);
+  color: var(--white);
+}
+.listing-badge-reserviert { background: var(--navy-soft); }
+.listing-badge-verkauft { background: #6b7280; }
+.listing-card-body { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
+.listing-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.listing-type {
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--gold);
+}
+.listing-portal { font-size: 12px; color: #9aa1ad; font-weight: 600; }
+.listing-card h3 { font-size: 18px; margin-bottom: 6px; }
+.listing-location { font-size: 14px; color: #5b6472; margin-bottom: 8px; }
+.listing-facts { font-size: 13.5px; color: #5b6472; margin-bottom: 10px; }
+.listing-price { font-size: 20px; font-weight: 800; color: var(--navy-deep); font-family: var(--font-heading); margin-bottom: 18px; }
+.listing-card-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+.listing-card-actions .btn { padding: 10px 18px; font-size: 13.5px; }
+.btn-ic { display: inline-flex; }
+
+.listings-empty {
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 56px 24px;
+  color: #5b6472;
+}
+.listings-empty svg { width: 44px; height: 44px; color: var(--gold); margin-bottom: 18px; }
+.listings-empty h3 { color: var(--navy-deep); margin-bottom: 10px; }
+.listings-empty p { margin-bottom: 24px; }
+
+@media (max-width: 960px) {
+  .listings-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .listings-grid { grid-template-columns: 1fr; }
+}
+
 /* Painpoint-Sektion ("Kennen Sie das?") */
 .painpoints-grid {
   display: grid;
@@ -606,6 +676,43 @@ section { padding: 88px 0; }
   margin-top: 28px;
   padding-top: 24px;
   border-top: 1px solid rgba(15, 48, 99, 0.12);
+}
+
+/* Standards-Vergleichstabelle (Über uns: Vergütung) */
+.standard-table-wrap { max-width: 900px; margin: 0 auto; overflow-x: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-card); }
+.standard-table { width: 100%; border-collapse: collapse; background: var(--white); font-size: 14.5px; }
+.standard-table th {
+  background: var(--navy-deep);
+  color: var(--white);
+  text-align: left;
+  padding: 14px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.standard-table td { padding: 16px 18px; vertical-align: top; border-bottom: 1px solid rgba(15,48,99,0.08); }
+.standard-table tr:last-child td { border-bottom: none; }
+.standard-table tr:nth-child(even) td { background: var(--cream); }
+.standard-table td:first-child { font-weight: 700; color: var(--navy-deep); width: 22%; }
+.standard-table td:nth-child(2) { color: var(--navy-soft); width: 39%; }
+.standard-table td:nth-child(3) { color: #8a92a3; width: 39%; }
+
+.value-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 900px; margin: 32px auto 0; }
+.value-stat {
+  background: var(--cream);
+  border-radius: var(--radius-sm);
+  padding: 18px 16px;
+  text-align: center;
+}
+.value-stat .num { font-family: var(--font-heading); font-size: 20px; font-weight: 800; color: var(--navy-deep); margin-bottom: 4px; }
+.value-stat .label { font-size: 12.5px; color: #5b6472; line-height: 1.4; }
+.value-stat.highlight { background: var(--navy-deep); }
+.value-stat.highlight .num, .value-stat.highlight .label { color: var(--white); }
+
+@media (max-width: 720px) {
+  .standard-table { font-size: 13px; }
+  .standard-table td, .standard-table th { padding: 12px 14px; }
+  .value-stats { grid-template-columns: 1fr 1fr; }
 }
 
 /* Why cards (4-col feature list) */

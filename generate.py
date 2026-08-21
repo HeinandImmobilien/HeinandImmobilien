@@ -5,7 +5,7 @@ from components import (
     ROOT, head, header, footer, cta_banner, hero_video_html, icon, feature_icon, contact_icon, path_icon,
     mark_svg, mark_img, PHONE, PHONE_TEL, EMAIL, SERVICES_VERWALTUNG, SERVICES_VERKAUF,
     LOCATIONS, location_map_html, LEAFLET_CDN, DOMAIN, canonical_path, faq_jsonld, location_search_widget,
-    painpoints_section, service_jsonld, article_jsonld, person_jsonld,
+    painpoints_section, service_jsonld, article_jsonld, person_jsonld, LISTINGS,
 )
 
 def write(relpath, content):
@@ -339,6 +339,9 @@ def build_verkauf_hub():
     <div class="cards-grid">
       {"".join(service_card(prefix, n, h, d, ic) for (n, h, d), ic in zip(SERVICES_VERKAUF, ["tag", "doc-trend"]))}
     </div>
+    <p style="text-align:center;margin-top:28px;">
+      <a href="{prefix}leistungen/aktuelle-angebote.html" class="btn btn-outline-navy">Aktuelle Angebote ansehen <span aria-hidden="true">&rarr;</span></a>
+    </p>
   </div>
 </section>
 
@@ -375,6 +378,88 @@ def build_verkauf_hub():
         "Immobilienverkauf & Bewertung Mainz | HEINAND",
         "Immobilie verkaufen in Mainz & Rhein-Main: kostenlose Werteinschätzung, Exposé bis Notartermin. Regionale Marktkenntnis, diskret möglich.",
         prefix, "", body, relpath="verkauf.html", extra_css=faq_jsonld(faq)
+    ))
+
+# ==========================================================================
+# AKTUELLE ANGEBOTE (Verkaufsinserate)
+# ==========================================================================
+
+def listing_card(prefix, l):
+    status = l.get("status", "aktiv")
+    status_labels = {"aktiv": "Verfügbar", "reserviert": "Reserviert", "verkauft": "Verkauft"}
+    status_label = status_labels.get(status, "Verfügbar")
+    price_html = f'<div class="listing-price">{l["price"]}</div>' if l.get("price") else ""
+    facts_html = f'<p class="listing-facts">{l["facts"]}</p>' if l.get("facts") else ""
+    type_html = f'<span class="listing-type">{l["type"]}</span>' if l.get("type") else ""
+    if l.get("image"):
+        media_html = f'<img src="{prefix}{l["image"]}" alt="{l["title"]}" loading="lazy">'
+    else:
+        media_html = f'<div class="listing-media-fallback">{ICONS_HOME}</div>'
+    expose_html = ""
+    if l.get("expose_pdf"):
+        expose_html = f'''<a href="{prefix}{l["expose_pdf"]}" class="btn btn-outline-navy" target="_blank" rel="noopener">Exposé (PDF) <span class="btn-ic">{ICONS_DOWNLOAD}</span></a>'''
+    return f'''<div class="listing-card">
+  <div class="listing-card-media">{media_html}<span class="listing-badge listing-badge-{status}">{status_label}</span></div>
+  <div class="listing-card-body">
+    <div class="listing-card-top">{type_html}<span class="listing-portal">{l["portal"]}</span></div>
+    <h3>{l["title"]}</h3>
+    <p class="listing-location">{l["location"]}</p>
+    {facts_html}
+    {price_html}
+    <div class="listing-card-actions">
+      <a href="{l["url"]}" class="btn btn-navy" target="_blank" rel="noopener">Zum Inserat <span class="btn-ic">{ICONS_EXTERNAL}</span></a>
+      {expose_html}
+    </div>
+  </div>
+</div>'''
+
+ICONS_EXTERNAL = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4L10 14"/><path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"/></svg>'
+ICONS_DOWNLOAD = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 19h14"/></svg>'
+ICONS_HOME = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg>'
+
+def build_aktuelle_angebote():
+    prefix = "../"
+    if LISTINGS:
+        grid_html = f'<div class="listings-grid">{"".join(listing_card(prefix, l) for l in LISTINGS)}</div>'
+        import json as _json
+        item_list = {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": i + 1, "name": l["title"], "url": l["url"]}
+                for i, l in enumerate(LISTINGS)
+            ],
+        }
+        listings_jsonld = f'<script type="application/ld+json">\n{_json.dumps(item_list, ensure_ascii=False, indent=2)}\n</script>'
+    else:
+        grid_html = f'''<div class="listings-empty">
+  {ICONS_HOME}
+  <h3>Aktuell keine Angebote gelistet</h3>
+  <p>Sobald wir eine Immobilie zum Verkauf anbieten, erscheint sie hier mit Link zum Inserat. Sie möchten verkaufen? Wir freuen uns über Ihre Anfrage.</p>
+  <a href="immobilienverkauf.html" class="btn btn-navy">Kostenlose Werteinschätzung anfragen <span aria-hidden="true">&#8594;</span></a>
+</div>'''
+        listings_jsonld = ""
+    body = f'''
+<section class="hero hero-page">
+  <div class="container hero-inner">
+    <span class="eyebrow">Verkauf &amp; Bewertung &middot; Mainz &amp; Rhein-Main</span>
+    <h1>Aktuelle Angebote.</h1>
+    <p class="hero-lead">Diese Immobilien bieten wir aktuell zum Verkauf an. Für Details und Besichtigungstermine gelangen Sie über den jeweiligen Link direkt zum Inserat.</p>
+  </div>
+</section>
+
+<section class="section-cream">
+  <div class="container">
+    {grid_html}
+  </div>
+</section>
+
+{cta_banner(prefix, "Was ist Ihre Immobilie wert? Lassen Sie es uns unverbindlich besprechen.", "Im kostenlosen Erstgespräch lernen wir uns kennen und besprechen Ihre Situation und Ihre Pläne: ohne Verkaufsdruck und ohne Kleingedrucktes.")}
+'''
+    write("leistungen/aktuelle-angebote.html", page(
+        "Aktuelle Angebote: Immobilien zum Verkauf | HEINAND",
+        "Aktuelle Immobilienangebote von HEINAND in Mainz & Rhein-Main. Direkt zum Inserat auf ImmoScout24, Immowelt & Co, inklusive Exposé.",
+        prefix, "", body, relpath="leistungen/aktuelle-angebote.html", extra_css=listings_jsonld
     ))
 
 # ==========================================================================
@@ -734,7 +819,8 @@ def build_services():
             ("Wie viele Besichtigungen sind für einen Verkauf üblich?", "Das hängt stark von Objekt und Lage ab. Durch vorqualifizierte Interessenten reduzieren wir Besichtigungstourismus und konzentrieren uns auf ernsthafte Käufer."),
             ("Prüfen Sie die Bonität von Kaufinteressenten?", "Ja, wir prüfen Finanzierungsbestätigungen, bevor Verhandlungen ernsthaft werden, damit Sie keine Zeit mit unrealistischen Angeboten verlieren."),
             ("Begleiten Sie auch den Notartermin?", "Ja, von der Kaufvertragsabstimmung über den Notartermin bis zum Übergabeprotokoll begleiten wir Sie bis zum letzten Schritt."),
-        ]
+        ],
+        detail_link=("aktuelle-angebote.html", "Aktuelle Angebote ansehen")
     )
 
     service_detail_page(
@@ -981,6 +1067,7 @@ def build_verwalterwechsel():
 
 build_hausverwaltung_hub()
 build_verkauf_hub()
+build_aktuelle_angebote()
 build_leistungen_index()
 build_services()
 build_verwalterwechsel()
@@ -1281,14 +1368,59 @@ def build_ueber_uns():
   </div>
 </section>
 
-<section class="section-white">
-  <div class="container" style="text-align:center;">
-    <h2 style="max-width:600px;margin:0 auto 24px;">Lernen Sie uns kennen: im kostenlosen Erstgespräch, telefonisch oder per Video.</h2>
-    <a href="{prefix}kontakt.html" class="btn btn-primary">Erstgespräch vereinbaren</a>
+<section class="section-cream">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Warum wir mehr kosten als der Durchschnitt</span>
+      <h2>Unsere Vergütung liegt über dem Marktdurchschnitt: aus gutem Grund.</h2>
+    </div>
+    <div class="prose-block">
+      <p>Die Verwaltergebühr für WEG-Verwaltung bewegt sich 2026 typischerweise zwischen 22 und 45 € netto je Einheit und Monat, kleine Objekte und Ballungsräume liegen deutlich darüber. Wer am unteren Rand dieser Spanne anbietet, muss die Kalkulation über die Menge retten: mehr Einheiten je Mitarbeiter, weniger Zeit je Vorgang. Die Folge ist kein Charakterfehler der Branche, sondern schlichte Arithmetik: Die Erreichbarkeit leidet, Abrechnungen verspäten sich, und aus kleinen Schäden werden große, weil niemand rechtzeitig hinschaut. Der Preis, den eine Gemeinschaft am Anfang spart, taucht später an anderer Stelle wieder auf, nur größer.</p>
+
+      <h3>Unser Ansatz: erst automatisieren, dann Menschen dort einsetzen, wo sie zählen</h3>
+      <p>Rechnungseingang und Belegerfassung, Zahlungsverkehr und Bankabgleich, Dokumentenablage, Beschlusssammlung, Versammlungsorganisation und Fristenüberwachung sind bei uns durchgängig digitalisiert und weitgehend automatisiert. Diese Arbeiten erzeugen keinen Wert für Sie, sie müssen nur korrekt und pünktlich passieren, und genau dafür ist Software besser geeignet als ein Mensch. Der Effekt ist nicht, dass wir weniger arbeiten, sondern dass unsere Arbeitszeit dort ankommt, wo sie zählt: bei Ihrem Objekt, bei Ihren Handwerkern, bei Ihrem Anruf.</p>
+      <p>Dazu betreuen wir bewusst weniger Einheiten je Mitarbeiter, als es der Markt zulässt, und wachsen nur so schnell, wie wir Kapazität aufbauen. Ein Mandat, das wir nicht in zugesagter Qualität betreuen könnten, nehmen wir nicht an. Unsere Buchhaltung ist zudem zu jedem Zeitpunkt auf dem aktuellen Stand: Wir können jederzeit belastbar Auskunft über die Liquidität Ihrer Gemeinschaft geben, und die Jahresabrechnung ist kein Kraftakt, sondern ein Abschluss. Und weil Handwerkerleistungen kosten, was sie kosten, kalkulieren wir Hausgeld und Erhaltungsrücklage realistisch statt beschlussfreundlich und bezahlen marktgerecht, damit unsere Handwerker auch wirklich kommen.</p>
+
+      <h3>Was wir daraus verbindlich zusagen</h3>
+      <div class="standard-table-wrap">
+        <table class="standard-table">
+          <thead>
+            <tr><th>Leistung</th><th>Unser Standard</th><th>Marktüblich</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Jahresabrechnung</td><td>Spätestens 6 Monate nach Ende des Wirtschaftsjahres</td><td>Häufig 9 bis 18 Monate. Das WEG-Gesetz nennt keine ausdrückliche Frist, nur eine „angemessene".</td></tr>
+            <tr><td>Eigentümerversammlung</td><td>Einberufung zeitnah nach Fertigstellung der Jahresabrechnung</td><td>Gesetzlich nur „mindestens einmal im Jahr" (§ 24 Abs. 1 WEG)</td></tr>
+            <tr><td>Buchhaltung</td><td>Tagesaktuell gebucht: wir sind jederzeit auskunftsfähig</td><td>Stapelverarbeitung, belastbare Zahlen oft erst zum Jahresabschluss</td></tr>
+            <tr><td>Telefonische Erreichbarkeit</td><td>Mo-Do 9-16 Uhr, Fr 9-12 Uhr, persönlich mit festem Ansprechpartner</td><td>Enge Sprechzeiten, Anrufbeantworter, Rückruf ungewiss</td></tr>
+            <tr><td>Schriftliche Anfragen</td><td>Schnelle, persönliche Rückmeldung statt automatisierter Warteschleife</td><td>Unverbindlich</td></tr>
+            <tr><td>Schadensmeldung</td><td>Online-Meldung in 2 Minuten, Aufnahme am selben Werktag, Priorisierung in akut, dringend oder regulär</td><td>Bearbeitung nach freier Kapazität</td></tr>
+            <tr><td>Objektbegehung</td><td>Einmal jährlich dokumentiert mit Maßnahmen- und Budgetplan, zusätzlich anlassbezogen</td><td>Meist nur anlassbezogen, also erst nach dem Schaden</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Die Rechnung, die selten aufgemacht wird</h3>
+      <p>Die Verwaltergebühr ist der am leichtesten vergleichbare und zugleich kleinste Kostenblock einer Eigentümergemeinschaft. Verglichen wird sie trotzdem am härtesten. Ein Beispiel, was auf der anderen Seite steht:</p>
+      <div class="value-stats">
+        <div class="value-stat"><div class="num">+144 €</div><div class="label">Mehrpreis je Einheit und Jahr gegenüber einem Billiganbieter (Annahme: 12 € netto je Einheit/Monat)</div></div>
+        <div class="value-stat"><div class="num">+2.880 €</div><div class="label">Bei einer Gemeinschaft mit 20 Einheiten pro Jahr</div></div>
+        <div class="value-stat highlight"><div class="num">15.000 €+</div><div class="label">Kosten eines einzigen zu spät erkannten Wasserschadens im Dachbereich</div></div>
+        <div class="value-stat highlight"><div class="num">oft fünfstellig</div><div class="label">Sonderumlage wegen zu niedrig kalkulierter Rücklage</div></div>
+      </div>
+      <p style="margin-top:24px;">Die Verwaltergebühr ist der kleinste Posten, und der mit dem größten Hebel. Unsere Vergütung liegt, abhängig von Objektgröße, Lage, Einheitenzahl und Aufwand, zwischen 27 und 55 € netto je Einheit und Monat. Wir kalkulieren jedes Objekt einzeln, weil pauschale Preise entweder den kleinen Gemeinschaften schaden oder uns. Was Sie nicht bekommen, ist ein Kampfpreis, der später über Sondervergütungen wieder eingesammelt wird.</p>
+
+      <h3>Für Kapitalanleger und Vermieter</h3>
+      <p>In der Sondereigentumsverwaltung wirkt dasselbe Prinzip direkt auf Ihre Rendite. Tagesaktuelle Mietbuchhaltung heißt: Ein Zahlungsrückstand fällt in Tagen auf, nicht in Monaten, und das Mahnwesen läuft, bevor daraus ein Räumungsverfahren wird. Betriebskostenabrechnungen erstellen wir innerhalb der zwölfmonatigen Ausschlussfrist des § 556 Abs. 3 BGB, wer sie reißt, kann Nachforderungen endgültig nicht mehr geltend machen.</p>
+
+      <p class="prose-lead-out"><strong>Qualität in der Verwaltung ist kein Versprechen, sondern eine Kalkulationsfrage.</strong> Wer eine Verwaltung nach dem niedrigsten Preis auswählt, kauft eine Kalkulation, die Erreichbarkeit, Pünktlichkeit und Vorausschau nicht enthalten kann. Wir haben uns bewusst anders aufgestellt: automatisierte Administration, begrenzte Auslastung, tagesaktuelle Zahlen, marktgerechte Preise.</p>
+      <p style="text-align:center;margin-top:8px;">
+        <a href="{prefix}assets/downloads/whitepaper-hausverwaltung.pdf" class="btn btn-outline-navy" target="_blank" rel="noopener">Positionspapier als PDF herunterladen <span aria-hidden="true">&#8595;</span></a>
+      </p>
+    </div>
   </div>
 </section>
 
-{cta_banner(prefix, "Sie möchten wissen, wie wir arbeiten?", "Im kostenlosen Erstgespräch zeigen wir Ihnen konkret, wie die Betreuung Ihres Objekts bei uns aussehen würde: mit Prozessen, digitaler Vorgangsverwaltung und transparenter Kostenstruktur.")}
+{cta_banner(prefix, "Lernen Sie uns kennen: im kostenlosen Erstgespräch.", "Im kostenlosen Erstgespräch zeigen wir Ihnen konkret, wie die Betreuung Ihres Objekts bei uns aussehen würde: mit Prozessen, digitaler Vorgangsverwaltung und transparenter Kostenstruktur.")}
 '''
     person_schema = person_jsonld(
         "Philipp Hartung", "Geschäftsführer",
@@ -1371,7 +1503,7 @@ def build_kontakt():
     <div>
       <span class="eyebrow">Direkt erreichen</span>
       <div class="contact-info-list" style="margin-top:20px;">
-        <div class="contact-info-item">{contact_icon("phone")}<div><strong>{PHONE}</strong><span>Mo-Fr, 9-17 Uhr</span></div></div>
+        <div class="contact-info-item">{contact_icon("phone")}<div><strong>{PHONE}</strong><span>Mo-Do 9-16 Uhr, Fr 9-12 Uhr</span></div></div>
         <div class="contact-info-item">{contact_icon("mail")}<div><strong>{EMAIL}</strong><span>Schnelle Antwort</span></div></div>
         <div class="contact-info-item">{contact_icon("pin")}<div><strong>Menimaneweg 4, 55130 Mainz</strong></div></div>
       </div>

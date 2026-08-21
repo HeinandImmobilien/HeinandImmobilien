@@ -49,12 +49,20 @@
   "areaServed": [
     {"@type":"City","name":"Wiesbaden"},{"@type":"City","name":"Ingelheim am Rhein"},{"@type":"City","name":"Bingen am Rhein"},{"@type":"City","name":"Alzey"},{"@type":"City","name":"Bad Kreuznach"},{"@type":"City","name":"Rüsselsheim am Main"},{"@type":"City","name":"Nieder-Olm"},{"@type":"City","name":"Frankfurt am Main"},{"@type":"City","name":"Darmstadt"},{"@type":"City","name":"Offenbach am Main"},{"@type":"City","name":"Groß-Gerau"},{"@type":"City","name":"Rüdesheim am Rhein"},{"@type":"City","name":"Eltville am Rhein"},{"@type":"City","name":"Oestrich-Winkel"},{"@type":"City","name":"Geisenheim"},{"@type":"City","name":"Idstein"},{"@type":"City","name":"Taunusstein"},{"@type":"City","name":"Hofheim am Taunus"},{"@type":"City","name":"Bad Homburg vor der Höhe"},{"@type":"City","name":"Oppenheim"},{"@type":"City","name":"Nierstein"},{"@type":"City","name":"Nackenheim"},{"@type":"City","name":"Bodenheim"},{"@type":"City","name":"Gau-Algesheim"},{"@type":"City","name":"Budenheim"},{"@type":"City","name":"Heidesheim am Rhein"},{"@type":"City","name":"Ginsheim-Gustavsburg"}
   ],
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-    "opens": "09:00",
-    "closes": "17:00"
-  }
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"],
+      "opens": "09:00",
+      "closes": "16:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Friday"],
+      "opens": "09:00",
+      "closes": "12:00"
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
@@ -116,7 +124,7 @@
             <h4>Verkauf &amp; Bewertung</h4>
             <p class="sub">Wenn sich Ihre Pläne ändern</p>
             <ul><li><a href="leistungen/immobilienverkauf.html"><strong>Immobilienverkauf</strong><span>Vom Exposé bis zum Notartermin: Verkauf mit regionaler Marktkenntnis.</span></a></li>
-<li><a href="leistungen/immobilienbewertung.html"><strong>Immobilienbewertung</strong><span>Fundierte Werteinschätzung für Verkauf, Vermietung oder Vermögensübersicht.</span></a></li></ul>
+<li><a href="leistungen/immobilienbewertung.html"><strong>Immobilienbewertung</strong><span>Fundierte Werteinschätzung für Verkauf, Vermietung oder Vermögensübersicht.</span></a></li><li><a href="leistungen/aktuelle-angebote.html"><strong>Aktuelle Angebote</strong><span>Diese Immobilien bieten wir gerade zum Verkauf an.</span></a></li></ul>
             <a href="verkauf.html" class="mega-menu-cta">Alles zum Verkauf im Überblick <span aria-hidden="true">&#8594;</span></a>
           </div>
         </div>
@@ -154,6 +162,7 @@
   <a href="verkauf.html">Übersicht Verkauf</a>
   <a href="leistungen/immobilienverkauf.html">Immobilienverkauf</a>
 <a href="leistungen/immobilienbewertung.html">Immobilienbewertung</a>
+<a href="leistungen/aktuelle-angebote.html">Aktuelle Angebote</a>
   <a href="region.html" class="">Region</a>
   <a href="ueber-uns.html" class="">Über uns</a>
   <a href="blog/index.html" class="">Ratgeber</a>
@@ -237,7 +246,7 @@
     <div>
       <span class="eyebrow">Direkt erreichen</span>
       <div class="contact-info-list" style="margin-top:20px;">
-        <div class="contact-info-item"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2C10 21 3 14 3 6a2 2 0 0 1 2-2z"/></svg></div><div><strong>06131 - 6248240</strong><span>Mo-Fr, 9-17 Uhr</span></div></div>
+        <div class="contact-info-item"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2C10 21 3 14 3 6a2 2 0 0 1 2-2z"/></svg></div><div><strong>06131 - 6248240</strong><span>Mo-Do 9-16 Uhr, Fr 9-12 Uhr</span></div></div>
         <div class="contact-info-item"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M4 6l8 7 8-7"/></svg></div><div><strong>info@heinand.de</strong><span>Schnelle Antwort</span></div></div>
         <div class="contact-info-item"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><strong>Menimaneweg 4, 55130 Mainz</strong></div></div>
       </div>
@@ -315,7 +324,8 @@
         <h5>Verkauf</h5>
         <ul><li><a href="verkauf.html">Übersicht Verkauf</a></li>
 <li><a href="leistungen/immobilienverkauf.html">Immobilienverkauf</a></li>
-<li><a href="leistungen/immobilienbewertung.html">Immobilienbewertung</a></li></ul>
+<li><a href="leistungen/immobilienbewertung.html">Immobilienbewertung</a></li>
+<li><a href="leistungen/aktuelle-angebote.html">Aktuelle Angebote</a></li></ul>
       </div>
       <div class="footer-col">
         <h5>Unternehmen</h5>
