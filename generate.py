@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 from components import (
-    ROOT, head, header, footer, cta_banner, hero_video_html, icon, feature_icon, contact_icon,
+    ROOT, head, header, footer, cta_banner, hero_video_html, icon, feature_icon, contact_icon, path_icon,
     mark_svg, mark_img, PHONE, PHONE_TEL, EMAIL, SERVICES_VERWALTUNG, SERVICES_VERKAUF,
     LOCATIONS, location_map_html, LEAFLET_CDN, DOMAIN, canonical_path, faq_jsonld, location_search_widget,
     painpoints_section,
@@ -70,19 +70,8 @@ def locations_section(prefix, heading="Verwaltung, Werterhalt und Verkauf in Mai
 def build_home():
     prefix = ""
     home_faq = [
-        ("Was kostet eine Hausverwaltung bei HEINAND?", "Das hängt von Objektgröße, Einheitenzahl und Leistungsumfang ab. Im kostenlosen Erstgespräch lernen wir uns erst kennen und besprechen Ihre Situation. Passt es für beide Seiten, folgt eine Objektanalyse und ein transparentes Festangebot: ohne versteckte Zusatzkosten."),
-        ("Wie läuft der Wechsel von unserer bisherigen Verwaltung ab?", "Strukturiert: Wir kümmern uns um die Übernahme aller Unterlagen, Konten und laufenden Vorgänge von Ihrer Vorverwaltung. Für Eigentümer und Mieter läuft der Wechsel ohne Bruch: Sie merken nur, dass es besser funktioniert."),
-        ("In welchen Regionen sind Sie tätig?", "Unser Schwerpunkt liegt in Mainz und einem Radius von rund 35 km: darunter Wiesbaden, Ingelheim, Bingen, Alzey, Rüsselsheim und Nieder-Olm. Auch Bad Kreuznach zählt als feste Standort-Region zu unserem Einzugsgebiet. Kurze Wege sind Teil unseres Qualitätsversprechens."),
-        ("Wie schnell reagieren Sie bei Schäden?", "Jede Schadensmeldung wird priorisiert: Akute Gefahren behandeln wir sofort, dringende Reparaturen zeitnah, reguläre Anliegen strukturiert und nachvollziehbar. Über unser Online-Formular ist Ihr Anliegen in zwei Minuten gemeldet."),
-        ("Verwalten Sie auch einzelne Eigentumswohnungen?", "Ja: mit der Sondereigentumsverwaltung betreuen wir Ihre vermietete Wohnung komplett, inklusive Mieterkontakt und Schnittstelle zur WEG-Verwaltung. Ideal für Kapitalanleger, die nicht vor Ort sind."),
-        ("Was ist der Unterschied zwischen WEG-Verwaltung und Mietverwaltung?", "Die WEG-Verwaltung betreut das gemeinschaftliche Eigentum einer Eigentümergemeinschaft, also Dach, Fassade, Treppenhaus und Heizungsanlage. Die Mietverwaltung kümmert sich dagegen um ein einzelnes vermietetes Objekt: Mieterkorrespondenz, Nebenkostenabrechnung, Zahlungseingänge. Wer eine vermietete Eigentumswohnung besitzt, braucht meist beides, dafür gibt es die Sondereigentumsverwaltung als Schnittstelle."),
-        ("Wie lange dauert ein Verwalterwechsel bei einer WEG?", "Seit der WEG-Reform reicht für die Neubestellung eines Verwalters die einfache Mehrheit der abgegebenen Stimmen in der Eigentümerversammlung, ein wichtiger Grund ist nicht mehr nötig. Vom Erstgespräch bis zur laufenden Betreuung planen wir meist sechs bis zehn Wochen ein: Angebot, Beschlussfassung, Übergabe von der Vorverwaltung."),
-        ("Was ist in der Mietverwaltung konkret enthalten?", "Dazu gehören die komplette Mieterkorrespondenz, die Abwicklung von Zahlungseingängen, eine fristgerechte Nebenkostenabrechnung, die Koordination von Handwerkern bei Reparaturen sowie regelmäßiges Reporting, damit Sie jederzeit wissen, was mit Ihrem Objekt passiert."),
-        ("Bis wann muss die Nebenkostenabrechnung beim Mieter sein?", "Die Abrechnung muss dem Mieter spätestens zwölf Monate nach Ende des Abrechnungszeitraums zugehen, sonst können Nachforderungen in der Regel nicht mehr geltend gemacht werden. Als Mietverwaltung achten wir konsequent auf diese Frist und auf einen rechtssicheren Umlageschlüssel."),
-        ("Führen Sie auch die Eigentümerversammlung durch?", "Ja, wir übernehmen die ordnungsgemäße Einberufung, Durchführung und Protokollierung der Eigentümerversammlung, auf Wunsch auch als hybride Versammlung mit Online-Teilnahme. Beschlüsse werden rechtssicher dokumentiert und in der Beschlusssammlung geführt."),
-        ("Wie läuft ein Immobilienverkauf mit HEINAND ab?", "Wir begleiten Sie von der realistischen Werteinschätzung über die Erstellung des Exposés und die Käuferauswahl bis zum Notartermin. Weil wir viele der Objekte in der Region bereits verwalten, kennen wir die tatsächlichen Marktpreise, nicht nur Online-Schätzungen."),
-        ("Ist die Immobilienbewertung wirklich kostenlos?", "Ja. Sagen Sie uns die Eckdaten Ihrer Immobilie, wir melden uns schnell mit einer ersten, fundierten Einschätzung auf Basis regionaler Marktdaten und Objektzustand, ganz ohne Verpflichtung."),
-        ("Muss ich als Eigentümer vor Ort in Mainz sein?", "Nein. Gerade für Kapitalanleger, die nicht in der Region wohnen, ist unsere digitale Vorgangsverwaltung gedacht: Anliegen, Belege und Reporting laufen online, Vor-Ort-Termine übernehmen wir für Sie."),
+        ("In welchen Regionen sind Sie tätig?", "Unser Schwerpunkt liegt in Mainz und einem Radius von rund 35 km: darunter Wiesbaden, Ingelheim, Bingen, Alzey, Rüsselsheim und Nieder-Olm. Auch Bad Kreuznach zählt als feste Standort-Region zu unserem Einzugsgebiet. Kurze Wege sind Teil unseres Qualitätsversprechens, egal ob es um Verwaltung oder Verkauf geht."),
+        ("Muss ich als Eigentümer vor Ort in Mainz sein?", "Nein. Gerade für Eigentümer, die nicht in der Region wohnen, arbeiten wir digital: Anliegen, Unterlagen und Reporting laufen online oder telefonisch, Termine vor Ort übernehmen wir für Sie, egal ob es um die laufende Verwaltung oder einen Verkauf geht."),
         ("Wie kann ich ein kostenloses Erstgespräch vereinbaren?", "Am schnellsten über unser Kontaktformular oder direkt über unseren Buchungskalender, dort sehen Sie sofort freie Termine, telefonisch oder per Video. Alternativ erreichen Sie uns telefonisch oder per E-Mail. Einen persönlichen Termin vor Ort sprechen wir bei Bedarf individuell ab."),
         ("Was passiert mit meinen Daten, wenn ich ein Formular ausfülle?", "Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und uns per E-Mail zugestellt. Eine gesonderte Datenbank betreiben wir nicht. Details dazu finden Sie in unserer Datenschutzerklärung."),
     ]
@@ -91,35 +80,50 @@ def build_home():
   {hero_video_html(prefix)}
   <div class="container hero-inner">
     <span class="eyebrow">Mainz · Wiesbaden · Rhein-Main</span>
-    <h1>Immobilienverwaltung, die digital arbeitet: schnell, transparent, immer aktuell.</h1>
-    <p class="hero-lead">Miet-, WEG- und Sondereigentumsverwaltung sowie Immobilienverkauf in Mainz und dem Rhein-Main-Gebiet. Als digital arbeitende Verwaltung sind wir bei jedem Objekt auf dem aktuellen Stand und klären Anliegen, bevor sie zu Problemen werden: damit Eigentum kein zweiter Job ist.</p>
+    <h1>Hausverwaltung und Immobilienverkauf: digital, transparent, persönlich.</h1>
+    <p class="hero-lead">Ob laufende Betreuung Ihrer Immobilie oder der Verkauf: Wir sind in Mainz und dem Rhein-Main-Gebiet für Sie da. Zwei unterschiedliche Themen, zwei klare Wege: wählen Sie unten den Bereich, der zu Ihrem Anliegen passt.</p>
     <div class="hero-cta">
       <a href="{prefix}kontakt.html" class="btn btn-primary">Kostenloses Erstgespräch <span aria-hidden="true">&#8594;</span></a>
-      <a href="{prefix}leistungen/index.html" class="btn btn-outline">Leistungen entdecken</a>
+      <a href="#bereich-waehlen" class="btn btn-outline">Bereich wählen</a>
     </div>
     <div class="hero-stats">
       <span>100&nbsp;% digitale Vorgangsverwaltung</span>
-      <span>7 Jahre Verwaltungserfahrung</span>
-      <span>Anliegen schnell geklärt</span>
+      <span>7 Jahre Erfahrung in der Immobilienbranche</span>
+      <span>Schnelle, klare Kommunikation</span>
     </div>
   </div>
 </section>
 
-<section class="section-cream">
+<section class="section-cream" id="bereich-waehlen">
   <div class="container">
     <div class="section-head center">
-      <span class="eyebrow">Unsere Leistungen</span>
-      <h2>Verwaltung, Werterhalt und Verkauf: alles aus einer Hand.</h2>
+      <span class="eyebrow">Wie können wir Ihnen helfen?</span>
+      <h2>Wählen Sie Ihren Bereich: Hausverwaltung oder Verkauf.</h2>
+      <p style="margin-top:16px;color:#5b6472;">Damit Sie direkt die Informationen sehen, die für Sie relevant sind, statt sich durch alles zu klicken.</p>
     </div>
-    <div class="cards-grid">
-      {"".join(service_card(prefix, n, h, d, ic) for n, h, d, ic in [
-          ("Mietverwaltung", SERVICES_VERWALTUNG[0][1], SERVICES_VERWALTUNG[0][2], "key"),
-          ("WEG-Verwaltung", SERVICES_VERWALTUNG[1][1], SERVICES_VERWALTUNG[1][2], "apartments"),
-          ("Sondereigentumsverwaltung", SERVICES_VERWALTUNG[2][1], SERVICES_VERWALTUNG[2][2], "apartment-unit"),
-          ("Werterhalt & Instandhaltung", SERVICES_VERWALTUNG[3][1], SERVICES_VERWALTUNG[3][2], "gear"),
-          ("Immobilienbewertung", SERVICES_VERKAUF[1][1], SERVICES_VERKAUF[1][2], "doc-trend"),
-          ("Immobilienverkauf", SERVICES_VERKAUF[0][1], SERVICES_VERKAUF[0][2], "tag"),
-      ])}
+    <div class="path-chooser">
+      <div class="path-card">
+        {path_icon("apartments")}
+        <h3>Hausverwaltung</h3>
+        <p>Miet-, WEG- und Sondereigentumsverwaltung sowie Werterhalt: laufende, digitale Betreuung Ihrer Immobilie.</p>
+        <ul class="path-card-list">
+          <li>{icon("check")}<span>Mietverwaltung, WEG-Verwaltung, Sondereigentumsverwaltung</span></li>
+          <li>{icon("check")}<span>Werterhalt &amp; Instandhaltung mit regionalem Handwerkernetzwerk</span></li>
+          <li>{icon("check")}<span>Digitale Vorgangsverwaltung und schnelle Kommunikation</span></li>
+        </ul>
+        <a href="{prefix}hausverwaltung.html" class="btn btn-navy">Zur Hausverwaltung <span aria-hidden="true">&#8594;</span></a>
+      </div>
+      <div class="path-card">
+        {path_icon("tag")}
+        <h3>Immobilie verkaufen</h3>
+        <p>Verkauf und Bewertung: von der realistischen Werteinschätzung bis zum Notartermin.</p>
+        <ul class="path-card-list">
+          <li>{icon("check")}<span>Kostenlose Immobilienbewertung</span></li>
+          <li>{icon("check")}<span>Exposé, Vermarktung und Besichtigungsmanagement</span></li>
+          <li>{icon("check")}<span>Begleitung von der Preisfindung bis zum Notartermin</span></li>
+        </ul>
+        <a href="{prefix}verkauf.html" class="btn btn-navy">Zum Verkauf <span aria-hidden="true">&#8594;</span></a>
+      </div>
     </div>
   </div>
 </section>
@@ -129,55 +133,15 @@ def build_home():
     <div class="section-head">
       <span class="eyebrow">Warum HEINAND</span>
       <h2>Vertrauen entsteht durch klare Prozesse.</h2>
-      <p style="margin-top:16px;color:#5b6472;">Viele Eigentümer kennen Verwaltung als Blackbox: Niemand erreichbar, nichts dokumentiert, alles dauert. Wir arbeiten anders: mit regionalem Verständnis, digitaler Struktur und Kommunikation, auf die Sie sich verlassen können.</p>
+      <p style="margin-top:16px;color:#5b6472;">Ob laufende Verwaltung oder Verkauf: Viele Eigentümer kennen lange Wartezeiten, fehlende Rückmeldungen und wenig Transparenz. Wir arbeiten anders: mit regionalem Marktverständnis, digitaler Struktur und Kommunikation, auf die Sie sich verlassen können.</p>
       <a href="{prefix}ueber-uns.html" class="btn btn-outline-navy" style="margin-top:20px;">Lernen Sie uns kennen</a>
     </div>
     <div class="feature-grid">
-      {feature("bolt", "Effizienz", "Wir nehmen Ihnen den Koordinationsaufwand ab: Mieter, Handwerker, Abrechnungen, alles läuft über uns.")}
+      {feature("bolt", "Effizienz", "Wir nehmen Ihnen den Koordinationsaufwand ab: ob bei der laufenden Betreuung oder beim Verkaufsprozess, alles läuft über uns.")}
       {feature("trend", "Werterhalt", "Regelmäßige Objektbetreuung und schnelle Reaktion verhindern, dass kleine Schäden groß werden.")}
       {feature("chart", "Transparenz", "Digitale Vorgangsverwaltung und nachvollziehbares Reporting: Sie sehen jederzeit, was passiert.")}
       {feature("shield", "Verlässlichkeit", "Digitale Prozesse statt Zettelwirtschaft: Jedes Anliegen wird erfasst, priorisiert und verbindlich geklärt, nichts bleibt liegen.")}
     </div>
-  </div>
-</section>
-
-<section class="section-mist">
-  <div class="container two-col">
-    <div>
-      <span class="eyebrow">Digital &amp; erreichbar</span>
-      <h2 style="margin-top:10px;">Schaden melden in zwei Minuten: mit klarer Priorisierung.</h2>
-      <p style="margin-top:16px;color:#5b6472;">Mieter und Eigentümer melden Anliegen über unser strukturiertes Online-Formular. Jede Meldung wird eingestuft (regulär, dringend oder akut) und entsprechend schnell bearbeitet. Nichts geht verloren, alles ist dokumentiert.</p>
-      <ul class="process-list">
-        <li>{icon("bolt")}<span><b>Akute Gefahren:</b> sofortige Reaktion</span></li>
-        <li>{icon("chart")}<span><b>Digitale Vorgangsverwaltung</b> mit Statusverfolgung</span></li>
-        <li>{icon("gear")}<span><b>Regionales Handwerkernetzwerk</b> mit kurzen Wegen</span></li>
-      </ul>
-      <a href="{prefix}schadensmeldung.html" class="btn btn-primary" style="margin-top:28px;">Zum Schadensformular <span aria-hidden="true">&#8594;</span></a>
-    </div>
-    <div>
-      <div class="card" style="margin-bottom:16px;"><strong style="color:var(--navy-deep);">Sofort-Einsatz koordiniert</strong><br><span style="font-size:13px;color:#b3441f;">Dringend · Heizungsausfall</span></div>
-      <div class="card" style="margin-bottom:16px;"><strong style="color:var(--navy-deep);">Handwerker beauftragt</strong><br><span style="font-size:13px;color:var(--gold);">Regulär · Klemmendes Fenster</span></div>
-      <div class="card"><strong style="color:var(--navy-deep);">Termin in Planung</strong></div>
-    </div>
-  </div>
-</section>
-
-<section class="section-white">
-  <div class="container">
-    <div class="section-head center">
-      <span class="eyebrow">So starten wir</span>
-      <h2>In fünf Schritten zu einer Verwaltung, die funktioniert.</h2>
-    </div>
-    <div class="steps-grid steps-grid-5">
-      {step("01", "Kennenlernen", "Telefonisch oder per Video sprechen wir über Ihre Situation, Ihre Ziele und Ihr Anliegen: unverbindlich und ohne Verkaufsdruck.")}
-      {step("02", "Objektbegehung & Angebot", "Passt es für beide Seiten, schauen wir uns Ihr Objekt an und Sie erhalten ein transparentes, klar kalkuliertes Angebot: ohne versteckte Kosten.")}
-      {step("03", "Beschlussfassung", "Bei WEGs begleiten wir die Beschlussfassung zur Verwalterbestellung; bei Miet- und Sondereigentum reicht Ihre Zusage zur Beauftragung.")}
-      {step("04", "Kommunikation mit dem Vorverwalter", "Wir übernehmen die Abstimmung mit Ihrer bisherigen Verwaltung und die vollständige Dokumentenübergabe: Sie müssen sich um nichts kümmern.")}
-      {step("05", "Laufende Betreuung", "Ab Tag eins laufen alle Vorgänge digital: Anliegen werden online gemeldet und schnell geklärt, und Sie haben wieder Zeit für das Wesentliche.")}
-    </div>
-    <p style="text-align:center;margin-top:28px;">
-      <a href="{prefix}leistungen/verwalterwechsel.html" class="btn btn-outline-navy">Verwalterwechsel bei einer WEG im Detail <span aria-hidden="true">&rarr;</span></a>
-    </p>
   </div>
 </section>
 
@@ -193,19 +157,23 @@ def build_home():
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow">Häufige Fragen</span>
-      <h2>Was Eigentümer uns am häufigsten fragen.</h2>
+      <h2>Allgemeines rund um HEINAND Immobilien.</h2>
     </div>
     <div class="faq">
       {"".join(faq_item(q, a) for q, a in home_faq)}
     </div>
+    <p style="text-align:center;margin-top:28px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="{prefix}hausverwaltung.html#faq" class="btn btn-outline-navy">Fragen zur Hausverwaltung <span aria-hidden="true">&rarr;</span></a>
+      <a href="{prefix}verkauf.html#faq" class="btn btn-outline-navy">Fragen zum Verkauf <span aria-hidden="true">&rarr;</span></a>
+    </p>
   </div>
 </section>
 
-{cta_banner(prefix)}
+{cta_banner(prefix, "Ganz gleich ob Verwaltung oder Verkauf: Sprechen wir unverbindlich darüber.", "Im kostenlosen Erstgespräch lernen wir uns kennen und besprechen Ihre Situation: ohne Kleingedrucktes und ohne Verkaufsdruck.")}
 '''
     write("index.html", page(
-        "Hausverwaltung Mainz & Rhein-Main | HEINAND Immobilien",
-        "Hausverwaltung in Mainz, Wiesbaden & 35 km Umkreis: Miet-, WEG- & SE-Verwaltung, Verkauf. 100 % digital, 7 Jahre Erfahrung. Jetzt kostenlos anfragen.",
+        "Hausverwaltung & Immobilienverkauf Mainz | HEINAND",
+        "Hausverwaltung und Immobilienverkauf in Mainz & Rhein-Main: digital, transparent, persönlich. Wählen Sie Ihren Bereich, kostenloses Erstgespräch.",
         prefix, "home", body, relpath="index.html", extra_css=faq_jsonld(home_faq) + LEAFLET_CDN
     ))
 
@@ -230,6 +198,184 @@ def faq_item(q, a):
 </div>'''
 
 # ==========================================================================
+# HAUSVERWALTUNG (Hub-Seite)
+# ==========================================================================
+
+def build_hausverwaltung_hub():
+    prefix = ""
+    faq = [
+        ("Was kostet eine Hausverwaltung bei HEINAND?", "Das hängt von Objektgröße, Einheitenzahl und Leistungsumfang ab. Im kostenlosen Erstgespräch lernen wir uns erst kennen und besprechen Ihre Situation. Passt es für beide Seiten, folgt eine Objektbegehung und ein transparentes Festangebot: ohne versteckte Zusatzkosten."),
+        ("Wie läuft der Wechsel von unserer bisherigen Verwaltung ab?", "Strukturiert: Wir kümmern uns um die Übernahme aller Unterlagen, Konten und laufenden Vorgänge von Ihrer Vorverwaltung. Für Eigentümer und Mieter läuft der Wechsel ohne Bruch: Sie merken nur, dass es besser funktioniert."),
+        ("Wie schnell reagieren Sie bei Schäden?", "Jede Schadensmeldung wird priorisiert: Akute Gefahren behandeln wir sofort, dringende Reparaturen zeitnah, reguläre Anliegen strukturiert und nachvollziehbar. Über unser Online-Formular ist Ihr Anliegen in zwei Minuten gemeldet."),
+        ("Verwalten Sie auch einzelne Eigentumswohnungen?", "Ja: mit der Sondereigentumsverwaltung betreuen wir Ihre vermietete Wohnung komplett, inklusive Mieterkontakt und Schnittstelle zur WEG-Verwaltung. Ideal für Kapitalanleger, die nicht vor Ort sind."),
+        ("Was ist der Unterschied zwischen WEG-Verwaltung und Mietverwaltung?", "Die WEG-Verwaltung betreut das gemeinschaftliche Eigentum einer Eigentümergemeinschaft, also Dach, Fassade, Treppenhaus und Heizungsanlage. Die Mietverwaltung kümmert sich dagegen um ein einzelnes vermietetes Objekt: Mieterkorrespondenz, Nebenkostenabrechnung, Zahlungseingänge. Wer eine vermietete Eigentumswohnung besitzt, braucht meist beides, dafür gibt es die Sondereigentumsverwaltung als Schnittstelle."),
+        ("Wie lange dauert ein Verwalterwechsel bei einer WEG?", "Seit der WEG-Reform reicht für die Neubestellung eines Verwalters die einfache Mehrheit der abgegebenen Stimmen in der Eigentümerversammlung, ein wichtiger Grund ist nicht mehr nötig. Vom Erstgespräch bis zur laufenden Betreuung planen wir meist sechs bis zehn Wochen ein: Angebot, Beschlussfassung, Übergabe von der Vorverwaltung."),
+        ("Was ist in der Mietverwaltung konkret enthalten?", "Dazu gehören die komplette Mieterkorrespondenz, die Abwicklung von Zahlungseingängen, eine fristgerechte Nebenkostenabrechnung, die Koordination von Handwerkern bei Reparaturen sowie regelmäßiges Reporting, damit Sie jederzeit wissen, was mit Ihrem Objekt passiert."),
+        ("Bis wann muss die Nebenkostenabrechnung beim Mieter sein?", "Die Abrechnung muss dem Mieter spätestens zwölf Monate nach Ende des Abrechnungszeitraums zugehen, sonst können Nachforderungen in der Regel nicht mehr geltend gemacht werden. Als Mietverwaltung achten wir konsequent auf diese Frist und auf einen rechtssicheren Umlageschlüssel."),
+        ("Führen Sie auch die Eigentümerversammlung durch?", "Ja, wir übernehmen die ordnungsgemäße Einberufung, Durchführung und Protokollierung der Eigentümerversammlung, auf Wunsch auch als hybride Versammlung mit Online-Teilnahme. Beschlüsse werden rechtssicher dokumentiert und in der Beschlusssammlung geführt."),
+    ]
+    body = f'''
+<section class="hero hero-page">
+  <div class="container hero-inner">
+    <span class="eyebrow">Hausverwaltung &middot; Mainz &amp; Rhein-Main</span>
+    <h1>Hausverwaltung, die digital arbeitet: schnell, transparent, immer aktuell.</h1>
+    <p class="hero-lead">Miet-, WEG- und Sondereigentumsverwaltung sowie Werterhalt in Mainz und dem Rhein-Main-Gebiet. Wir sind bei jedem Objekt auf dem aktuellen Stand und klären Anliegen, bevor sie zu Problemen werden: damit Eigentum kein zweiter Job ist.</p>
+    <div class="hero-cta">
+      <a href="{prefix}kontakt.html" class="btn btn-primary">Kostenloses Erstgespräch <span aria-hidden="true">&#8594;</span></a>
+      <a href="{PHONE_TEL}" class="btn btn-outline">{PHONE}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-cream">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Unsere Leistungen</span>
+      <h2>Laufende Betreuung Ihrer Immobilie: aus einer Hand.</h2>
+    </div>
+    <div class="cards-grid">
+      {"".join(service_card(prefix, n, h, d, ic) for (n, h, d), ic in zip(SERVICES_VERWALTUNG, ["key", "apartments", "apartment-unit", "gear"]))}
+    </div>
+  </div>
+</section>
+
+<section class="section-white">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">So starten wir</span>
+      <h2>In fünf Schritten zu einer Verwaltung, die funktioniert.</h2>
+    </div>
+    <div class="steps-grid steps-grid-5">
+      {step("01", "Kennenlernen", "Telefonisch oder per Video sprechen wir über Ihre Situation, Ihre Ziele und Ihr Anliegen: unverbindlich und ohne Verkaufsdruck.")}
+      {step("02", "Objektbegehung & Angebot", "Passt es für beide Seiten, schauen wir uns Ihr Objekt an und Sie erhalten ein transparentes, klar kalkuliertes Angebot: ohne versteckte Kosten.")}
+      {step("03", "Beschlussfassung", "Bei WEGs begleiten wir die Beschlussfassung zur Verwalterbestellung; bei Miet- und Sondereigentum reicht Ihre Zusage zur Beauftragung.")}
+      {step("04", "Kommunikation mit dem Vorverwalter", "Wir übernehmen die Abstimmung mit Ihrer bisherigen Verwaltung und die vollständige Dokumentenübergabe: Sie müssen sich um nichts kümmern.")}
+      {step("05", "Laufende Betreuung", "Ab Tag eins laufen alle Vorgänge digital: Anliegen werden online gemeldet und schnell geklärt, und Sie haben wieder Zeit für das Wesentliche.")}
+    </div>
+    <p style="text-align:center;margin-top:28px;">
+      <a href="{prefix}leistungen/verwalterwechsel.html" class="btn btn-outline-navy">Verwalterwechsel bei einer WEG im Detail <span aria-hidden="true">&rarr;</span></a>
+    </p>
+  </div>
+</section>
+
+<section class="section-mist">
+  <div class="container two-col">
+    <div>
+      <span class="eyebrow">Digital &amp; erreichbar</span>
+      <h2 style="margin-top:10px;">Schaden melden in zwei Minuten: mit klarer Priorisierung.</h2>
+      <p style="margin-top:16px;color:#5b6472;">Mieter und Eigentümer melden Anliegen über unser strukturiertes Online-Formular. Jede Meldung wird eingestuft (regulär, dringend oder akut) und entsprechend schnell bearbeitet. Nichts geht verloren, alles ist dokumentiert.</p>
+      <ul class="process-list">
+        <li>{icon("bolt")}<span><b>Akute Gefahren:</b> sofortige Reaktion</span></li>
+        <li>{icon("chart")}<span><b>Digitale Vorgangsverwaltung</b> mit Statusverfolgung</span></li>
+        <li>{icon("gear")}<span><b>Regionales Handwerkernetzwerk</b> mit kurzen Wegen</span></li>
+      </ul>
+      <a href="{prefix}schadensmeldung.html" class="btn btn-primary" style="margin-top:28px;">Zum Schadensformular <span aria-hidden="true">&#8594;</span></a>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:16px;"><strong style="color:var(--navy-deep);">Sofort-Einsatz koordiniert</strong><br><span style="font-size:13px;color:#b3441f;">Dringend · Heizungsausfall</span></div>
+      <div class="card" style="margin-bottom:16px;"><strong style="color:var(--navy-deep);">Handwerker beauftragt</strong><br><span style="font-size:13px;color:var(--gold);">Regulär · Klemmendes Fenster</span></div>
+      <div class="card"><strong style="color:var(--navy-deep);">Termin in Planung</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-cream" id="faq">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Häufige Fragen</span>
+      <h2>Was Eigentümer uns zur Hausverwaltung am häufigsten fragen.</h2>
+    </div>
+    <div class="faq">
+      {"".join(faq_item(q, a) for q, a in faq)}
+    </div>
+  </div>
+</section>
+
+{cta_banner(prefix)}
+'''
+    write("hausverwaltung.html", page(
+        "Hausverwaltung Mainz & Rhein-Main | HEINAND",
+        "Hausverwaltung in Mainz, Wiesbaden & 35 km Umkreis: Miet-, WEG- & SE-Verwaltung, Werterhalt. 100 % digital. Jetzt kostenlos anfragen.",
+        prefix, "", body, relpath="hausverwaltung.html", extra_css=faq_jsonld(faq)
+    ))
+
+# ==========================================================================
+# VERKAUF (Hub-Seite)
+# ==========================================================================
+
+def build_verkauf_hub():
+    prefix = ""
+    faq = [
+        ("Wie läuft ein Immobilienverkauf mit HEINAND ab?", "Wir begleiten Sie von der realistischen Werteinschätzung über die Erstellung des Exposés und die Käuferauswahl bis zum Notartermin. Weil wir viele der Objekte in der Region bereits verwalten, kennen wir die tatsächlichen Marktpreise, nicht nur Online-Schätzungen."),
+        ("Ist die Immobilienbewertung wirklich kostenlos?", "Ja. Sagen Sie uns die Eckdaten Ihrer Immobilie, wir melden uns schnell mit einer ersten, fundierten Einschätzung auf Basis regionaler Marktdaten und Objektzustand, ganz ohne Verpflichtung."),
+        ("Wie lange dauert ein Immobilienverkauf in der Regel?", "Das hängt von Objektart, Lage und Marktlage ab. Exposé und Vermarktungsstart stehen meist innerhalb weniger Wochen, die Phase mit Besichtigungen und Verhandlung dauert oft mehrere Wochen bis Monate. Bis zum Notartermin planen Eigentümer realistisch mit zwei bis vier Monaten, in gefragten Lagen kann es schneller gehen."),
+        ("Was kostet mich der Verkauf über HEINAND?", "Unsere Vergütung ist erfolgsbasiert: Sie fällt nur bei einem erfolgreichen Verkauf an und wird vorab transparent vereinbart, ohne Kleingedrucktes. Die genauen Konditionen besprechen wir im kostenlosen Erstgespräch, abgestimmt auf Ihre Immobilie."),
+        ("Muss ich vor dem Verkauf renovieren?", "Nicht zwangsläufig. Große Investitionen kurz vor dem Verkauf lohnen sich selten, kleine optische Verbesserungen dagegen oft schon. Im Rahmen der Werteinschätzung sagen wir Ihnen ehrlich, was sich auszahlt und was Sie sich sparen können."),
+        ("Kann ich diskret verkaufen, ohne dass Nachbarn oder Mieter davon erfahren?", "Ja, ein diskreter Verkauf ohne öffentliche Vermarktung ist über unser regionales Netzwerk aus Kapitalanlegern und Käufern möglich. Das eignet sich besonders, wenn Sie Wert auf Zurückhaltung legen oder das Mietverhältnis unbeeinflusst weiterlaufen soll."),
+        ("Was passiert, wenn die Immobilie noch vermietet ist?", "Vermietete Immobilien lassen sich verkaufen: Der Grundsatz „Kauf bricht nicht Miete“ schützt bestehende Mietverhältnisse auch nach dem Eigentümerwechsel. Wir sprechen offen an, wie sich das auf Preis und Käuferkreis auswirkt, viele Kapitalanleger suchen gezielt vermietete Objekte."),
+        ("Verkaufen Sie auch Immobilien aus einer Erbengemeinschaft?", "Ja, auch bei mehreren Erben begleiten wir den Verkauf: von der fundierten Werteinschätzung für den Nachlass über die Abstimmung zwischen den Beteiligten bis zum gemeinsamen Notartermin, sachlich und mit dem nötigen Fingerspitzengefühl."),
+    ]
+    body = f'''
+<section class="hero hero-page">
+  <div class="container hero-inner">
+    <span class="eyebrow">Verkauf &amp; Bewertung &middot; Mainz &amp; Rhein-Main</span>
+    <h1>Verkaufen Sie nicht irgendwie: verkaufen Sie richtig.</h1>
+    <p class="hero-lead">Von der realistischen Werteinschätzung über Exposé und Besichtigungen bis zum Notartermin: Wir begleiten Ihren Immobilienverkauf in Mainz und dem Rhein-Main-Gebiet mit der Marktkenntnis von 7 Jahren Immobilienerfahrung in der Region.</p>
+    <div class="hero-cta">
+      <a href="{prefix}kontakt.html" class="btn btn-primary">Kostenlose Werteinschätzung <span aria-hidden="true">&#8594;</span></a>
+      <a href="{PHONE_TEL}" class="btn btn-outline">{PHONE}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-cream">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Unsere Leistungen</span>
+      <h2>Verkauf und Bewertung: aus einer Hand.</h2>
+    </div>
+    <div class="cards-grid">
+      {"".join(service_card(prefix, n, h, d, ic) for (n, h, d), ic in zip(SERVICES_VERKAUF, ["tag", "doc-trend"]))}
+    </div>
+  </div>
+</section>
+
+<section class="section-white">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">So läuft der Verkauf</span>
+      <h2>In vier Schritten zum erfolgreichen Verkaufsabschluss.</h2>
+    </div>
+    <div class="steps-grid steps-grid-4">
+      {step("01", "Kennenlernen & Werteinschätzung", "Telefonisch oder per Video besprechen wir Ihre Situation und Ihre Pläne. Sie erhalten eine realistische, marktgerechte Werteinschätzung, kostenlos und unverbindlich.")}
+      {step("02", "Exposé & Vermarktung", "Professionelle Aufbereitung mit Fotos und Platzierung auf den relevanten Kanälen, auf Wunsch auch diskret ohne öffentliche Vermarktung.")}
+      {step("03", "Besichtigungen & Verhandlung", "Wir übernehmen vorqualifizierte Besichtigungen, prüfen Finanzierungsbestätigungen und verhandeln in Ihrem Interesse.")}
+      {step("04", "Notartermin & Übergabe", "Kaufvertragsabstimmung, Notartermin und Übergabeprotokoll: wir begleiten Sie bis zum letzten Schritt.")}
+    </div>
+  </div>
+</section>
+
+<section class="section-cream" id="faq">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Häufige Fragen</span>
+      <h2>Was Eigentümer uns zum Verkauf am häufigsten fragen.</h2>
+    </div>
+    <div class="faq">
+      {"".join(faq_item(q, a) for q, a in faq)}
+    </div>
+  </div>
+</section>
+
+{cta_banner(prefix, "Was ist Ihre Immobilie wert? Lassen Sie es uns unverbindlich besprechen.", "Im kostenlosen Erstgespräch lernen wir uns kennen und besprechen Ihre Situation und Ihre Pläne: ohne Verkaufsdruck und ohne Kleingedrucktes.")}
+'''
+    write("verkauf.html", page(
+        "Immobilienverkauf & Bewertung Mainz | HEINAND",
+        "Immobilie verkaufen in Mainz & Rhein-Main: kostenlose Werteinschätzung, Exposé bis Notartermin. Regionale Marktkenntnis, diskret möglich.",
+        prefix, "", body, relpath="verkauf.html", extra_css=faq_jsonld(faq)
+    ))
+
+# ==========================================================================
 # LEISTUNGEN: Übersicht
 # ==========================================================================
 
@@ -242,10 +388,28 @@ def build_leistungen_index():
   <div class="container hero-inner">
     <span class="eyebrow">Leistungen</span>
     <h1>Alles, was Ihre Immobilie braucht: aus einer Hand.</h1>
-    <p class="hero-lead">Von der laufenden Verwaltung über den Werterhalt bis zum Verkauf: Wir betreuen Eigentümer, Kapitalanleger und Eigentümergemeinschaften in Mainz und dem Rhein-Main-Gebiet.</p>
+    <p class="hero-lead">Von der laufenden Verwaltung über den Werterhalt bis zum Verkauf: Wir betreuen Eigentümer, Kapitalanleger und Eigentümergemeinschaften in Mainz und dem Rhein-Main-Gebiet. Wählen Sie unten den Bereich, der zu Ihrem Anliegen passt.</p>
   </div>
 </section>
 <section class="section-cream">
+  <div class="container">
+    <div class="path-chooser">
+      <div class="path-card">
+        {path_icon("apartments")}
+        <h3>Hausverwaltung</h3>
+        <p>Miet-, WEG- und Sondereigentumsverwaltung sowie Werterhalt: laufende, digitale Betreuung Ihrer Immobilie.</p>
+        <a href="{prefix}hausverwaltung.html" class="btn btn-navy">Zur Hausverwaltung <span aria-hidden="true">&#8594;</span></a>
+      </div>
+      <div class="path-card">
+        {path_icon("tag")}
+        <h3>Immobilie verkaufen</h3>
+        <p>Verkauf und Bewertung: von der realistischen Werteinschätzung bis zum Notartermin.</p>
+        <a href="{prefix}verkauf.html" class="btn btn-navy">Zum Verkauf <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-white">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Verwaltung</span>
@@ -256,7 +420,7 @@ def build_leistungen_index():
     </div>
   </div>
 </section>
-<section class="section-white">
+<section class="section-cream">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Verkauf &amp; Bewertung</span>
@@ -306,9 +470,17 @@ def text_field(label, placeholder="", required=True, full=False):
 
 def service_detail_page(slug, name, eyebrow_extra, h1, lead, features, advantages, form_heading, form_intro, form_fields_html, submit_label, form_title="Angebot anfragen", pain_points=None, detail_link=None):
     prefix = "../"
-    others = [s for s in ALL_SERVICES if s[1] != f"leistungen/{slug}.html"][:3]
+    own_href = f"leistungen/{slug}.html"
+    is_verwaltung = own_href in [s[1] for s in SERVICES_VERWALTUNG]
+    same_category = SERVICES_VERWALTUNG if is_verwaltung else SERVICES_VERKAUF
+    others = [s for s in same_category if s[1] != own_href][:3]
+    hub_href, hub_label = ("hausverwaltung.html", "Zur Hausverwaltungs-Übersicht") if is_verwaltung else ("verkauf.html", "Zum Verkaufsbereich")
     adv_html = "".join(f'<li>{icon("check")}<span>{a}</span></li>' for a in advantages)
     others_html = "".join(service_card(prefix, n, h, d, SERVICE_ICONS.get(h, "check")) for n, h, d in others)
+    cta_kwargs = {} if is_verwaltung else {
+        "heading": "Was ist Ihre Immobilie wert? Lassen Sie es uns unverbindlich besprechen.",
+        "text": "Im kostenlosen Erstgespräch lernen wir uns kennen und besprechen Ihre Situation und Ihre Pläne: ohne Verkaufsdruck und ohne Kleingedrucktes.",
+    }
     detail_link_html = ""
     if detail_link:
         dl_href, dl_label = detail_link
@@ -392,12 +564,13 @@ def service_detail_page(slug, name, eyebrow_extra, h1, lead, features, advantage
   <div class="container">
     <div class="section-head">
       <h2 style="font-size:26px;">Weitere Leistungen</h2>
+      <a href="{prefix}{hub_href}" class="btn btn-outline-navy" style="margin-top:14px;">{hub_label} <span aria-hidden="true">&rarr;</span></a>
     </div>
     <div class="cards-grid">{others_html}</div>
   </div>
 </section>
 
-{cta_banner(prefix)}
+{cta_banner(prefix, **cta_kwargs)}
 '''
     write(f"leistungen/{slug}.html", page(
         f"{name} Mainz: {eyebrow_extra} | HEINAND",
@@ -749,6 +922,8 @@ def build_verwalterwechsel():
         prefix, "leistungen", body, relpath="leistungen/verwalterwechsel.html"
     ))
 
+build_hausverwaltung_hub()
+build_verkauf_hub()
 build_leistungen_index()
 build_services()
 build_verwalterwechsel()
@@ -1079,6 +1254,12 @@ def build_kontakt():
     <span class="eyebrow">Kontakt</span>
     <h1>Lassen Sie uns über Ihre Immobilie sprechen: kostenlos und unverbindlich.</h1>
     <p class="hero-lead">Schreiben Sie uns eine Nachricht oder buchen Sie direkt einen Termin für Ihr kostenloses Erstgespräch: telefonisch oder per Video.</p>
+    <div class="topic-switch" role="group" aria-label="Thema wählen">
+      <button type="button" class="topic-btn" data-topic="verwaltung">Hausverwaltung</button>
+      <button type="button" class="topic-btn" data-topic="verkauf">Verkauf &amp; Bewertung</button>
+    </div>
+    <p class="topic-intro" data-topic-intro="verwaltung" hidden>Sie möchten Ihre Immobilie in professionelle Verwaltung geben oder die Verwaltung wechseln? Wählen Sie unten „Mietverwaltung“, „WEG-Verwaltung“ oder „Sondereigentumsverwaltung“ als Anliegen, dann landet Ihre Anfrage direkt bei der richtigen Ansprechperson.</p>
+    <p class="topic-intro" data-topic-intro="verkauf" hidden>Sie denken über einen Verkauf nach oder möchten den Wert Ihrer Immobilie kennen? Wählen Sie unten „Immobilie verkaufen“ oder „Immobilie bewerten lassen“ als Anliegen, dann besprechen wir im Erstgespräch gezielt Ihre Verkaufspläne.</p>
   </div>
 </section>
 

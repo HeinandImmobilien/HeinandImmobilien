@@ -56,14 +56,17 @@ SERVICES_VERKAUF = [
     ("Immobilienbewertung", "leistungen/immobilienbewertung.html", "Fundierte Werteinschätzung für Verkauf, Vermietung oder Vermögensübersicht."),
 ]
 
-FOOTER_LEISTUNGEN = SERVICES_VERWALTUNG[:3] + [SERVICES_VERWALTUNG[3]] + SERVICES_VERKAUF
-FOOTER_LEISTUNGEN = [
+FOOTER_HAUSVERWALTUNG = [
+    ("Übersicht Hausverwaltung", "hausverwaltung.html"),
     ("Mietverwaltung", "leistungen/mietverwaltung.html"),
     ("WEG-Verwaltung", "leistungen/weg-verwaltung.html"),
     ("Sondereigentumsverwaltung", "leistungen/se-verwaltung.html"),
+    ("Werterhalt & Instandhaltung", "leistungen/werterhalt-instandhaltung.html"),
+]
+FOOTER_VERKAUF = [
+    ("Übersicht Verkauf", "verkauf.html"),
     ("Immobilienverkauf", "leistungen/immobilienverkauf.html"),
     ("Immobilienbewertung", "leistungen/immobilienbewertung.html"),
-    ("Werterhalt & Instandhaltung", "leistungen/werterhalt-instandhaltung.html"),
 ]
 FOOTER_UNTERNEHMEN = [
     ("Über uns", "ueber-uns.html"),
@@ -402,8 +405,11 @@ def header(prefix, active=""):
         for name, href, desc in SERVICES_VERKAUF
     )
 
-    mobile_links = "\n".join(
-        f'<a href="{prefix}{href}">{name}</a>' for name, href, _ in (SERVICES_VERWALTUNG + SERVICES_VERKAUF)
+    mobile_links_verwaltung = "\n".join(
+        f'<a href="{prefix}{href}">{name}</a>' for name, href, _ in SERVICES_VERWALTUNG
+    )
+    mobile_links_verkauf = "\n".join(
+        f'<a href="{prefix}{href}">{name}</a>' for name, href, _ in SERVICES_VERKAUF
     )
 
     return f'''<div class="topbar">
@@ -420,17 +426,24 @@ def header(prefix, active=""):
     {logo_block(prefix, "light", loading="eager")}
     <nav class="main-nav" aria-label="Hauptnavigation">
       <div class="nav-item-dropdown">
-        <button type="button" class="nav-dropdown-trigger">Leistungen <span aria-hidden="true">&#9662;</span></button>
-        <div class="mega-menu">
+        <button type="button" class="nav-dropdown-trigger">Hausverwaltung <span aria-hidden="true">&#9662;</span></button>
+        <div class="mega-menu mega-menu-single">
           <div>
-            <h4>Verwaltung</h4>
+            <h4>Hausverwaltung</h4>
             <p class="sub">Laufende Betreuung Ihrer Immobilie</p>
             <ul>{mega_items_verwaltung}</ul>
+            <a href="{prefix}hausverwaltung.html" class="mega-menu-cta">Alle Verwaltungsleistungen im Überblick <span aria-hidden="true">&#8594;</span></a>
           </div>
+        </div>
+      </div>
+      <div class="nav-item-dropdown">
+        <button type="button" class="nav-dropdown-trigger">Verkauf <span aria-hidden="true">&#9662;</span></button>
+        <div class="mega-menu mega-menu-single">
           <div>
             <h4>Verkauf &amp; Bewertung</h4>
             <p class="sub">Wenn sich Ihre Pläne ändern</p>
             <ul>{mega_items_verkauf}</ul>
+            <a href="{prefix}verkauf.html" class="mega-menu-cta">Alles zum Verkauf im Überblick <span aria-hidden="true">&#8594;</span></a>
           </div>
         </div>
       </div>
@@ -455,7 +468,12 @@ def header(prefix, active=""):
     <button type="button" class="mobile-nav-close" aria-label="Menü schließen" style="background:none;border:none;font-size:26px;color:#0a2148;">&times;</button>
   </div>
   <a href="{prefix}index.html">Start</a>
-  {mobile_links}
+  <span class="mobile-nav-group-label">Hausverwaltung</span>
+  <a href="{prefix}hausverwaltung.html">Übersicht Hausverwaltung</a>
+  {mobile_links_verwaltung}
+  <span class="mobile-nav-group-label">Verkauf &amp; Bewertung</span>
+  <a href="{prefix}verkauf.html">Übersicht Verkauf</a>
+  {mobile_links_verkauf}
   {navlink("Region", "region.html", "")}
   {navlink("Über uns", "ueber-uns.html", "")}
   {navlink("Ratgeber", "blog/index.html", "")}
@@ -467,7 +485,8 @@ def header(prefix, active=""):
 '''
 
 def footer(prefix):
-    leistungen_links = "\n".join(f'<li><a href="{prefix}{href}">{name}</a></li>' for name, href in FOOTER_LEISTUNGEN)
+    hausverwaltung_links = "\n".join(f'<li><a href="{prefix}{href}">{name}</a></li>' for name, href in FOOTER_HAUSVERWALTUNG)
+    verkauf_links = "\n".join(f'<li><a href="{prefix}{href}">{name}</a></li>' for name, href in FOOTER_VERKAUF)
     unternehmen_links = "\n".join(f'<li><a href="{prefix}{href}">{name}</a></li>' for name, href in FOOTER_UNTERNEHMEN)
     return f'''<footer class="site-footer">
   <div class="container">
@@ -479,8 +498,12 @@ def footer(prefix):
         <p>Immobilienverwaltung und Verkauf in Mainz und dem Rhein-Main-Gebiet. Digital, strukturiert und transparent: Anliegen werden schnell geklärt, jeder Vorgang ist dokumentiert.</p>
       </div>
       <div class="footer-col">
-        <h5>Leistungen</h5>
-        <ul>{leistungen_links}</ul>
+        <h5>Hausverwaltung</h5>
+        <ul>{hausverwaltung_links}</ul>
+      </div>
+      <div class="footer-col">
+        <h5>Verkauf</h5>
+        <ul>{verkauf_links}</ul>
       </div>
       <div class="footer-col">
         <h5>Unternehmen</h5>
@@ -519,7 +542,7 @@ def footer(prefix):
 '''
 
 def cta_banner(prefix, heading="Weniger Verwaltungsstress. Mehr Kontrolle über Ihre Immobilie.",
-               text="Im kostenlosen Erstgespräch analysieren wir Ihr Objekt und zeigen Ihnen, wie eine strukturierte Verwaltung aussieht: unverbindlich und ohne Kleingedrucktes."):
+               text="Im kostenlosen Erstgespräch lernen wir uns kennen und besprechen Ihre Situation: unverbindlich und ohne Kleingedrucktes."):
     return f'''<section class="cta-banner">
   <div class="container">
     <div class="mark">{mark_img(prefix, "gold", 64)}</div>
@@ -605,6 +628,9 @@ def icon(name):
 
 def feature_icon(name):
     return f'<div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{ICONS.get(name, ICONS["check"])}</svg></div>'
+
+def path_icon(name):
+    return f'<div class="path-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{ICONS.get(name, ICONS["check"])}</svg></div>'
 
 def contact_icon(name):
     return f'<div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{ICONS.get(name, ICONS["check"])}</svg></div>'

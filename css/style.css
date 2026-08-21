@@ -334,6 +334,19 @@ p { margin: 0; }
 }
 .mega-menu li a span { font-size: 13px; color: #6b7280; }
 .mega-menu li a:hover strong { color: var(--navy); }
+.mega-menu-single { width: 320px; grid-template-columns: 1fr; }
+.mega-menu-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  border-top: 1px solid rgba(15,48,99,0.1);
+  padding-top: 14px;
+}
+.mega-menu-cta:hover { color: var(--gold); }
 
 /* Mobile nav panel */
 .mobile-nav {
@@ -357,6 +370,16 @@ p { margin: 0; }
   color: var(--navy-deep);
 }
 .mobile-nav .btn { margin-top: 20px; width: 100%; justify-content: center; }
+.mobile-nav-group-label {
+  display: block;
+  margin-top: 18px;
+  padding-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
 
 /* ==========================================================================
    Hero
@@ -500,6 +523,31 @@ section { padding: 88px 0; }
 .card p { color: #5b6472; font-size: 15px; margin-bottom: 18px; }
 .card .card-link { color: var(--gold); font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; }
 
+/* Auswahl-Sektion: Hausverwaltung vs. Verkauf */
+.path-chooser { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.path-card {
+  background: var(--white);
+  border: 1px solid rgba(15,48,99,0.08);
+  border-radius: var(--radius-lg);
+  padding: 44px 40px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+.path-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); border-color: rgba(159,126,62,0.35); }
+.path-card .path-icon {
+  width: 58px; height: 58px; border-radius: var(--radius-md);
+  background: var(--gold-pale); color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+}
+.path-card h3 { font-size: 25px; margin-bottom: 12px; }
+.path-card > p { color: #5b6472; font-size: 15px; margin-bottom: 22px; }
+.path-card-list { list-style: none; padding: 0; margin: 0 0 28px; display: flex; flex-direction: column; gap: 11px; flex-grow: 1; }
+.path-card-list li { font-size: 14px; color: var(--navy-soft); display: flex; align-items: flex-start; gap: 8px; }
+.path-card .btn { align-self: flex-start; }
+
 /* Painpoint-Sektion ("Kennen Sie das?") */
 .painpoints-grid {
   display: grid;
@@ -596,8 +644,13 @@ section { padding: 88px 0; }
   grid-template-columns: repeat(5, 1fr);
   gap: 24px;
 }
+.steps-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
 @media (max-width: 1180px) {
   .steps-grid-5 { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .steps-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 28px; }
 }
 .step-num {
   font-family: var(--font-heading);
@@ -978,6 +1031,24 @@ section { padding: 88px 0; }
 .tab-btn.active { color: var(--navy-deep); border-bottom-color: var(--navy); }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
+
+/* Themenauswahl Kontaktseite: Hausverwaltung / Verkauf */
+.topic-switch { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+.topic-btn {
+  background: var(--white);
+  border: 1.5px solid rgba(15,48,99,0.15);
+  border-radius: var(--radius-full);
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy-soft);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.topic-btn:hover { border-color: var(--gold); }
+.topic-btn.active { background: var(--navy-deep); border-color: var(--navy-deep); color: var(--white); }
+.topic-intro { color: #5b6472; margin-bottom: 20px; }
+.topic-intro[hidden] { display: none; }
 .cal-embed { width: 100%; min-height: 640px; overflow: hidden; border-radius: var(--radius-md); }
 
 .contact-info-list { display: flex; flex-direction: column; gap: 22px; margin-bottom: 32px; }
@@ -1204,8 +1275,8 @@ section { padding: 88px 0; }
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1.1fr;
-  gap: 40px;
+  grid-template-columns: 1.5fr 0.9fr 0.9fr 0.9fr 1.1fr;
+  gap: 32px;
   padding-bottom: 48px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
@@ -1267,12 +1338,14 @@ section { padding: 88px 0; }
   .steps-grid { grid-template-columns: 1fr; }
   .region-grid { grid-template-columns: 1fr 1fr; }
   .promo-split { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .footer-about { grid-column: 1 / -1; }
   .two-col { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .related-articles { grid-template-columns: 1fr; }
   .locations-grid { grid-template-columns: 1fr; }
   .painpoints-grid { grid-template-columns: 1fr 1fr; }
+  .path-chooser { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 720px) {

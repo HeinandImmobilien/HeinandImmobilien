@@ -12,7 +12,35 @@ document.addEventListener('DOMContentLoaded', () => {
   initLocationSearch();
   initContactTabs();
   initSchadensPriority();
+  initKontaktThema();
 });
+
+function initKontaktThema() {
+  const buttons = document.querySelectorAll('.topic-btn');
+  const intros = document.querySelectorAll('.topic-intro');
+  if (!buttons.length) return;
+  const anliegenSelect = Array.from(document.querySelectorAll('.form-field select')).find(
+    s => s.querySelector('option[value=""]') && Array.from(s.options).some(o => o.textContent.includes('Anliegen') || o.textContent.includes('Mietverwaltung'))
+  );
+  const topicOptionMap = {
+    verwaltung: 'Mietverwaltung anfragen',
+    verkauf: 'Immobilie verkaufen',
+  };
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const topic = btn.dataset.topic;
+      buttons.forEach(b => b.classList.toggle('active', b === btn));
+      intros.forEach(p => {
+        if (p.dataset.topicIntro === topic) p.removeAttribute('hidden');
+        else p.setAttribute('hidden', '');
+      });
+      if (anliegenSelect && topicOptionMap[topic]) {
+        const opt = Array.from(anliegenSelect.options).find(o => o.textContent.trim() === topicOptionMap[topic]);
+        if (opt) anliegenSelect.value = opt.value || opt.textContent.trim();
+      }
+    });
+  });
+}
 
 function initSchadensPriority() {
   const select = document.getElementById('schadensart');
@@ -149,18 +177,28 @@ function initMobileNav() {
 }
 
 function initMegaMenu() {
-  const trigger = document.querySelector('.nav-dropdown-trigger');
-  const menu = document.querySelector('.mega-menu');
-  if (!trigger || !menu) return;
-  const close = () => menu.classList.remove('open');
-  trigger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    menu.classList.toggle('open');
+  const groups = Array.from(document.querySelectorAll('.nav-item-dropdown')).map(group => ({
+    group,
+    trigger: group.querySelector('.nav-dropdown-trigger'),
+    menu: group.querySelector('.mega-menu'),
+  })).filter(g => g.trigger && g.menu);
+  if (!groups.length) return;
+  const closeAll = (except) => {
+    groups.forEach(g => { if (g.menu !== except) g.menu.classList.remove('open'); });
+  };
+  groups.forEach(({ trigger, menu }) => {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !menu.classList.contains('open');
+      closeAll();
+      if (willOpen) menu.classList.add('open');
+    });
   });
   document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target) && e.target !== trigger) close();
+    const insideAny = groups.some(({ group }) => group.contains(e.target));
+    if (!insideAny) closeAll();
   });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(); });
 }
 
 function initFaq() {
