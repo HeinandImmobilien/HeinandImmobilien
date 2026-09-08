@@ -87,8 +87,10 @@ FOOTER_UNTERNEHMEN = [
 #   facts         kurze Eckdaten, z. B. "3 Zimmer · 78 m² · Baujahr 1998"
 #   price         Kaufpreis als Text, z. B. "349.000 €" (None = wird nicht angezeigt)
 #   status        "aktiv" (Standard), "reserviert" oder "verkauft"
-#   expose_pdf    Pfad zu einer PDF im assets-Ordner, z. B. "assets/expose/beispiel.pdf"
-#   image         Pfad zu einem Titelbild, z. B. "assets/listings/beispiel.jpg"
+#   expose_pdf    Pfad zu einer PDF im assets-Ordner (z. B. "assets/expose/beispiel.pdf")
+#                 oder eine externe URL (z. B. auf ein Partnerportal)
+#   image         Pfad zu einem Titelbild im assets-Ordner, oder eine externe
+#                 Bild-URL (z. B. direkt vom Portal/Partner), beides möglich
 # Beispiel:
 # dict(title="3-Zimmer-Wohnung in Mainz-Neustadt", location="Mainz-Neustadt",
 #      type="Eigentumswohnung", facts="3 Zimmer · 78 m² · Baujahr 1998",
@@ -96,6 +98,14 @@ FOOTER_UNTERNEHMEN = [
 #      url="https://www.immobilienscout24.de/expose/...",
 #      expose_pdf="assets/expose/mainz-neustadt-3zi.pdf", image=None),
 LISTINGS = [
+    dict(title="Frankfurt-Sachsenhausen: 300 m², Pool, Spa und Gym hinter der eigenen Wohnungstür",
+         location="Frankfurt am Main, Sachsenhausen (60598)",
+         type="Eigentumswohnung",
+         facts="300 m² Wohnfläche · 4 Zimmer · 3 Badezimmer · 1 Gäste-WC · 2 Stellplätze",
+         price="4.500.000 €", status="aktiv", portal="Weltmann GmbH",
+         url="https://weltmann.de/immobilien/frankfurt-sachsenhausen-300-m2-pool-spa-und-gym-hinter-der-eigenen-wohnungstur-fafd4ef9",
+         expose_pdf=None,
+         image="https://asvfgvdjdcotqlusbxdj.supabase.co/storage/v1/object/public/crm-files/properties/fafd4ef9-d8df-4380-8fbf-a913ac54f57a/a491af8d-f01d-4547-bdda-aaa4e0b90577_chatgpt-image-27-aug-2026-16-16-29.png"),
 ]
 
 # --------------------------------------------------------------------------

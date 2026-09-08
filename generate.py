@@ -400,12 +400,14 @@ def listing_card(prefix, l):
     facts_html = f'<p class="listing-facts">{l["facts"]}</p>' if l.get("facts") else ""
     type_html = f'<span class="listing-type">{l["type"]}</span>' if l.get("type") else ""
     if l.get("image"):
-        media_html = f'<img src="{prefix}{l["image"]}" alt="{l["title"]}" loading="lazy">'
+        img_src = l["image"] if l["image"].startswith("http") else f'{prefix}{l["image"]}'
+        media_html = f'<img src="{img_src}" alt="{l["title"]}" loading="lazy">'
     else:
         media_html = f'<div class="listing-media-fallback">{ICONS_HOME}</div>'
     expose_html = ""
     if l.get("expose_pdf"):
-        expose_html = f'''<a href="{prefix}{l["expose_pdf"]}" class="btn btn-outline-navy" target="_blank" rel="noopener">Exposé (PDF) <span class="btn-ic">{ICONS_DOWNLOAD}</span></a>'''
+        expose_src = l["expose_pdf"] if l["expose_pdf"].startswith("http") else f'{prefix}{l["expose_pdf"]}'
+        expose_html = f'''<a href="{expose_src}" class="btn btn-outline-navy" target="_blank" rel="noopener">Exposé (PDF) <span class="btn-ic">{ICONS_DOWNLOAD}</span></a>'''
     return f'''<div class="listing-card">
   <div class="listing-card-media">{media_html}<span class="listing-badge listing-badge-{status}">{status_label}</span></div>
   <div class="listing-card-body">
