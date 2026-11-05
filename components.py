@@ -584,7 +584,7 @@ def header(prefix, active=""):
     </nav>
     <div class="header-actions">
       <a href="{prefix}schadensmeldung.html" class="btn btn-outline-navy">Schaden melden</a>
-      <span class="btn btn-outline-navy btn-soon btn-icon-only" aria-disabled="true" title="Kundenportal folgt in Kürze"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{ICONS["user"]}</svg><span class="badge-soon">bald</span></span>
+      <a href="https://www.portal24.com/portal/data-source/statistics" class="btn btn-outline-navy btn-icon-only" target="_blank" rel="noopener" aria-label="Kundenportal" title="Zum Kundenportal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{ICONS["user"]}</svg></a>
       <a href="{prefix}kontakt.html" class="btn btn-navy">Kostenloses Erstgespräch <span aria-hidden="true">&#8594;</span></a>
       <button type="button" class="menu-toggle" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
@@ -609,7 +609,7 @@ def header(prefix, active=""):
   {navlink("Ratgeber", "blog/index.html", "")}
   {navlink("Kontakt", "kontakt.html", "")}
   <a href="{prefix}schadensmeldung.html">Schaden melden</a>
-  <span class="mobile-nav-soon">Kundenportal <span class="badge-soon">bald verfügbar</span></span>
+  <a href="https://www.portal24.com/portal/data-source/statistics" target="_blank" rel="noopener">Kundenportal</a>
   <a href="{prefix}kontakt.html" class="btn btn-primary">Kostenloses Erstgespräch &#8594;</a>
 </div>
 '''
