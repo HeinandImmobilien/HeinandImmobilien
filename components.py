@@ -106,6 +106,22 @@ LISTINGS = [
          url="https://weltmann.de/immobilien/frankfurt-sachsenhausen-300-m2-pool-spa-und-gym-hinter-der-eigenen-wohnungstur-fafd4ef9",
          expose_pdf=None,
          image="https://asvfgvdjdcotqlusbxdj.supabase.co/storage/v1/object/public/crm-files/properties/fafd4ef9-d8df-4380-8fbf-a913ac54f57a/a491af8d-f01d-4547-bdda-aaa4e0b90577_chatgpt-image-27-aug-2026-16-16-29.png"),
+    dict(title="Penthouse in Frankfurt-Westend: drei Ebenen, private Dachterrasse und exklusives Studio",
+         location="Frankfurt am Main, Westend (60322)",
+         type="Eigentumswohnung",
+         facts="230 m² Wohnfläche · 5 Zimmer · separates Studio · Erstbezug",
+         price="3.500.000 €", status="aktiv", portal="Weltmann GmbH",
+         url="https://weltmann.de/immobilien/penthouse-in-fam-c5b09f1a",
+         expose_pdf=None,
+         image="https://asvfgvdjdcotqlusbxdj.supabase.co/storage/v1/object/public/crm-files/properties/c5b09f1a-8fa4-4a64-91ee-48a8a2bf97a7/c20db94e-a0bd-4219-9647-8dad6c1527f4_natu-rlich-restaurierte-immobilienansicht-1.png"),
+    dict(title="Drei Ebenen. Raum für Generationen: Mehrgenerationenhaus in Groß-Zimmern",
+         location="Groß-Zimmern (64846)",
+         type="Mehrfamilienhaus",
+         facts="ca. 258 m² Wohnfläche · 9 Zimmer · drei eigenständige Wohnbereiche",
+         price="850.000 €", status="aktiv", portal="Weltmann GmbH",
+         url="https://weltmann.de/immobilien/drei-ebenen-raum-fur-generationen-3e2e5ac3",
+         expose_pdf=None,
+         image="https://asvfgvdjdcotqlusbxdj.supabase.co/storage/v1/object/public/crm-files/properties/3e2e5ac3-b0e9-44a7-af0e-b65ce9e968bd/a29e2740-1cb6-476e-9321-1d1ec0a0c78b_chatgpt-image-8-sept-2026-13-04-57-5.png"),
 ]
 
 # --------------------------------------------------------------------------
