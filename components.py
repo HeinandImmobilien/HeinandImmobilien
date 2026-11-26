@@ -331,7 +331,7 @@ MAP_POINTS = [
 ]
 
 def location_map_html(container_id="einsatzgebiet-karte"):
-    """Echte, minimalistisch gestylte Karte (Leaflet + CartoDB Positron-Kacheln):
+    """Echte, minimalistisch gestylte Karte (Leaflet + OpenStreetMap-Kacheln):
     Mainz im Zentrum, 35-km-Radiuskreis, Marker mit Hover-Tooltip für die
     wichtigsten Orte. Zeigt den tatsächlichen Rheinverlauf über echtes Kartenmaterial."""
     import json
@@ -412,7 +412,7 @@ def head(title, description, prefix, relpath="index.html", noindex=False, extra_
 <meta name="twitter:description" content="{description}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="{prefix}assets/mark-blue.png">
 <link rel="stylesheet" href="{prefix}css/style.css">
 {local_business_jsonld(prefix)}

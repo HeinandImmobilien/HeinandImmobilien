@@ -1793,7 +1793,7 @@ def build_datenschutz():
     <p>Rechtsgrundlage ist die Erfüllung vorvertraglicher Maßnahmen auf Ihre Anfrage hin (Art. 6 Abs. 1 lit. b DSGVO). Weitere Informationen finden Sie in der Datenschutzerklärung von Cal.com: <a href="https://cal.com/privacy" target="_blank" rel="noopener">cal.com/privacy</a>. Die Übermittlung in die USA erfolgt auf Grundlage von EU-Standardvertragsklauseln bzw. des EU-US Data Privacy Framework, sofern Cal.com hierfür zertifiziert ist.</p>
 
     <h2>Kartendarstellung und Ortssuche</h2>
-    <p>Auf mehreren Seiten (u. a. Startseite, Region, Standortseiten) zeigen wir eine interaktive Karte unseres Einzugsgebiets. Diese basiert auf der Bibliothek Leaflet, die über das Content Delivery Network von Cloudflare, Inc. (cdnjs.cloudflare.com) geladen wird, sowie auf Kartenkacheln des Anbieters CARTO (basemaps.cartocdn.com). Beim Laden der Karte wird Ihre IP-Adresse technisch bedingt an diese Anbieter übertragen, damit die Kartenkacheln bzw. Skriptdateien an Ihren Browser ausgeliefert werden können.</p>
+    <p>Auf mehreren Seiten (u. a. Startseite, Region, Standortseiten) zeigen wir eine interaktive Karte unseres Einzugsgebiets. Diese basiert auf der Bibliothek Leaflet, die über das Content Delivery Network von Cloudflare, Inc. (cdnjs.cloudflare.com) geladen wird, sowie auf Kartenkacheln von OpenStreetMap (tile.openstreetmap.org, OpenStreetMap Foundation, Vereinigtes Königreich). Beim Laden der Karte wird Ihre IP-Adresse technisch bedingt an diese Anbieter übertragen, damit die Kartenkacheln bzw. Skriptdateien an Ihren Browser ausgeliefert werden können.</p>
     <p>Die Ortssuche („Sind wir auch in Ihrem Ort tätig?") funktioniert für Orte außerhalb unserer festen Ortsliste anders: Ihre Eingabe wird nicht direkt an einen Drittanbieter gesendet, sondern zunächst an unsere eigene Server-Funktion übermittelt. Diese fragt die Entfernung serverseitig bei der Geokodierungs-API von OpenStreetMap (Nominatim, betrieben von der OpenStreetMap Foundation) ab. Ihre IP-Adresse wird dabei nicht an OpenStreetMap übertragen: sichtbar ist dort nur die Server-Adresse unseres Hosting-Anbieters.</p>
     <p>Rechtsgrundlage für die Kartendarstellung und die Ortssuche ist unser berechtigtes Interesse an einer verständlichen, nutzerfreundlichen Darstellung unseres Einzugsgebiets (Art. 6 Abs. 1 lit. f DSGVO).</p>
 
@@ -1811,7 +1811,7 @@ def build_datenschutz():
       <li><strong>Cal.com, Inc.</strong> (USA): Online-Terminbuchung, sofern genutzt.</li>
       <li><strong>Google Ireland Limited</strong> (Irland): Bereitstellung von Google Fonts.</li>
       <li><strong>Cloudflare, Inc.</strong> (USA): Auslieferung der Kartenbibliothek über CDN.</li>
-      <li><strong>CARTO</strong>: Bereitstellung der Kartenkacheln.</li>
+      <li><strong>OpenStreetMap Foundation</strong>: Bereitstellung der Kartenkacheln.</li>
       <li><strong>OpenStreetMap Foundation</strong>: Geokodierung für die Ortssuche (serverseitig angebunden, siehe oben).</li>
     </ul>
     <p>Mit als Auftragsverarbeiter tätigen Dienstleistern schließen wir, soweit erforderlich, Verträge zur Auftragsverarbeitung nach Art. 28 DSGVO ab. Eine Weitergabe Ihrer Daten zu Werbezwecken oder ein Verkauf Ihrer Daten an Dritte findet nicht statt.</p>
