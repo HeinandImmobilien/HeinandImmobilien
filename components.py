@@ -125,8 +125,7 @@ LISTINGS = [
 ]
 
 # --------------------------------------------------------------------------
-# Standorte / Einzugsgebiet: Orte im 35-km-Radius um Mainz (Bad Kreuznach
-# bleibt als feste Standort-Region unabhängig vom Radius Teil des Gebiets)
+# Standorte / Einzugsgebiet: Orte im 20-km-Radius um Mainz
 # (Distanzen sind gerundete Luftlinien-Näherungen zur Einordnung, keine
 # amtlichen Angaben. tier=1 -> eigene Standort-Landingpage, tier=2 -> nur
 # Nennung in Liste/Karte.)
@@ -137,28 +136,12 @@ LOCATIONS = [
          blurb="Die hessische Landeshauptstadt liegt direkt gegenüber von Mainz am anderen Rheinufer: für uns nur eine kurze Fahrt über die Brücke."),
     dict(name="Ingelheim am Rhein", slug="ingelheim", distance=15, bearing=260, tier=1,
          blurb="Weinstadt und Wirtschaftsstandort westlich von Mainz, geprägt von gewachsenen Wohnlagen und soliden Mehrfamilienhäusern."),
-    dict(name="Bingen am Rhein", slug="bingen", distance=30, bearing=278, tier=1,
-         blurb="Das Tor zum UNESCO-Welterbe Oberes Mittelrheintal: mit historischer Bausubstanz und stabiler Vermietungsnachfrage."),
-    dict(name="Alzey", slug="alzey", distance=30, bearing=205, tier=1,
-         blurb="Kreisstadt in Rheinhessen mit ruhigem Immobilienmarkt und vielen Ein- und Mehrfamilienhäusern in Eigentümerhand."),
-    dict(name="Bad Kreuznach", slug="bad-kreuznach", distance=40, bearing=235, tier=1,
-         blurb="Kreisstadt an der Nahe mit historischer Altstadt und wachsendem Bedarf an professioneller Hausverwaltung."),
     dict(name="Rüsselsheim am Main", slug="ruesselsheim", distance=20, bearing=95, tier=1,
          blurb="Industriestadt am Main im Rhein-Main-Gebiet mit hoher Mieternachfrage und viel Mehrfamilienhausbestand."),
     dict(name="Nieder-Olm", slug="nieder-olm", distance=10, bearing=200, tier=1,
          blurb="Verbandsgemeinde direkt südlich von Mainz: beliebte Wohnlage mit kurzen Wegen zu uns."),
-    dict(name="Frankfurt am Main", distance=35, bearing=78, tier=2),
-    dict(name="Darmstadt", distance=35, bearing=122, tier=2),
-    dict(name="Offenbach am Main", distance=40, bearing=82, tier=2),
-    dict(name="Groß-Gerau", distance=25, bearing=100, tier=2),
-    dict(name="Rüdesheim am Rhein", distance=35, bearing=290, tier=2),
     dict(name="Eltville am Rhein", distance=20, bearing=310, tier=2),
-    dict(name="Oestrich-Winkel", distance=25, bearing=298, tier=2),
-    dict(name="Geisenheim", distance=30, bearing=292, tier=2),
-    dict(name="Idstein", distance=30, bearing=15, tier=2),
     dict(name="Taunusstein", distance=20, bearing=350, tier=2),
-    dict(name="Hofheim am Taunus", distance=25, bearing=48, tier=2),
-    dict(name="Bad Homburg vor der Höhe", distance=45, bearing=55, tier=2),
     dict(name="Oppenheim", distance=20, bearing=185, tier=2),
     dict(name="Nierstein", distance=15, bearing=180, tier=2),
     dict(name="Nackenheim", distance=13, bearing=180, tier=2),
@@ -175,12 +158,12 @@ LOCATIONS = [
 # amtlichen Angaben. RADIUS_KM ist die Grenze unseres Einsatzgebiets.
 # --------------------------------------------------------------------------
 
-RADIUS_KM = 35
+RADIUS_KM = 20
 
 # Feste Standort-Regionen, die trotz etwas größerer Entfernung fest zu unserem
 # Servicegebiet gehören (eigene Standort-Landingpage, siehe LOCATIONS oben) und
 # in der Ortssuche deshalb unabhängig von RADIUS_KM immer als "tätig" gelten.
-ALWAYS_SERVED = {"Bad Kreuznach"}
+ALWAYS_SERVED = set()
 
 SEARCH_LOCATIONS = [
     # Mainz: Stadtteile
@@ -324,15 +307,15 @@ LEAFLET_CDN = '''<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/
 MAP_POINTS = [
     dict(name="Mainz", lat=49.9929, lon=8.2473, dist=None, main=True),
     dict(name="Wiesbaden", lat=50.0782, lon=8.2398, dist=10),
-    dict(name="Frankfurt am Main", lat=50.1109, lon=8.6821, dist=35),
-    dict(name="Bingen am Rhein", lat=49.9686, lon=7.8994, dist=30),
-    dict(name="Groß-Gerau", lat=49.9169, lon=8.4826, dist=25),
-    dict(name="Darmstadt", lat=49.8728, lon=8.6512, dist=35),
+    dict(name="Ingelheim am Rhein", lat=49.9742, lon=8.0572, dist=15),
+    dict(name="Rüsselsheim am Main", lat=50.0049, lon=8.4115, dist=20),
+    dict(name="Nieder-Olm", lat=49.9166, lon=8.2084, dist=10),
+    dict(name="Oppenheim", lat=49.8564, lon=8.3592, dist=20),
 ]
 
 def location_map_html(container_id="einsatzgebiet-karte"):
     """Echte, minimalistisch gestylte Karte (Leaflet + OpenStreetMap-Kacheln):
-    Mainz im Zentrum, 35-km-Radiuskreis, Marker mit Hover-Tooltip für die
+    Mainz im Zentrum, 20-km-Radiuskreis, Marker mit Hover-Tooltip für die
     wichtigsten Orte. Zeigt den tatsächlichen Rheinverlauf über echtes Kartenmaterial."""
     import json
     points_json = json.dumps(MAP_POINTS, ensure_ascii=False)
@@ -412,7 +395,7 @@ def head(title, description, prefix, relpath="index.html", noindex=False, extra_
 <meta name="twitter:description" content="{description}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="{prefix}assets/mark-blue.png">
 <link rel="stylesheet" href="{prefix}css/style.css">
 {local_business_jsonld(prefix)}

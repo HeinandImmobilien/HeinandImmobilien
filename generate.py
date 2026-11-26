@@ -32,8 +32,8 @@ SERVICE_ICONS = {
 TIER1_LOCATIONS = [l for l in LOCATIONS if l.get("tier") == 1]
 TIER2_LOCATIONS = [l for l in LOCATIONS if l.get("tier") != 1]
 
-def locations_section(prefix, heading="Verwaltung, Werterhalt und Verkauf in Mainz und im gesamten 35-km-Umkreis.",
-                       intro="Wir sind dort für Sie da, wo wir uns auskennen: mit Miet-, WEG- und Sondereigentumsverwaltung, Werterhalt sowie Immobilienverkauf und -bewertung in Mainz und einem Radius von rund 35 Kilometern, von Wiesbaden über Rheinhessen bis ins Rhein-Main-Gebiet. Kurze Wege bedeuten schnelle Objektbegehungen, kurzfristige Übergaben und ein Handwerkernetzwerk, das wirklich vor Ort ist.",
+def locations_section(prefix, heading="Verwaltung, Werterhalt und Verkauf in Mainz und im gesamten 20-km-Umkreis.",
+                       intro="Wir sind dort für Sie da, wo wir uns auskennen: mit Miet-, WEG- und Sondereigentumsverwaltung, Werterhalt sowie Immobilienverkauf und -bewertung in Mainz und einem Radius von rund 20 Kilometern, von Wiesbaden über Rheinhessen bis ins Rhein-Main-Gebiet. Kurze Wege bedeuten schnelle Objektbegehungen, kurzfristige Übergaben und ein Handwerkernetzwerk, das wirklich vor Ort ist.",
                        show_cta=True, standorte_prefix=None, map_id="einsatzgebiet-karte"):
     """Standorte-Sektion mit echter Leaflet-Radius-Karte + vollständiger Ortsliste.
     standorte_prefix: Pfad-Präfix zu /standorte/ (Default: prefix + 'standorte/')."""
@@ -70,7 +70,7 @@ def locations_section(prefix, heading="Verwaltung, Werterhalt und Verkauf in Mai
 def build_home():
     prefix = ""
     home_faq = [
-        ("In welchen Regionen sind Sie tätig?", "Unser Schwerpunkt liegt in Mainz und einem Radius von rund 35 km: darunter Wiesbaden, Ingelheim, Bingen, Alzey, Rüsselsheim und Nieder-Olm. Auch Bad Kreuznach zählt als feste Standort-Region zu unserem Einzugsgebiet. Kurze Wege sind Teil unseres Qualitätsversprechens, egal ob es um Verwaltung oder Verkauf geht."),
+        ("In welchen Regionen sind Sie tätig?", "Unser Schwerpunkt liegt in Mainz und einem Radius von rund 20 km: darunter Wiesbaden, Ingelheim, Rüsselsheim und Nieder-Olm. Kurze Wege sind Teil unseres Qualitätsversprechens, egal ob es um Verwaltung oder Verkauf geht."),
         ("Muss ich als Eigentümer vor Ort in Mainz sein?", "Nein. Gerade für Eigentümer, die nicht in der Region wohnen, arbeiten wir digital: Anliegen, Unterlagen und Reporting laufen online oder telefonisch, Termine vor Ort übernehmen wir für Sie, egal ob es um die laufende Verwaltung oder einen Verkauf geht."),
         ("Wie kann ich ein kostenloses Erstgespräch vereinbaren?", "Am schnellsten über unser Kontaktformular oder direkt über unseren Buchungskalender, dort sehen Sie sofort freie Termine, telefonisch oder per Video. Alternativ erreichen Sie uns telefonisch oder per E-Mail. Einen persönlichen Termin vor Ort sprechen wir bei Bedarf individuell ab."),
         ("Was passiert mit meinen Daten, wenn ich ein Formular ausfülle?", "Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und uns per E-Mail zugestellt. Eine gesonderte Datenbank betreiben wir nicht. Details dazu finden Sie in unserer Datenschutzerklärung."),
@@ -297,7 +297,7 @@ def build_hausverwaltung_hub():
 '''
     write("hausverwaltung.html", page(
         "Hausverwaltung Mainz & Rhein-Main | HEINAND",
-        "Hausverwaltung in Mainz, Wiesbaden & 35 km Umkreis: Miet-, WEG- & SE-Verwaltung, Werterhalt. 100 % digital. Jetzt kostenlos anfragen.",
+        "Hausverwaltung in Mainz, Wiesbaden & 20 km Umkreis: Miet-, WEG- & SE-Verwaltung, Werterhalt. 100 % digital. Jetzt kostenlos anfragen.",
         prefix, "", body, relpath="hausverwaltung.html", extra_css=faq_jsonld(faq)
     ))
 
@@ -1102,7 +1102,7 @@ def build_region():
   <div class="container hero-inner">
     <span class="eyebrow">Unsere Region</span>
     <h1>Mainz, Wiesbaden und Rheinhessen: wir verwalten, wo wir zuhause sind.</h1>
-    <p class="hero-lead">Unser Einzugsgebiet umfasst Mainz und einen Radius von rund 35 Kilometern: plus Bad Kreuznach als feste Standort-Region. Diese bewusste Begrenzung ist ein Qualitätsversprechen: kurze Wege, schnelle Vor-Ort-Termine und echte Ortskenntnis.</p>
+    <p class="hero-lead">Unser Einzugsgebiet umfasst Mainz und einen Radius von rund 20 Kilometern. Diese bewusste Begrenzung ist ein Qualitätsversprechen: kurze Wege, schnelle Vor-Ort-Termine und echte Ortskenntnis.</p>
   </div>
 </section>
 
@@ -1127,13 +1127,13 @@ def build_region():
       <h2>Vom Herzen von Mainz bis an den Rand des Rhein-Main-Gebiets.</h2>
     </div>
     <div class="chip-row" style="justify-content:center;">
-      {"".join(f'<span class="chip">{c}</span>' for c in ["Mainz-Altstadt","Mainz-Gonsenheim","Wiesbaden","Mainz-Kastel","Ingelheim am Rhein","Bingen am Rhein","Nieder-Olm","Nierstein","Oppenheim","Gau-Algesheim","Bodenheim","Alzey","Wörrstadt","Bad Kreuznach","Rüsselsheim am Main","Groß-Gerau","Frankfurt am Main","Darmstadt","Rüdesheim am Rhein","Eltville am Rhein","Idstein","Taunusstein","Bad Homburg vor der Höhe"])}
+      {"".join(f'<span class="chip">{c}</span>' for c in ["Mainz-Altstadt","Mainz-Gonsenheim","Wiesbaden","Mainz-Kastel","Ingelheim am Rhein","Nieder-Olm","Nierstein","Oppenheim","Gau-Algesheim","Bodenheim","Wörrstadt","Rüsselsheim am Main","Eltville am Rhein","Taunusstein"])}
     </div>
     <p style="text-align:center;margin-top:24px;color:#5b6472;">Ihr Ort ist hier nicht aufgeführt? Nutzen Sie die Ortssuche oben, oder <a href="{prefix}kontakt.html" style="color:var(--navy);text-decoration:underline;">sprechen Sie uns direkt an</a>.</p>
   </div>
 </section>
 
-{locations_section(prefix, heading="Alle Orte im 35-km-Einzugsgebiet auf einen Blick.", intro="Unten sehen Sie unser Einzugsgebiet auf der Karte: Mainz im Zentrum, ca. 35 km Radius, plus Bad Kreuznach als feste Standort-Region. Für die größten Städte im Umkreis bieten wir eine eigene, lokale Betreuung mit entsprechender Marktkenntnis.", show_cta=False, map_id="einsatzgebiet-karte-region")}
+{locations_section(prefix, heading="Alle Orte im 20-km-Einzugsgebiet auf einen Blick.", intro="Unten sehen Sie unser Einzugsgebiet auf der Karte: Mainz im Zentrum, ca. 20 km Radius. Für die größten Städte im Umkreis bieten wir eine eigene, lokale Betreuung mit entsprechender Marktkenntnis.", show_cta=False, map_id="einsatzgebiet-karte-region")}
 
 <section class="section-white">
   <div class="container">
@@ -1155,7 +1155,7 @@ def build_region():
 '''
     write("region.html", page(
         "Einzugsgebiet Mainz, Wiesbaden & Rhein-Main | HEINAND",
-        "Unser Einzugsgebiet: Mainz und 35 km Umkreis, Wiesbaden, Ingelheim, Bingen, Alzey, Bad Kreuznach u.v.m. Karte & alle Standorte im Überblick.",
+        "Unser Einzugsgebiet: Mainz und 20 km Umkreis, Wiesbaden, Ingelheim, Rüsselsheim, Nieder-Olm u.v.m. Karte & alle Standorte im Überblick.",
         prefix, "region", body, relpath="region.html", extra_css=LEAFLET_CDN
     ))
 
@@ -1448,7 +1448,7 @@ def build_ueber_uns():
     )
     write("ueber-uns.html", page(
         "Über uns: Hausverwaltung Mainz & Rhein-Main | HEINAND",
-        "7 Jahre Erfahrung in der Immobilienverwaltung in Mainz, Wiesbaden und im 35-km-Umkreis. Digitale Prozesse, schnelle Klärung, volle Transparenz.",
+        "7 Jahre Erfahrung in der Immobilienverwaltung in Mainz, Wiesbaden und im 20-km-Umkreis. Digitale Prozesse, schnelle Klärung, volle Transparenz.",
         prefix, "ueber-uns", body, relpath="ueber-uns.html", extra_css=person_schema
     ))
 

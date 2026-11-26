@@ -124,7 +124,7 @@ function initLeafletMaps() {
     const map = L.map(el, {
       scrollWheelZoom: false,
       center: [main.lat, main.lon],
-      zoom: 9,
+      zoom: 10,
     });
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {

@@ -16,8 +16,8 @@
   --gold-pale: #f0e8d8;
   --cream: #f7f5f0;
 
-  --font-body: "Montserrat", system-ui, sans-serif;
-  --font-heading: "Montserrat", system-ui, sans-serif;
+  --font-body: "Inter", "Inter Fallback", system-ui, sans-serif;
+  --font-heading: "Manrope", "Manrope Fallback", "Inter", system-ui, sans-serif;
 
   --container: 1200px;
   --radius-sm: 10px;
